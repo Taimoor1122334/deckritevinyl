@@ -77,7 +77,7 @@ export const Hero: React.FC<HeroProps> = ({
                   Traditional methods build a deck on top of a roof membrane. With DeckRite, a single 3-ply vinyl covering does both jobs.
                 </p>
                 <button onClick={onExploreVisualizer} className="mt-3 text-sm font-semibold text-navy hover:underline">
-                  Preview colors on a deck →
+                  See colors up close →
                 </button>
               </div>
             </div>

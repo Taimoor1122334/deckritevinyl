@@ -14,12 +14,9 @@ import { FloatingActionDock } from './components/FloatingActionDock';
 import { HomePage } from './pages/HomePage';
 import { ProductsPage } from './pages/ProductsPage';
 import { VisualizerPage } from './pages/VisualizerPage';
-import { WhyDeckRitePage } from './pages/WhyDeckRitePage';
 import { GalleryPage } from './pages/GalleryPage';
 import { ResourcesPage } from './pages/ResourcesPage';
 import { EstimatorPage } from './pages/EstimatorPage';
-import { DealersPage } from './pages/DealersPage';
-import { SisterBrandsPage } from './pages/SisterBrandsPage';
 import { ContactPage } from './pages/ContactPage';
 import { DeckRailPage } from './pages/DeckRailPage';
 
@@ -71,7 +68,10 @@ export default function App() {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '').toLowerCase();
       if (hash && PAGES.includes(hash)) {
-        setCurrentPage(hash === 'visualizer' ? 'colors' : hash === 'faq' ? 'resources' : hash);
+        if (hash === 'visualizer') setCurrentPage('colors');
+        else if (hash === 'faq' || hash === 'why-deckrite') setCurrentPage('resources');
+        else if (hash === 'about' || hash === 'dealers' || hash === 'sister-brands') setCurrentPage('contact');
+        else setCurrentPage(hash);
       } else if (!hash) {
         setCurrentPage('home');
       }
@@ -100,8 +100,9 @@ export default function App() {
   const handleNavigate = (pageId: string) => {
     let target = pageId.toLowerCase();
     if (target === 'calculator') target = 'estimator';
-    if (target === 'specs' || target === 'codes' || target === 'faq') target = 'resources';
+    if (target === 'specs' || target === 'codes' || target === 'faq' || target === 'why-deckrite') target = 'resources';
     if (target === 'visualizer') target = 'colors';
+    if (target === 'about' || target === 'dealers' || target === 'sister-brands') target = 'contact';
     setCurrentPage(target);
     window.location.hash = target === 'home' ? '' : target;
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -146,7 +147,6 @@ export default function App() {
         onNavigate={handleNavigate}
         sampleCart={sampleCart}
         onOpenSampleModal={() => setSampleModalOpen(true)}
-        onOpenSearch={() => setSearchModalOpen(true)}
       />
 
       <main className="flex-1">
@@ -174,12 +174,6 @@ export default function App() {
             sampleCart={sampleCart}
           />
         )}
-        {currentPage === 'why-deckrite' && (
-          <WhyDeckRitePage
-            onNavigate={handleNavigate}
-            onOpenSampleModal={() => setSampleModalOpen(true)}
-          />
-        )}
         {currentPage === 'gallery' && (
           <GalleryPage
             onNavigate={handleNavigate}
@@ -199,29 +193,16 @@ export default function App() {
             onAddSample={handleAddSample}
           />
         )}
-        {currentPage === 'dealers' && (
-          <DealersPage
-            onNavigate={handleNavigate}
-            onOpenSampleModal={() => setSampleModalOpen(true)}
-          />
-        )}
-        {currentPage === 'sister-brands' && (
-          <SisterBrandsPage
-            onNavigate={handleNavigate}
-            onOpenSampleModal={() => setSampleModalOpen(true)}
-          />
-        )}
         {currentPage === 'deckrail' && (
           <DeckRailPage
             onNavigate={handleNavigate}
             onOpenSampleModal={() => setSampleModalOpen(true)}
           />
         )}
-        {(currentPage === 'contact' || currentPage === 'about') && (
+        {currentPage === 'contact' && (
           <ContactPage
             onNavigate={handleNavigate}
             onOpenSampleModal={() => setSampleModalOpen(true)}
-            showAbout={currentPage === 'about'}
           />
         )}
       </main>

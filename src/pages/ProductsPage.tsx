@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Breadcrumb } from '../components/Breadcrumb';
-import { DECKRITE_PRODUCTS, DECKRITE_PATTERNS } from '../data/deckData';
+import { ColorSwatchGrid } from '../components/ColorSwatchGrid';
+import { DECKRITE_PRODUCTS } from '../data/deckData';
 import { ColorPattern, SampleCartItem } from '../types';
 import { Package, ExternalLink } from 'lucide-react';
 
@@ -69,22 +70,12 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
           </div>
 
           <h3 className="text-xl font-bold text-slate-900 mt-14 mb-2">Available colors</h3>
-          <p className="text-sm text-slate-600 mb-6">Standard colors plus Harvest and Riverstone. Click a swatch to add it to your free sample kit.</p>
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4">
-            {DECKRITE_PATTERNS.map((pattern) => {
-              const added = sampleCart.some((item) => item.id === pattern.id);
-              return (
-                <button
-                  key={pattern.id}
-                  onClick={() => onAddSample(pattern)}
-                  className="rounded-lg border border-slate-200 p-2 hover:border-navy bg-white"
-                >
-                  <img src={pattern.thumb} alt={pattern.name} className="w-full h-28 object-contain" />
-                  {added && <span className="block text-[11px] font-bold text-navy text-center">Added</span>}
-                </button>
-              );
-            })}
-          </div>
+          <p className="text-sm text-slate-600 mb-6">Click a color for a large close-up of the membrane texture, the same way the original DeckRite site shows samples.</p>
+          <ColorSwatchGrid
+            onAddSample={onAddSample}
+            sampleCart={sampleCart}
+            onOpenSampleModal={onOpenSampleModal}
+          />
 
           <div className="mt-8 flex flex-wrap gap-3">
             <button onClick={onOpenSampleModal} className="inline-flex items-center gap-2 px-5 py-3 rounded-md bg-rose text-white font-semibold text-sm">

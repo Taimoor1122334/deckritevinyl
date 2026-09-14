@@ -1,14 +1,12 @@
 import React from 'react';
 import { Hero } from '../components/Hero';
-import { ColorVisualizer } from '../components/ColorVisualizer';
+import { ColorSwatchGrid } from '../components/ColorSwatchGrid';
 import { ProductCatalog } from '../components/ProductCatalog';
 import { WhyDeckRite } from '../components/WhyDeckRite';
 import { ProjectGallery } from '../components/ProjectGallery';
 import { InstallationResources } from '../components/InstallationResources';
-import { DealerLocator } from '../components/DealerLocator';
 import { SisterBrandsSection } from '../components/SisterBrandsSection';
 import { ColorPattern, SampleCartItem } from '../types';
-import { DECKRITE_PATTERNS } from '../data/deckData';
 import { ArrowRight, ShieldCheck, Layers, MapPin, Palette } from 'lucide-react';
 
 interface HomePageProps {
@@ -29,7 +27,7 @@ export const HomePage: React.FC<HomePageProps> = ({
       <Hero
         onExploreVisualizer={() => onNavigate('colors')}
         onOpenSampleModal={onOpenSampleModal}
-        onFindDealer={() => onNavigate('dealers')}
+        onFindDealer={() => onNavigate('contact')}
         onExploreProducts={() => onNavigate('products')}
       />
 
@@ -40,7 +38,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               { title: 'Premium Flooring', copy: '50 mil and 60 mil three-ply vinyl membrane for decks, balconies, docks, and sun porches.', page: 'products', icon: Layers },
               { title: 'Colors', copy: 'Sahara Tan, Slate Gray, Tropical Cream, Lakewood Marble, Tuscany Sand, Harvest, and Riverstone.', page: 'colors', icon: Palette },
               { title: 'Photo Gallery', copy: 'Real DeckRite decks and balconies — see the finished walking surface in place.', page: 'gallery', icon: ShieldCheck },
-              { title: 'Find a Distributor', copy: 'Call (888) 450-DECK or contact us for a stocking distributor or installer near you.', page: 'dealers', icon: MapPin },
+              { title: 'Find a Distributor', copy: 'Call (888) 450-DECK or contact us for a stocking distributor or installer near you.', page: 'contact', icon: MapPin },
             ].map((card) => (
               <button
                 key={card.title}
@@ -80,34 +78,36 @@ export const HomePage: React.FC<HomePageProps> = ({
               for Canadian products.
             </p>
           </div>
-          <div>
-            <p className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-4">Available colors</p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-              {DECKRITE_PATTERNS.map((pattern) => (
-                <button
-                  key={pattern.id}
-                  onClick={() => onNavigate('colors')}
-                  className="rounded-lg border border-slate-200 bg-white p-2 hover:border-navy"
-                >
-                  <img src={pattern.thumb} alt={pattern.name} className="w-full h-28 object-contain" />
-                </button>
-              ))}
-            </div>
-            <button
-              onClick={onOpenSampleModal}
-              className="mt-4 text-sm font-semibold text-navy hover:underline"
-            >
-              Request free swatches ({sampleCart.length} selected) →
-            </button>
-          </div>
+          <img
+            src="/brand/lifestyle.jpg"
+            alt="Finished DeckRite deck with outdoor furniture"
+            className="w-full h-full min-h-[280px] object-cover rounded-2xl border border-slate-200"
+          />
         </div>
       </section>
 
-      <ColorVisualizer
-        onAddSample={onAddSample}
-        sampleCart={sampleCart}
-        onOpenSampleModal={onOpenSampleModal}
-      />
+      <section className="py-14 bg-sand border-y border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl mb-8">
+            <p className="text-xs font-bold uppercase tracking-wider text-rose">Available colors</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mt-2">Click a color for a close-up</h2>
+            <p className="text-slate-600 mt-2">
+              Same as the original DeckRite site: tap a swatch to open a large photo of the actual membrane texture.
+            </p>
+          </div>
+          <ColorSwatchGrid
+            onAddSample={onAddSample}
+            sampleCart={sampleCart}
+            onOpenSampleModal={onOpenSampleModal}
+          />
+          <button
+            onClick={onOpenSampleModal}
+            className="mt-6 text-sm font-semibold text-navy hover:underline"
+          >
+            Request free swatches ({sampleCart.length} selected) →
+          </button>
+        </div>
+      </section>
 
       <ProductCatalog
         onOpenSampleModal={onOpenSampleModal}
@@ -133,7 +133,6 @@ export const HomePage: React.FC<HomePageProps> = ({
         </button>
       </div>
       <InstallationResources />
-      <DealerLocator />
       <SisterBrandsSection />
     </div>
   );

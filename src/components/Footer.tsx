@@ -79,14 +79,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenSampleModal })
         <div>
           <h4 className="text-xs font-bold uppercase tracking-wider text-navy mb-3">Explore</h4>
           <div className="grid grid-cols-1 gap-1.5 text-sm">
-            <button onClick={() => onNavigate('products')} className="text-left hover:text-navy">Premium Flooring</button>
+            <button onClick={() => onNavigate('products')} className="text-left hover:text-navy">Products</button>
             <button onClick={() => onNavigate('colors')} className="text-left hover:text-navy">Colors</button>
-            <button onClick={() => onNavigate('gallery')} className="text-left hover:text-navy">Photo Gallery</button>
-            <button onClick={() => onNavigate('resources')} className="text-left hover:text-navy">Technical Data</button>
-            <button onClick={() => onNavigate('deckrail')} className="text-left hover:text-navy">DeckRail</button>
-            <button onClick={() => onNavigate('dealers')} className="text-left hover:text-navy">Find a Distributor</button>
-            <button onClick={() => onNavigate('about')} className="text-left hover:text-navy">About Us</button>
-            <button onClick={() => onNavigate('contact')} className="text-left hover:text-navy">Contact Us</button>
+            <button onClick={() => onNavigate('gallery')} className="text-left hover:text-navy">Gallery</button>
+            <button onClick={() => onNavigate('resources')} className="text-left hover:text-navy">Resources</button>
+            <button onClick={() => onNavigate('contact')} className="text-left hover:text-navy">Contact</button>
           </div>
         </div>
 

@@ -1,30 +1,27 @@
 import React, { useState } from 'react';
 import { Breadcrumb } from '../components/Breadcrumb';
+import { DealerLocator } from '../components/DealerLocator';
 import { Mail, MapPin, Phone } from 'lucide-react';
 
 interface ContactPageProps {
   onNavigate: (page: string) => void;
   onOpenSampleModal: () => void;
-  showAbout?: boolean;
 }
 
 export const ContactPage: React.FC<ContactPageProps> = ({
   onNavigate,
   onOpenSampleModal,
-  showAbout = false,
 }) => {
   const [submitted, setSubmitted] = useState(false);
 
   return (
     <div className="min-h-screen bg-white">
-      <Breadcrumb items={[{ label: showAbout ? 'About Us' : 'Contact Us' }]} onNavigate={onNavigate} />
+      <Breadcrumb items={[{ label: 'Contact' }]} onNavigate={onNavigate} />
       <section className="bg-navy text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl sm:text-4xl font-bold">{showAbout ? 'About Us' : 'Contact Us'}</h1>
+          <h1 className="text-3xl sm:text-4xl font-bold">Contact DeckRite</h1>
           <p className="text-white/80 mt-3 max-w-2xl">
-            {showAbout
-              ? 'DeckRite L.L.C. is headquartered in North Little Rock, Arkansas, part of the Little Rock Holdings group of companies.'
-              : 'Contact DeckRite today for distributors near you, or send your mailing address for free samples of our decking material.'}
+            Call for a distributor near you, or send your mailing address for free samples. DeckRite L.L.C. is headquartered in North Little Rock, Arkansas.
           </p>
         </div>
       </section>
@@ -81,6 +78,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({
           </div>
         </div>
       </section>
+
+      <DealerLocator />
     </div>
   );
 };

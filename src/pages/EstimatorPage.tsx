@@ -75,7 +75,7 @@ export const EstimatorPage: React.FC<EstimatorPageProps> = ({ onNavigate, onOpen
             <button onClick={onOpenSampleModal} className="px-5 py-3 rounded-md bg-rose text-white font-semibold text-sm">
               Request samples
             </button>
-            <button onClick={() => onNavigate('dealers')} className="px-5 py-3 rounded-md border border-slate-300 font-semibold text-sm">
+            <button onClick={() => onNavigate('contact')} className="px-5 py-3 rounded-md border border-slate-300 font-semibold text-sm">
               Find a distributor
             </button>
           </div>

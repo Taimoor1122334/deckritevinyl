@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Package, Check } from 'lucide-react';
+import { Package, Check, ZoomIn } from 'lucide-react';
 import { ColorPattern, SampleCartItem } from '../types';
-import { DECKRITE_PATTERNS } from '../data/deckData';
+import { DECKRITE_PATTERNS, SHOWCASE_PROJECTS } from '../data/deckData';
+import { SwatchLightbox } from './SwatchLightbox';
 
 interface ColorVisualizerProps {
   onAddSample: (pattern: ColorPattern) => void;
@@ -9,92 +10,167 @@ interface ColorVisualizerProps {
   onOpenSampleModal: () => void;
 }
 
-const SCENES = [
-  { id: 'lake', name: 'Lakefront walkout', image: '/gallery/balcony-1.jpg' },
-  { id: 'covered', name: 'Covered sundeck', image: '/gallery/balcony-2.jpg' },
-  { id: 'balcony', name: 'Second-story balcony', image: '/gallery/balcony-3.jpg' },
-  { id: 'view', name: 'View deck', image: '/gallery/balcony-7.jpg' },
-];
+function ColorPanel({
+  pattern,
+  label,
+  active,
+  inCart,
+  onActivate,
+  onEnlarge,
+  onSample,
+  onOpenKit,
+}: {
+  pattern: ColorPattern;
+  label: string;
+  active: boolean;
+  inCart: boolean;
+  onActivate: () => void;
+  onEnlarge: () => void;
+  onSample: () => void;
+  onOpenKit: () => void;
+}) {
+  return (
+    <div className={`rounded-2xl overflow-hidden border bg-white ${active ? 'border-navy ring-2 ring-navy/20' : 'border-slate-200'}`}>
+      <button
+        type="button"
+        onClick={onActivate}
+        className="w-full text-left"
+        aria-pressed={active}
+      >
+        <div className="relative">
+          <img src={pattern.image} alt={`${pattern.name} membrane texture`} className="w-full aspect-square object-cover" />
+          <span className="absolute top-3 left-3 bg-white/95 text-navy text-[11px] font-bold uppercase tracking-wide px-2.5 py-1 rounded-full">
+            {label}
+          </span>
+        </div>
+      </button>
+      <div className="p-4 flex items-start justify-between gap-3">
+        <div>
+          <h3 className="text-lg font-bold text-slate-900">{pattern.name}</h3>
+          <p className="text-sm text-slate-600 mt-1">{pattern.description}</p>
+        </div>
+        <div className="flex flex-col gap-2 shrink-0">
+          <button
+            type="button"
+            onClick={onEnlarge}
+            className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-md border border-slate-300 text-sm font-semibold"
+          >
+            <ZoomIn className="w-4 h-4" />
+            Close-up
+          </button>
+          <button
+            type="button"
+            onClick={() => (inCart ? onOpenKit() : onSample())}
+            className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-md bg-navy text-white text-sm font-semibold"
+          >
+            {inCart ? <Check className="w-4 h-4" /> : <Package className="w-4 h-4" />}
+            {inCart ? 'In kit' : 'Sample'}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export const ColorVisualizer: React.FC<ColorVisualizerProps> = ({
   onAddSample,
   sampleCart,
   onOpenSampleModal,
 }) => {
-  const [selected, setSelected] = useState<ColorPattern>(DECKRITE_PATTERNS[0]);
-  const [scene, setScene] = useState(SCENES[0]);
-  const inCart = sampleCart.some((item) => item.id === selected.id);
+  const [left, setLeft] = useState<ColorPattern>(DECKRITE_PATTERNS[0]);
+  const [right, setRight] = useState<ColorPattern>(DECKRITE_PATTERNS[1]);
+  const [slot, setSlot] = useState<'left' | 'right'>('left');
+  const [lightbox, setLightbox] = useState<ColorPattern | null>(null);
+
+  const assign = (pattern: ColorPattern) => {
+    if (slot === 'left') setLeft(pattern);
+    else setRight(pattern);
+  };
 
   return (
     <section id="visualizer" className="py-16 bg-slate-50 border-y border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mb-10">
-          <p className="text-xs font-bold uppercase tracking-[0.16em] text-rose">Color preview</p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mt-2">See DeckRite colors on a real deck</h2>
+          <p className="text-xs font-bold uppercase tracking-[0.16em] text-rose">Compare colors</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mt-2">See the membrane, not a fake overlay</h2>
           <p className="text-slate-600 mt-2">
-            Select a standard color and overlay it on official DeckRite project photography. Order free mailed swatches to confirm color in natural light.
+            Screens cannot paint vinyl onto a photo accurately. Compare two real DeckRite textures side by side, enlarge either one, then look at actual installed decks. Order free mailed swatches before you specify a color.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-8">
-          <div className="lg:col-span-7">
-            <div className="relative rounded-xl overflow-hidden border border-slate-200 bg-slate-900 aspect-[4/3]">
-              <img src={scene.image} alt={scene.name} className="w-full h-full object-cover" />
-              <div
-                className="absolute inset-x-0 bottom-0 h-[42%] mix-blend-multiply opacity-80"
-                style={{
-                  backgroundImage: `url(${selected.image})`,
-                  backgroundSize: 'cover',
-                }}
-              />
-              <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between bg-white/95 rounded-md px-3 py-2">
-                <div>
-                  <p className="text-sm font-bold text-slate-900">{selected.name}</p>
-                  <p className="text-xs text-slate-500">{scene.name}</p>
-                </div>
-                <button
-                  onClick={() => (inCart ? onOpenSampleModal() : onAddSample(selected))}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-navy text-white text-xs font-semibold"
-                >
-                  {inCart ? <Check className="w-3.5 h-3.5" /> : <Package className="w-3.5 h-3.5" />}
-                  {inCart ? 'In sample kit' : 'Add swatch'}
-                </button>
-              </div>
-            </div>
-            <div className="flex gap-2 mt-3">
-              {SCENES.map((s) => (
-                <button
-                  key={s.id}
-                  onClick={() => setScene(s)}
-                  className={`flex-1 rounded-md overflow-hidden border ${scene.id === s.id ? 'border-navy ring-2 ring-navy/20' : 'border-slate-200'}`}
-                >
-                  <img src={s.image} alt={s.name} className="h-14 w-full object-cover" />
-                </button>
-              ))}
-            </div>
-          </div>
+        <div className="grid lg:grid-cols-2 gap-6">
+          <ColorPanel
+            pattern={left}
+            label="Color A"
+            active={slot === 'left'}
+            inCart={sampleCart.some((item) => item.id === left.id)}
+            onActivate={() => setSlot('left')}
+            onEnlarge={() => setLightbox(left)}
+            onSample={() => onAddSample(left)}
+            onOpenKit={onOpenSampleModal}
+          />
+          <ColorPanel
+            pattern={right}
+            label="Color B"
+            active={slot === 'right'}
+            inCart={sampleCart.some((item) => item.id === right.id)}
+            onActivate={() => setSlot('right')}
+            onEnlarge={() => setLightbox(right)}
+            onSample={() => onAddSample(right)}
+            onOpenKit={onOpenSampleModal}
+          />
+        </div>
 
-          <div className="lg:col-span-5">
-            <div className="grid grid-cols-2 gap-3">
-              {DECKRITE_PATTERNS.map((pattern) => {
-                const active = selected.id === pattern.id;
-                return (
-                  <button
-                    key={pattern.id}
-                    onClick={() => setSelected(pattern)}
-                    className={`rounded-lg border bg-white p-2 text-left ${active ? 'border-navy ring-2 ring-navy/15' : 'border-slate-200'}`}
-                  >
-                    <img src={pattern.thumb} alt={pattern.name} className="w-full h-24 object-contain" />
-                    {pattern.isStandard && (
-                      <span className="text-[10px] font-bold uppercase tracking-wide text-navy">Standard</span>
-                    )}
-                  </button>
-                );
-              })}
-            </div>
+        <p className="text-sm text-slate-600 mt-6 mb-3">
+          Selecting for <span className="font-semibold text-navy">{slot === 'left' ? 'Color A' : 'Color B'}</span> — click a swatch to change it.
+        </p>
+        <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-7 gap-3">
+          {DECKRITE_PATTERNS.map((pattern) => {
+            const isLeft = left.id === pattern.id;
+            const isRight = right.id === pattern.id;
+            return (
+              <button
+                key={pattern.id}
+                type="button"
+                onClick={() => assign(pattern)}
+                className={`rounded-xl overflow-hidden border bg-white text-left ${
+                  isLeft || isRight ? 'border-navy ring-2 ring-navy/20' : 'border-slate-200 hover:border-navy'
+                }`}
+              >
+                <img src={pattern.image} alt={pattern.name} className="w-full h-24 object-cover" />
+                <span className="block px-2 py-2 text-[11px] font-bold text-slate-800 leading-tight">
+                  {pattern.name}
+                  {isLeft ? ' · A' : isRight ? ' · B' : ''}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="mt-12">
+          <p className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">Installed DeckRite decks</p>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+            {SHOWCASE_PROJECTS.slice(0, 4).map((project) => (
+              <figure key={project.id} className="rounded-xl overflow-hidden border border-slate-200 bg-white">
+                <img src={project.image} alt={project.title} className="w-full h-40 object-cover" />
+                <figcaption className="px-3 py-2 text-xs font-medium text-slate-700">{project.title}</figcaption>
+              </figure>
+            ))}
           </div>
+          <p className="text-xs text-slate-500 mt-3">
+            Installed color shifts with sunlight, furniture, and surrounding materials. A mailed swatch is the only reliable match.
+          </p>
         </div>
       </div>
+
+      <SwatchLightbox
+        pattern={lightbox}
+        onClose={() => setLightbox(null)}
+        onChange={setLightbox}
+        onAddSample={onAddSample}
+        sampleCart={sampleCart}
+        onOpenSampleModal={onOpenSampleModal}
+      />
     </section>
   );
 };
