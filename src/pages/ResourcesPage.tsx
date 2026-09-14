@@ -6,10 +6,9 @@ import { ChevronDown, ExternalLink } from 'lucide-react';
 
 interface ResourcesPageProps {
   onNavigate: (page: string) => void;
-  onOpenSampleModal: () => void;
 }
 
-export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate, onOpenSampleModal }) => {
+export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate }) => {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   return (
@@ -87,8 +86,8 @@ export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate, onOpen
             <button onClick={() => onNavigate('estimator')} className="px-5 py-3 rounded-md border border-slate-300 font-semibold text-sm">
               Material estimator
             </button>
-            <button onClick={onOpenSampleModal} className="px-5 py-3 rounded-md bg-rose text-white font-semibold text-sm">
-              Free samples
+            <button onClick={() => onNavigate('contact')} className="px-5 py-3 rounded-md bg-navy text-white font-semibold text-sm">
+              Contact DeckRite
             </button>
           </div>
         </div>

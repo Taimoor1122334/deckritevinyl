@@ -4,10 +4,9 @@ import { ExternalLink } from 'lucide-react';
 
 interface DeckRailPageProps {
   onNavigate: (page: string) => void;
-  onOpenSampleModal: () => void;
 }
 
-export const DeckRailPage: React.FC<DeckRailPageProps> = ({ onNavigate, onOpenSampleModal }) => {
+export const DeckRailPage: React.FC<DeckRailPageProps> = ({ onNavigate }) => {
   const docs = [
     { label: 'Architectural Binder', href: 'https://www.deckrite.com/assets/files/pdf/DR_Architectural_Binder.pdf' },
     { label: 'Glass Installation Guide', href: 'https://www.deckrite.com/assets/files/pdf/DR_Glass_Installation.pdf' },
@@ -55,9 +54,6 @@ export const DeckRailPage: React.FC<DeckRailPageProps> = ({ onNavigate, onOpenSa
             <div className="flex gap-3 pt-2">
               <button onClick={() => onNavigate('contact')} className="px-5 py-3 rounded-md bg-navy text-white font-semibold text-sm">
                 Contact us about DeckRail
-              </button>
-              <button onClick={onOpenSampleModal} className="px-5 py-3 rounded-md border border-slate-300 font-semibold text-sm">
-                Membrane samples
               </button>
             </div>
           </div>

@@ -3,26 +3,25 @@ import { Phone, Mail, ArrowUp } from 'lucide-react';
 
 interface FooterProps {
   onNavigate: (sectionId: string) => void;
-  onOpenSampleModal: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenSampleModal }) => {
+export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
     <footer id="main-footer" className="bg-white text-slate-700 text-sm border-t border-slate-200">
       <div className="brand-gradient text-white py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
-            <h3 className="text-xl font-bold">Ready for a waterproof walking surface?</h3>
+            <h3 className="text-xl font-bold">Need a distributor near you?</h3>
             <p className="text-sm text-white/85 mt-1">
-              Request free color swatches or call us for a distributor near you.
+              DeckRite manufactures the membrane. Call or write for a stocking distributor or installer in your area.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
             <button
-              onClick={onOpenSampleModal}
+              onClick={() => onNavigate('contact')}
               className="px-5 py-3 rounded-md bg-white text-navy font-semibold text-sm hover:bg-slate-100"
             >
-              Request Free Samples
+              Contact DeckRite
             </button>
             <a
               href="tel:18884503325"

@@ -409,7 +409,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     question: 'How do I get free samples or find a distributor?',
     answer:
-      'Provide your mailing address on the Contact page or sample request form and DeckRite will send free swatches of the decking material. Call (888) 450-DECK (3325) or email DeckRitesupport@deckrite.com for distributors near you.',
+      'DeckRite is a manufacturer. On the original Contact page they ask you to provide a mailing address so they can send free samples of the decking material. Call (888) 450-DECK (3325) or email DeckRitesupport@deckrite.com for distributors near you — they do not install the product themselves.',
   },
 ];
 

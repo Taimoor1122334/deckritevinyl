@@ -1,42 +1,25 @@
 import React, { useState } from 'react';
-import { Package, Check, ZoomIn } from 'lucide-react';
-import { ColorPattern, SampleCartItem } from '../types';
+import { ZoomIn } from 'lucide-react';
+import { ColorPattern } from '../types';
 import { DECKRITE_PATTERNS, SHOWCASE_PROJECTS } from '../data/deckData';
 import { SwatchLightbox } from './SwatchLightbox';
-
-interface ColorVisualizerProps {
-  onAddSample: (pattern: ColorPattern) => void;
-  sampleCart: SampleCartItem[];
-  onOpenSampleModal: () => void;
-}
 
 function ColorPanel({
   pattern,
   label,
   active,
-  inCart,
   onActivate,
   onEnlarge,
-  onSample,
-  onOpenKit,
 }: {
   pattern: ColorPattern;
   label: string;
   active: boolean;
-  inCart: boolean;
   onActivate: () => void;
   onEnlarge: () => void;
-  onSample: () => void;
-  onOpenKit: () => void;
 }) {
   return (
     <div className={`rounded-2xl overflow-hidden border bg-white ${active ? 'border-navy ring-2 ring-navy/20' : 'border-slate-200'}`}>
-      <button
-        type="button"
-        onClick={onActivate}
-        className="w-full text-left"
-        aria-pressed={active}
-      >
+      <button type="button" onClick={onActivate} className="w-full text-left" aria-pressed={active}>
         <div className="relative">
           <img src={pattern.image} alt={`${pattern.name} membrane texture`} className="w-full aspect-square object-cover" />
           <span className="absolute top-3 left-3 bg-white/95 text-navy text-[11px] font-bold uppercase tracking-wide px-2.5 py-1 rounded-full">
@@ -49,34 +32,20 @@ function ColorPanel({
           <h3 className="text-lg font-bold text-slate-900">{pattern.name}</h3>
           <p className="text-sm text-slate-600 mt-1">{pattern.description}</p>
         </div>
-        <div className="flex flex-col gap-2 shrink-0">
-          <button
-            type="button"
-            onClick={onEnlarge}
-            className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-md border border-slate-300 text-sm font-semibold"
-          >
-            <ZoomIn className="w-4 h-4" />
-            Close-up
-          </button>
-          <button
-            type="button"
-            onClick={() => (inCart ? onOpenKit() : onSample())}
-            className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-md bg-navy text-white text-sm font-semibold"
-          >
-            {inCart ? <Check className="w-4 h-4" /> : <Package className="w-4 h-4" />}
-            {inCart ? 'In kit' : 'Sample'}
-          </button>
-        </div>
+        <button
+          type="button"
+          onClick={onEnlarge}
+          className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-md border border-slate-300 text-sm font-semibold shrink-0"
+        >
+          <ZoomIn className="w-4 h-4" />
+          Close-up
+        </button>
       </div>
     </div>
   );
 }
 
-export const ColorVisualizer: React.FC<ColorVisualizerProps> = ({
-  onAddSample,
-  sampleCart,
-  onOpenSampleModal,
-}) => {
+export const ColorVisualizer: React.FC = () => {
   const [left, setLeft] = useState<ColorPattern>(DECKRITE_PATTERNS[0]);
   const [right, setRight] = useState<ColorPattern>(DECKRITE_PATTERNS[1]);
   const [slot, setSlot] = useState<'left' | 'right'>('left');
@@ -94,7 +63,7 @@ export const ColorVisualizer: React.FC<ColorVisualizerProps> = ({
           <p className="text-xs font-bold uppercase tracking-[0.16em] text-rose">Compare colors</p>
           <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mt-2">See the membrane, not a fake overlay</h2>
           <p className="text-slate-600 mt-2">
-            Screens cannot paint vinyl onto a photo accurately. Compare two real DeckRite textures side by side, enlarge either one, then look at actual installed decks. Order free mailed swatches before you specify a color.
+            Screens cannot paint vinyl onto a photo accurately. Compare two real DeckRite textures side by side, enlarge either one, then look at actual installed decks. If you need a physical swatch, send your mailing address on the Contact page — the same way the original DeckRite site handles samples.
           </p>
         </div>
 
@@ -103,21 +72,15 @@ export const ColorVisualizer: React.FC<ColorVisualizerProps> = ({
             pattern={left}
             label="Color A"
             active={slot === 'left'}
-            inCart={sampleCart.some((item) => item.id === left.id)}
             onActivate={() => setSlot('left')}
             onEnlarge={() => setLightbox(left)}
-            onSample={() => onAddSample(left)}
-            onOpenKit={onOpenSampleModal}
           />
           <ColorPanel
             pattern={right}
             label="Color B"
             active={slot === 'right'}
-            inCart={sampleCart.some((item) => item.id === right.id)}
             onActivate={() => setSlot('right')}
             onEnlarge={() => setLightbox(right)}
-            onSample={() => onAddSample(right)}
-            onOpenKit={onOpenSampleModal}
           />
         </div>
 
@@ -157,20 +120,10 @@ export const ColorVisualizer: React.FC<ColorVisualizerProps> = ({
               </figure>
             ))}
           </div>
-          <p className="text-xs text-slate-500 mt-3">
-            Installed color shifts with sunlight, furniture, and surrounding materials. A mailed swatch is the only reliable match.
-          </p>
         </div>
       </div>
 
-      <SwatchLightbox
-        pattern={lightbox}
-        onClose={() => setLightbox(null)}
-        onChange={setLightbox}
-        onAddSample={onAddSample}
-        sampleCart={sampleCart}
-        onOpenSampleModal={onOpenSampleModal}
-      />
+      <SwatchLightbox pattern={lightbox} onClose={() => setLightbox(null)} onChange={setLightbox} />
     </section>
   );
 };

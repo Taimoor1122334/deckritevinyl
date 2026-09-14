@@ -3,12 +3,10 @@ import { DECKRITE_PRODUCTS } from '../data/deckData';
 import { ArrowRight } from 'lucide-react';
 
 interface ProductCatalogProps {
-  onOpenSampleModal: () => void;
   onOpenCalculator: () => void;
 }
 
 export const ProductCatalog: React.FC<ProductCatalogProps> = ({
-  onOpenSampleModal,
   onOpenCalculator,
 }) => {
   return (
@@ -43,12 +41,6 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
           ))}
         </div>
         <div className="mt-8 flex flex-wrap gap-3">
-          <button
-            onClick={onOpenSampleModal}
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-md bg-rose text-white font-semibold text-sm"
-          >
-            Request free samples
-          </button>
           <button
             onClick={onOpenCalculator}
             className="inline-flex items-center gap-2 px-5 py-3 rounded-md border border-slate-300 font-semibold text-sm"

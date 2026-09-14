@@ -5,10 +5,9 @@ import { X } from 'lucide-react';
 
 interface GalleryPageProps {
   onNavigate: (page: string) => void;
-  onOpenSampleModal: () => void;
 }
 
-export const GalleryPage: React.FC<GalleryPageProps> = ({ onNavigate, onOpenSampleModal }) => {
+export const GalleryPage: React.FC<GalleryPageProps> = ({ onNavigate }) => {
   const [active, setActive] = useState<string | null>(null);
 
   return (
@@ -42,8 +41,8 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onNavigate, onOpenSamp
               </button>
             ))}
           </div>
-          <button onClick={onOpenSampleModal} className="mt-10 px-5 py-3 rounded-md bg-rose text-white font-semibold text-sm">
-            Request free samples
+          <button onClick={() => onNavigate('contact')} className="mt-10 px-5 py-3 rounded-md bg-navy text-white font-semibold text-sm">
+            Find a distributor
           </button>
         </div>
       </section>

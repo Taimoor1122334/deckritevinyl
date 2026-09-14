@@ -1,19 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Package, MapPin, ArrowUp, Phone } from 'lucide-react';
-import { SampleCartItem } from '../types';
+import { MapPin, ArrowUp, Phone } from 'lucide-react';
 
 interface FloatingActionDockProps {
-  currentPage: string;
   onNavigate: (page: string) => void;
-  sampleCart: SampleCartItem[];
-  onOpenSampleModal: () => void;
 }
 
-export const FloatingActionDock: React.FC<FloatingActionDockProps> = ({
-  onNavigate,
-  sampleCart,
-  onOpenSampleModal,
-}) => {
+export const FloatingActionDock: React.FC<FloatingActionDockProps> = ({ onNavigate }) => {
   const [showTop, setShowTop] = useState(false);
 
   useEffect(() => {
@@ -42,18 +34,6 @@ export const FloatingActionDock: React.FC<FloatingActionDockProps> = ({
         aria-label="Find a distributor"
       >
         <MapPin className="w-4 h-4" />
-      </button>
-      <button
-        onClick={onOpenSampleModal}
-        className="relative p-2.5 rounded-full bg-rose text-white shadow-lg"
-        aria-label="Free samples"
-      >
-        <Package className="w-4 h-4" />
-        {sampleCart.length > 0 && (
-          <span className="absolute -top-1 -right-1 bg-navy text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
-            {sampleCart.length}
-          </span>
-        )}
       </button>
     </aside>
   );

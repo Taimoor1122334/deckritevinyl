@@ -1,19 +1,9 @@
 import React, { useState } from 'react';
-import { ColorPattern, SampleCartItem } from '../types';
+import { ColorPattern } from '../types';
 import { DECKRITE_PATTERNS } from '../data/deckData';
 import { SwatchLightbox } from './SwatchLightbox';
 
-interface ColorSwatchGridProps {
-  onAddSample?: (pattern: ColorPattern) => void;
-  sampleCart?: SampleCartItem[];
-  onOpenSampleModal?: () => void;
-}
-
-export const ColorSwatchGrid: React.FC<ColorSwatchGridProps> = ({
-  onAddSample,
-  sampleCart = [],
-  onOpenSampleModal,
-}) => {
+export const ColorSwatchGrid: React.FC = () => {
   const [active, setActive] = useState<ColorPattern | null>(null);
 
   return (
@@ -38,14 +28,7 @@ export const ColorSwatchGrid: React.FC<ColorSwatchGridProps> = ({
           </button>
         ))}
       </div>
-      <SwatchLightbox
-        pattern={active}
-        onClose={() => setActive(null)}
-        onChange={setActive}
-        onAddSample={onAddSample}
-        sampleCart={sampleCart}
-        onOpenSampleModal={onOpenSampleModal}
-      />
+      <SwatchLightbox pattern={active} onClose={() => setActive(null)} onChange={setActive} />
     </>
   );
 };

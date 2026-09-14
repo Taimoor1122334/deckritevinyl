@@ -76,11 +76,3 @@ export interface FaqItem {
   question: string;
   answer: string;
 }
-
-export interface SampleCartItem {
-  id: string;
-  name: string;
-  pattern: string;
-  colorHex: string;
-  image: string;
-}

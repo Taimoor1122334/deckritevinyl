@@ -1,14 +1,10 @@
 import React, { useMemo, useState } from 'react';
 import { Breadcrumb } from '../components/Breadcrumb';
-import { ColorPattern } from '../types';
-
 interface EstimatorPageProps {
   onNavigate: (page: string) => void;
-  onOpenSampleModal: () => void;
-  onAddSample: (pattern: ColorPattern) => void;
 }
 
-export const EstimatorPage: React.FC<EstimatorPageProps> = ({ onNavigate, onOpenSampleModal }) => {
+export const EstimatorPage: React.FC<EstimatorPageProps> = ({ onNavigate }) => {
   const [length, setLength] = useState(20);
   const [width, setWidth] = useState(12);
   const [waste, setWaste] = useState(10);
@@ -72,10 +68,7 @@ export const EstimatorPage: React.FC<EstimatorPageProps> = ({ onNavigate, onOpen
             </div>
           </div>
           <div className="flex gap-3">
-            <button onClick={onOpenSampleModal} className="px-5 py-3 rounded-md bg-rose text-white font-semibold text-sm">
-              Request samples
-            </button>
-            <button onClick={() => onNavigate('contact')} className="px-5 py-3 rounded-md border border-slate-300 font-semibold text-sm">
+            <button onClick={() => onNavigate('contact')} className="px-5 py-3 rounded-md bg-navy text-white font-semibold text-sm">
               Find a distributor
             </button>
           </div>

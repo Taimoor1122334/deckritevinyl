@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Search, X } from 'lucide-react';
 import { DECKRITE_PATTERNS, DECKRITE_PRODUCTS, RESOURCE_DOCUMENTS } from '../data/deckData';
-import { ColorPattern } from '../types';
-
 interface SearchModalProps {
   isOpen: boolean;
   onClose: () => void;
   onNavigate: (page: string) => void;
-  onAddSample: (pattern: ColorPattern) => void;
 }
 
-export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onNavigate, onAddSample }) => {
+export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onNavigate }) => {
   const [query, setQuery] = useState('');
 
   useEffect(() => {
@@ -62,7 +59,6 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onNav
               <button
                 key={p.id}
                 onClick={() => {
-                  onAddSample(p);
                   go('colors');
                 }}
                 className="w-full text-left px-3 py-2 rounded-md hover:bg-slate-50 text-sm"

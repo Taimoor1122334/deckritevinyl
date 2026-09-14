@@ -2,21 +2,14 @@ import React, { useState } from 'react';
 import { Breadcrumb } from '../components/Breadcrumb';
 import { ColorSwatchGrid } from '../components/ColorSwatchGrid';
 import { DECKRITE_PRODUCTS } from '../data/deckData';
-import { ColorPattern, SampleCartItem } from '../types';
-import { Package, ExternalLink } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 
 interface ProductsPageProps {
   onNavigate: (page: string) => void;
-  onOpenSampleModal: () => void;
-  onAddSample: (pattern: ColorPattern) => void;
-  sampleCart: SampleCartItem[];
 }
 
 export const ProductsPage: React.FC<ProductsPageProps> = ({
   onNavigate,
-  onOpenSampleModal,
-  onAddSample,
-  sampleCart,
 }) => {
   const [selectedId, setSelectedId] = useState(DECKRITE_PRODUCTS[0].id);
   const selected = DECKRITE_PRODUCTS.find((p) => p.id === selectedId) ?? DECKRITE_PRODUCTS[0];
@@ -71,15 +64,11 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
 
           <h3 className="text-xl font-bold text-slate-900 mt-14 mb-2">Available colors</h3>
           <p className="text-sm text-slate-600 mb-6">Click a color for a large close-up of the membrane texture, the same way the original DeckRite site shows samples.</p>
-          <ColorSwatchGrid
-            onAddSample={onAddSample}
-            sampleCart={sampleCart}
-            onOpenSampleModal={onOpenSampleModal}
-          />
+          <ColorSwatchGrid />
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <button onClick={onOpenSampleModal} className="inline-flex items-center gap-2 px-5 py-3 rounded-md bg-rose text-white font-semibold text-sm">
-              <Package className="w-4 h-4" /> Request free samples
+            <button onClick={() => onNavigate('contact')} className="inline-flex items-center gap-2 px-5 py-3 rounded-md bg-navy text-white font-semibold text-sm">
+              Contact for a distributor
             </button>
             <a
               href="https://www.deckrite.com/assets/files/pdf/DR_Innovative_2023.pdf"

@@ -1,20 +1,13 @@
 import React from 'react';
 import { Phone, Mail } from 'lucide-react';
-import { SampleCartItem } from '../types';
 
 interface SisterBrandBannerProps {
-  sampleCart: SampleCartItem[];
-  onOpenSampleModal: () => void;
   onNavigateToDealers: () => void;
 }
 
-export const SisterBrandBanner: React.FC<SisterBrandBannerProps> = ({
-  onOpenSampleModal,
-  onNavigateToDealers,
-}) => {
+export const SisterBrandBanner: React.FC<SisterBrandBannerProps> = ({ onNavigateToDealers }) => {
   return (
     <div id="sister-brand-banner" className="bg-[#0c1b33] text-white">
-      {/* Row 1: sister brand logos — same pattern as MariDeck.com */}
       <div className="border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex items-center justify-center gap-4 sm:gap-6">
           <a
@@ -51,7 +44,6 @@ export const SisterBrandBanner: React.FC<SisterBrandBannerProps> = ({
         </div>
       </div>
 
-      {/* Row 2: contact + social, matching the MariDeck utility bar */}
       <div className="bg-[#081225]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1.5 flex flex-col sm:flex-row items-center justify-between gap-2 text-[12px]">
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-white/85">
@@ -72,17 +64,8 @@ export const SisterBrandBanner: React.FC<SisterBrandBannerProps> = ({
             </a>
           </div>
           <div className="flex items-center gap-4 text-white/80">
-            <button
-              onClick={onNavigateToDealers}
-              className="hover:text-white"
-            >
+            <button onClick={onNavigateToDealers} className="hover:text-white">
               Find a Distributor
-            </button>
-            <button
-              onClick={onOpenSampleModal}
-              className="hover:text-white"
-            >
-              Free Samples
             </button>
             <span className="hidden sm:inline text-white/50">Follow us:</span>
             <div className="flex items-center gap-3">

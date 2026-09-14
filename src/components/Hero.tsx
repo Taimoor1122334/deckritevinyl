@@ -1,16 +1,14 @@
 import React from 'react';
-import { ArrowRight, Package, MapPin, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, MapPin, CheckCircle2 } from 'lucide-react';
 
 interface HeroProps {
   onExploreVisualizer: () => void;
-  onOpenSampleModal: () => void;
   onFindDealer: () => void;
   onExploreProducts: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({
   onExploreVisualizer,
-  onOpenSampleModal,
   onFindDealer,
   onExploreProducts,
 }) => {
@@ -53,11 +51,10 @@ export const Hero: React.FC<HeroProps> = ({
                 <ArrowRight className="w-4 h-4" />
               </button>
               <button
-                onClick={onOpenSampleModal}
+                onClick={onExploreVisualizer}
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-md border border-slate-300 hover:border-navy text-slate-800 font-semibold text-sm"
               >
-                <Package className="w-4 h-4 text-rose" />
-                Free Color Swatches
+                View colors
               </button>
               <button
                 onClick={onFindDealer}

@@ -6,27 +6,17 @@ import { WhyDeckRite } from '../components/WhyDeckRite';
 import { ProjectGallery } from '../components/ProjectGallery';
 import { InstallationResources } from '../components/InstallationResources';
 import { SisterBrandsSection } from '../components/SisterBrandsSection';
-import { ColorPattern, SampleCartItem } from '../types';
 import { ArrowRight, ShieldCheck, Layers, MapPin, Palette } from 'lucide-react';
 
 interface HomePageProps {
   onNavigate: (page: string) => void;
-  onOpenSampleModal: () => void;
-  onAddSample: (pattern: ColorPattern) => void;
-  sampleCart: SampleCartItem[];
 }
 
-export const HomePage: React.FC<HomePageProps> = ({
-  onNavigate,
-  onOpenSampleModal,
-  onAddSample,
-  sampleCart,
-}) => {
+export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   return (
     <div id="home-page">
       <Hero
         onExploreVisualizer={() => onNavigate('colors')}
-        onOpenSampleModal={onOpenSampleModal}
         onFindDealer={() => onNavigate('contact')}
         onExploreProducts={() => onNavigate('products')}
       />
@@ -95,24 +85,17 @@ export const HomePage: React.FC<HomePageProps> = ({
               Same as the original DeckRite site: tap a swatch to open a large photo of the actual membrane texture.
             </p>
           </div>
-          <ColorSwatchGrid
-            onAddSample={onAddSample}
-            sampleCart={sampleCart}
-            onOpenSampleModal={onOpenSampleModal}
-          />
+          <ColorSwatchGrid />
           <button
-            onClick={onOpenSampleModal}
+            onClick={() => onNavigate('colors')}
             className="mt-6 text-sm font-semibold text-navy hover:underline"
           >
-            Request free swatches ({sampleCart.length} selected) →
+            Compare colors side by side →
           </button>
         </div>
       </section>
 
-      <ProductCatalog
-        onOpenSampleModal={onOpenSampleModal}
-        onOpenCalculator={() => onNavigate('estimator')}
-      />
+      <ProductCatalog onOpenCalculator={() => onNavigate('estimator')} />
       <div className="bg-white pb-10 text-center">
         <button
           onClick={() => onNavigate('products')}
