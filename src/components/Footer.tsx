@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, Mail, MapPin, ExternalLink, ShieldCheck, ArrowUp } from 'lucide-react';
+import { Phone, Mail, ArrowUp } from 'lucide-react';
 
 interface FooterProps {
   onNavigate: (sectionId: string) => void;
@@ -7,203 +7,120 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenSampleModal }) => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
-    <footer id="main-footer" className="bg-slate-950 text-slate-400 text-xs border-t border-slate-800">
-      
-      {/* Top CTA Banner in Footer */}
-      <div className="border-b border-slate-800/80 bg-slate-900/60 py-10">
+    <footer id="main-footer" className="bg-white text-slate-700 text-sm border-t border-slate-200">
+      <div className="brand-gradient text-white py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
-            <h3 className="text-xl sm:text-2xl font-extrabold text-white">
-              Ready to Upgrade to a 100% Waterproof Deck?
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-400 mt-1">
-              Order your free sample kit or get connected with a certified DeckRite installer today.
+            <h3 className="text-xl font-bold">Ready for a waterproof walking surface?</h3>
+            <p className="text-sm text-white/85 mt-1">
+              Request free color swatches or call us for a distributor near you.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
             <button
               onClick={onOpenSampleModal}
-              className="px-5 py-3 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs shadow-lg transition-colors cursor-pointer"
+              className="px-5 py-3 rounded-md bg-white text-navy font-semibold text-sm hover:bg-slate-100"
             >
-              Order Free Sample Kit
+              Request Free Samples
             </button>
-            <button
-              onClick={() => onNavigate('estimator')}
-              className="px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs border border-slate-700 transition-colors cursor-pointer"
+            <a
+              href="tel:18884503325"
+              className="px-5 py-3 rounded-md border border-white/40 text-white font-semibold text-sm hover:bg-white/10"
             >
-              Launch Material Estimator
-            </button>
+              (888) 450-DECK
+            </a>
           </div>
         </div>
       </div>
 
-      {/* Main Footer Links & Locations */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
-          
-          {/* Brand Info (Span 2) */}
-          <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-600 via-sky-700 to-slate-900 flex items-center justify-center text-white shadow-sm">
-                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-                  <path d="M3 7h18M3 12h18M3 17h18" />
-                  <path d="M19 12a7 7 0 0 1-14 0" stroke="cyan" strokeWidth="2.5" />
-                </svg>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-extrabold text-xl tracking-tight text-white font-display">
-                  DECK<span className="text-cyan-500">RITE</span>®
-                </span>
-                <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider -mt-0.5">
-                  Waterproof Decking Systems
-                </span>
-              </div>
-            </div>
+      <div className="bg-[#f3eee6]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col md:flex-row items-center gap-8">
+          <img src="/brand/dws.png" alt="Darby's Warrior Support" className="h-24 w-auto object-contain" />
+          <p className="text-sm text-slate-700 leading-relaxed">
+            DeckRite is very proud to be associated with{' '}
+            <a href="https://darbyswarriorsupport.org/" target="_blank" rel="noopener noreferrer" className="text-navy font-semibold underline">
+              Darby&apos;s Warrior Support
+            </a>
+            , which offers combat veterans of the 9/11 Generation free, all-inclusive Arkansas duck hunting in luxury accommodations. They also provide educational scholarship assistance for the severely wounded and permanently disabled veteran seeking a college degree. Since 2012 we have enjoyed helping make hunting trips possible for these heroes.
+          </p>
+        </div>
+      </div>
 
-            <p className="text-xs text-slate-400 leading-relaxed pr-6">
-              DeckRite L.L.C., part of the Little Rock Holdings group of companies, has manufactured premium calendered vinyl membranes and PVC systems for the North American construction, roofing, and marine industries since the late 1970s.
-            </p>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="space-y-4">
+          <img src="/brand/deckrite-logo.png" alt="DeckRite" className="h-10 w-auto" />
+          <p className="text-sm text-slate-600 leading-relaxed">
+            DeckRite L.L.C. manufactures waterproof vinyl membranes for decks, patios, balconies, and exterior walkways. Headquartered in North Little Rock, Arkansas, part of the Little Rock Holdings group of companies.
+          </p>
+        </div>
 
-            <div className="pt-2 flex items-center gap-3 text-slate-400">
-              <span className="text-[11px] font-semibold flex items-center gap-1 text-emerald-400 bg-emerald-950/60 px-2.5 py-1 rounded border border-emerald-800/40">
-                <ShieldCheck className="w-3.5 h-3.5" />
-                CGSB 37.54 &amp; ICC-ES ESR Compliant
-              </span>
-            </div>
+        <div>
+          <h4 className="text-xs font-bold uppercase tracking-wider text-navy mb-3">Headquarters</h4>
+          <p className="text-sm text-slate-600">
+            3912 East Progress<br />
+            North Little Rock, AR 72114
+          </p>
+          <p className="mt-3">
+            <a href="tel:18884503325" className="inline-flex items-center gap-1.5 text-navy font-semibold">
+              <Phone className="w-4 h-4" />
+              (888) 450-DECK (3325)
+            </a>
+          </p>
+          <p className="mt-1 text-sm text-slate-600">Local / Fax: (501) 945-1919</p>
+          <p className="mt-1">
+            <a href="mailto:DeckRitesupport@deckrite.com" className="inline-flex items-center gap-1.5 text-slate-700 hover:text-navy">
+              <Mail className="w-4 h-4" />
+              DeckRitesupport@deckrite.com
+            </a>
+          </p>
+        </div>
+
+        <div>
+          <h4 className="text-xs font-bold uppercase tracking-wider text-navy mb-3">Explore</h4>
+          <div className="grid grid-cols-1 gap-1.5 text-sm">
+            <button onClick={() => onNavigate('products')} className="text-left hover:text-navy">Premium Flooring</button>
+            <button onClick={() => onNavigate('colors')} className="text-left hover:text-navy">Colors</button>
+            <button onClick={() => onNavigate('gallery')} className="text-left hover:text-navy">Photo Gallery</button>
+            <button onClick={() => onNavigate('resources')} className="text-left hover:text-navy">Technical Data</button>
+            <button onClick={() => onNavigate('deckrail')} className="text-left hover:text-navy">DeckRail</button>
+            <button onClick={() => onNavigate('dealers')} className="text-left hover:text-navy">Find a Distributor</button>
+            <button onClick={() => onNavigate('about')} className="text-left hover:text-navy">About Us</button>
+            <button onClick={() => onNavigate('contact')} className="text-left hover:text-navy">Contact Us</button>
           </div>
+        </div>
 
-          {/* Contact Information */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider">
-              Headquarters (USA)
-            </h4>
-            <div className="space-y-2 text-xs">
-              <p className="text-slate-400">
-                DeckRite L.L.C.<br />
-                3912 East Progress<br />
-                North Little Rock, AR 72114
-              </p>
-              <p className="pt-1">
-                <span className="text-slate-500 block">Toll-Free Phone:</span>
-                <a href="tel:18884503325" className="text-cyan-400 hover:underline font-bold text-sm">
-                  (888) 450-DECK (3325)
-                </a>
-              </p>
-              <p>
-                <span className="text-slate-500 block">Local / Fax:</span>
-                <span className="text-slate-300 font-medium">(501) 945-1919</span>
-              </p>
-              <p>
-                <span className="text-slate-500 block">Email Support:</span>
-                <a href="mailto:DeckRitesupport@deckrite.com" className="text-slate-300 hover:text-cyan-400">
-                  DeckRitesupport@deckrite.com
-                </a>
-              </p>
-            </div>
-          </div>
-
-          {/* Canada Office */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider">
+        <div>
+          <h4 className="text-xs font-bold uppercase tracking-wider text-navy mb-3">Sister Brands</h4>
+          <a href="https://marideck.net/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-lg bg-slate-50 border border-slate-200 mb-2 hover:border-navy">
+            <img src="/brand/marideck-logo.png" alt="MariDeck" className="h-6 w-auto bg-[#0c1b33] px-2 py-1 rounded" />
+            <span className="text-sm font-medium">MariDeck</span>
+          </a>
+          <a href="https://deckriterv.com/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-lg bg-slate-50 border border-slate-200 hover:border-navy">
+            <img src="/brand/deckrite-rv-logo.png" alt="DeckRite RV" className="h-6 w-auto bg-[#0c1b33] px-2 py-1 rounded" />
+            <span className="text-sm font-medium">DeckRite RV</span>
+          </a>
+          <p className="mt-4 text-xs text-slate-500">
+            In Canada, visit{' '}
+            <a href="https://deckritecanada.com/" target="_blank" rel="noopener noreferrer" className="text-navy underline">
               DeckRite Canada
-            </h4>
-            <div className="space-y-2 text-xs">
-              <p className="text-slate-400">
-                DeckRite Canada Sundecks Ltd.<br />
-                Unit 3, 20133 – 102nd Avenue<br />
-                Langley, BC V1M 4B4
-              </p>
-              <p className="pt-1">
-                <span className="text-slate-500 block">Toll-Free Phone:</span>
-                <a href="tel:18883032792" className="text-cyan-400 hover:underline font-bold text-sm">
-                  1-888-303-2792
-                </a>
-              </p>
-              <p>
-                <span className="text-slate-500 block">Local Phone:</span>
-                <span className="text-slate-300 font-medium">604-513-0416</span>
-              </p>
-              <p>
-                <span className="text-slate-500 block">Fax:</span>
-                <span className="text-slate-300 font-medium">604-513-0428</span>
-              </p>
-            </div>
-          </div>
-
-          {/* Sister Brands & Quick Navigation */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider">
-              Sister Brands
-            </h4>
-            <div className="space-y-2 text-xs">
-              <a
-                href="https://marideck.net/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-between p-2 rounded-lg bg-slate-900 hover:bg-slate-850 text-slate-300 hover:text-cyan-300 border border-slate-800 transition-colors"
-              >
-                <div>
-                  <span className="font-bold block text-white">MariDeck</span>
-                  <span className="text-[10px] text-slate-500">Marine Vinyl Flooring</span>
-                </div>
-                <ExternalLink className="w-3.5 h-3.5 text-cyan-400" />
-              </a>
-
-              <a
-                href="https://deckriterv.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-between p-2 rounded-lg bg-slate-900 hover:bg-slate-850 text-slate-300 hover:text-amber-300 border border-slate-800 transition-colors"
-              >
-                <div>
-                  <span className="font-bold block text-white">DeckRite RV</span>
-                  <span className="text-[10px] text-slate-500">RV Flooring Solutions</span>
-                </div>
-                <ExternalLink className="w-3.5 h-3.5 text-amber-400" />
-              </a>
-            </div>
-
-            <div className="pt-2">
-              <span className="text-[11px] font-bold text-white block mb-1.5">Quick Links:</span>
-              <div className="grid grid-cols-2 gap-1 text-[11px]">
-                <button onClick={() => onNavigate('products')} className="text-left text-slate-400 hover:text-white">Products</button>
-                <button onClick={() => onNavigate('visualizer')} className="text-left text-slate-400 hover:text-white">Visualizer</button>
-                <button onClick={() => onNavigate('why-deckrite')} className="text-left text-slate-400 hover:text-white">Why Vinyl</button>
-                <button onClick={() => onNavigate('gallery')} className="text-left text-slate-400 hover:text-white">Gallery</button>
-                <button onClick={() => onNavigate('resources')} className="text-left text-slate-400 hover:text-white">Specs &amp; Code</button>
-                <button onClick={() => onNavigate('dealers')} className="text-left text-slate-400 hover:text-white">Dealer Locator</button>
-              </div>
-            </div>
-          </div>
-
+            </a>
+            .
+          </p>
         </div>
       </div>
 
-      {/* Bottom Bar with Back to Top */}
-      <div className="border-t border-slate-900 bg-slate-950 py-6">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-400">
-          <div>
-            © {new Date().getFullYear()} DeckRite L.L.C. All rights reserved. Registered trademark of Little Rock Holdings.
-          </div>
-          <div className="flex items-center gap-4">
-            <span className="text-slate-400">Engineered &amp; Tested in North America</span>
-            <span className="text-slate-800">|</span>
-            <button
-              onClick={scrollToTop}
-              className="inline-flex items-center gap-1 text-slate-400 hover:text-white transition-colors cursor-pointer"
-            >
-              <span>Back to top</span>
-              <ArrowUp className="w-3.5 h-3.5" />
-            </button>
-          </div>
+      <div className="border-t border-slate-200 py-5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
+          <div>© {new Date().getFullYear()} DeckRite L.L.C. All rights reserved.</div>
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="inline-flex items-center gap-1 hover:text-navy"
+          >
+            Back to top <ArrowUp className="w-3.5 h-3.5" />
+          </button>
         </div>
       </div>
-
     </footer>
   );
 };

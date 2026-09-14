@@ -1,22 +1,16 @@
 export type MembraneThickness = '50 mil' | '60 mil' | 'Both';
-export type ColorTone = 'warm' | 'cool' | 'neutral' | 'earth';
+export type ColorTone = 'warm' | 'cool' | 'neutral';
 
 export interface ColorPattern {
   id: string;
   name: string;
-  series?: 'Platinum Series' | 'Standard Series' | 'Industrial Series';
   thickness: MembraneThickness;
   tone: ColorTone;
   description: string;
-  texturePattern: string;
   colorHex: string;
-  secondaryHex: string;
-  accentColor: string;
-  features: string[];
-  bestFor: string;
-  isPopular?: boolean;
-  isNew?: boolean;
-  textureStyle: 'marble' | 'slate' | 'sand' | 'granite' | 'riverstone' | 'quartz' | 'wood' | 'stone';
+  image: string;
+  thumb: string;
+  isStandard: boolean;
 }
 
 export interface ProductItem {
@@ -42,14 +36,13 @@ export interface ProjectShowcase {
   patternId: string;
   description: string;
   image: string;
-  beforeImage?: string;
-  features: string[];
+  thumb: string;
 }
 
 export interface Dealer {
   id: string;
   name: string;
-  type: 'Authorized Distributor' | 'Certified Master Installer' | 'Decking Contractor';
+  type: 'Headquarters' | 'Canadian Affiliate';
   address: string;
   city: string;
   stateOrProvince: string;
@@ -57,16 +50,31 @@ export interface Dealer {
   postalCode: string;
   phone: string;
   email: string;
+  website?: string;
   servesRegions: string[];
 }
 
 export interface ResourceDoc {
   id: string;
   title: string;
-  category: 'Architectural & Specs' | 'Installation Guides' | 'Building Codes' | 'Warranty & Care';
-  docType: 'PDF' | 'CAD / DWG' | 'DOC';
+  category: 'Architectural & Specs' | 'Installation Guides' | 'Technical Data' | 'Warranty & Care';
+  docType: 'PDF';
   fileSize: string;
   description: string;
+  url: string;
+}
+
+export interface DetailDrawing {
+  id: string;
+  code: string;
+  title: string;
+  image: string;
+  url: string;
+}
+
+export interface FaqItem {
+  question: string;
+  answer: string;
 }
 
 export interface SampleCartItem {
@@ -74,4 +82,5 @@ export interface SampleCartItem {
   name: string;
   pattern: string;
   colorHex: string;
+  image: string;
 }
