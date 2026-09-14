@@ -1,0 +1,6 @@
+{
+  "name": "DeckRite Vinyl Decking",
+  "description": "Redesigned modern website for DeckRite waterproof vinyl decking systems featuring sister brand banner (MariDeck and DeckRite RV), interactive visualizer, product catalog, project gallery, and dealer locator.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
