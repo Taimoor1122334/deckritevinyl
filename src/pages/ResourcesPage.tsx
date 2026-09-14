@@ -1,99 +1,98 @@
 import React, { useState } from 'react';
 import { Breadcrumb } from '../components/Breadcrumb';
 import { InstallationResources } from '../components/InstallationResources';
-import { BookOpen, FileText, Download, ShieldCheck, CheckCircle2, Search, Wrench, AlertTriangle, ExternalLink, HelpCircle } from 'lucide-react';
-import { RESOURCE_DOCUMENTS } from '../data/deckData';
-import { ResourceDoc } from '../types';
+import { FAQ_ITEMS, PHYSICAL_PROPERTIES, RESOURCE_DOCUMENTS } from '../data/deckData';
+import { ChevronDown, ExternalLink } from 'lucide-react';
 
 interface ResourcesPageProps {
   onNavigate: (page: string) => void;
   onOpenSampleModal: () => void;
 }
 
-export const ResourcesPage: React.FC<ResourcesPageProps> = ({
-  onNavigate,
-  onOpenSampleModal,
-}) => {
+export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate, onOpenSampleModal }) => {
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
+
   return (
-    <div id="resources-page" className="min-h-screen bg-white">
-      
-      {/* Breadcrumb Navigation */}
-      <Breadcrumb
-        items={[
-          { label: 'Resources & Technical Center' }
-        ]}
-        onNavigate={onNavigate}
-      />
-
-      {/* Page Header */}
-      <section className="bg-slate-900 text-white py-14 lg:py-18 relative overflow-hidden border-b border-slate-800">
-        <div className="absolute inset-0 z-0 opacity-15">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#38bdf820_1px,transparent_1px),linear-gradient(to_bottom,#38bdf820_1px,transparent_1px)] bg-[size:3rem_3rem]"></div>
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950 border border-cyan-500/40 text-cyan-300 text-xs font-bold uppercase tracking-wider">
-              <BookOpen className="w-3.5 h-3.5 text-cyan-400" />
-              Architectural &amp; Engineering Center
-            </div>
-            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
-              Specifications, CAD Details &amp; Building Codes
-            </h1>
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
-              Complete technical documentation for architects, structural engineers, general contractors, and homeowners. Covering CSI 3-Part MasterFormat (Section 07 18 13), CGSB 37.54-95, ICC-ES AC75 roof certifications, and detail cross-sections.
-            </p>
-
-            <div className="pt-2 flex flex-wrap items-center gap-3">
-              <button
-                onClick={() => onNavigate('estimator')}
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs shadow-lg transition-colors cursor-pointer"
-              >
-                <span>Deck Material &amp; Roll Estimator</span>
-              </button>
-
-              <button
-                onClick={onOpenSampleModal}
-                className="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs border border-slate-700 transition-colors cursor-pointer"
-              >
-                <span>Request Free Sample Kit</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CSI MasterFormat & Code Specs Quick Summary Bar */}
-      <section className="bg-slate-50 border-b border-slate-200 py-6">
+    <div className="min-h-screen bg-white">
+      <Breadcrumb items={[{ label: 'Technical Data' }]} onNavigate={onNavigate} />
+      <section className="bg-navy text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs">
-            <div className="p-3 bg-white rounded-xl border border-slate-200">
-              <span className="text-[10px] font-bold text-slate-400 uppercase block">CSI MasterFormat</span>
-              <span className="font-bold text-slate-900 text-sm">Section 07 18 13</span>
-              <span className="text-slate-500 block text-[11px]">Pedestrian Traffic Coatings</span>
-            </div>
-            <div className="p-3 bg-white rounded-xl border border-slate-200">
-              <span className="text-[10px] font-bold text-slate-400 uppercase block">Canadian Standards</span>
-              <span className="font-bold text-slate-900 text-sm">CGSB 37.54-95</span>
-              <span className="text-slate-500 block text-[11px]">PVC Roofing Membrane</span>
-            </div>
-            <div className="p-3 bg-white rounded-xl border border-slate-200">
-              <span className="text-[10px] font-bold text-slate-400 uppercase block">US Evaluation</span>
-              <span className="font-bold text-slate-900 text-sm">ICC-ES AC75</span>
-              <span className="text-slate-500 block text-[11px]">Roof-Deck Code Compliance</span>
-            </div>
-            <div className="p-3 bg-white rounded-xl border border-slate-200">
-              <span className="text-[10px] font-bold text-slate-400 uppercase block">Fire Testing</span>
-              <span className="font-bold text-slate-900 text-sm">ASTM E108 Class A/C</span>
-              <span className="text-slate-500 block text-[11px]">Flame Spread Rated</span>
-            </div>
+          <h1 className="text-3xl sm:text-4xl font-bold">Technical Data &amp; FAQ</h1>
+          <p className="text-white/80 mt-3 max-w-2xl">
+            Physical properties, architectural specs, installation instructions, and frequently asked questions from DeckRite LLC.
+          </p>
+        </div>
+      </section>
+
+      <section className="py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-slate-900 mb-4">Material physical properties</h2>
+          <div className="overflow-x-auto rounded-xl border border-slate-200">
+            <table className="w-full text-sm">
+              <thead className="bg-ink text-white">
+                <tr>
+                  <th className="text-left px-4 py-3 font-semibold">Property</th>
+                  <th className="text-left px-4 py-3 font-semibold">Test method</th>
+                  <th className="text-left px-4 py-3 font-semibold">DeckRite</th>
+                </tr>
+              </thead>
+              <tbody>
+                {PHYSICAL_PROPERTIES.map((row, i) => (
+                  <tr key={row.property} className={i % 2 === 0 ? 'bg-white' : 'bg-slate-50'}>
+                    <td className="px-4 py-3 font-medium text-slate-800">{row.property}</td>
+                    <td className="px-4 py-3 text-slate-600">{row.method}</td>
+                    <td className="px-4 py-3 text-slate-800">{row.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4">Downloads</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {RESOURCE_DOCUMENTS.map((doc) => (
+              <a key={doc.id} href={doc.url} target="_blank" rel="noopener noreferrer" className="rounded-xl border border-slate-200 p-5 hover:border-navy">
+                <p className="text-[11px] font-bold uppercase text-navy">{doc.category}</p>
+                <h3 className="font-semibold mt-1">{doc.title}</h3>
+                <p className="text-sm text-slate-600 mt-2">{doc.description}</p>
+                <span className="inline-flex items-center gap-1 mt-3 text-sm font-semibold text-navy">
+                  Open PDF <ExternalLink className="w-3.5 h-3.5" />
+                </span>
+              </a>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Embedded Document Library, Installation 3-Step Guide & FAQs */}
       <InstallationResources />
 
+      <section className="py-12 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-slate-900 mb-6">Frequently asked questions</h2>
+          <div className="divide-y divide-slate-200 border border-slate-200 rounded-xl overflow-hidden">
+            {FAQ_ITEMS.map((item, i) => (
+              <div key={item.question}>
+                <button
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left font-semibold text-slate-900"
+                >
+                  {item.question}
+                  <ChevronDown className={`w-4 h-4 shrink-0 ${openFaq === i ? 'rotate-180' : ''}`} />
+                </button>
+                {openFaq === i && <p className="px-5 pb-4 text-sm text-slate-600 leading-relaxed">{item.answer}</p>}
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 flex gap-3">
+            <button onClick={() => onNavigate('estimator')} className="px-5 py-3 rounded-md border border-slate-300 font-semibold text-sm">
+              Material estimator
+            </button>
+            <button onClick={onOpenSampleModal} className="px-5 py-3 rounded-md bg-rose text-white font-semibold text-sm">
+              Free samples
+            </button>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

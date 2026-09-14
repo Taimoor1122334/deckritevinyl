@@ -1,8 +1,6 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import { Breadcrumb } from '../components/Breadcrumb';
-import { EstimatorCalculator } from '../components/EstimatorCalculator';
 import { ColorPattern } from '../types';
-import { Calculator, Layers, FileSpreadsheet, MapPin, Package, ShieldCheck, CheckCircle2 } from 'lucide-react';
 
 interface EstimatorPageProps {
   onNavigate: (page: string) => void;
@@ -10,90 +8,79 @@ interface EstimatorPageProps {
   onAddSample: (pattern: ColorPattern) => void;
 }
 
-export const EstimatorPage: React.FC<EstimatorPageProps> = ({
-  onNavigate,
-  onOpenSampleModal,
-  onAddSample,
-}) => {
+export const EstimatorPage: React.FC<EstimatorPageProps> = ({ onNavigate, onOpenSampleModal }) => {
+  const [length, setLength] = useState(20);
+  const [width, setWidth] = useState(12);
+  const [waste, setWaste] = useState(10);
+
+  const result = useMemo(() => {
+    const area = length * width;
+    const withWaste = area * (1 + waste / 100);
+    const rollWidthFt = 68 / 12;
+    const rollArea = rollWidthFt * 90;
+    const rolls = Math.max(1, Math.ceil(withWaste / rollArea));
+    const adhesiveGallons = withWaste / 135;
+    return { area, withWaste, rolls, adhesiveGallons };
+  }, [length, width, waste]);
+
   return (
-    <div id="estimator-page" className="min-h-screen bg-slate-50">
-      
-      {/* Breadcrumb Navigation */}
-      <Breadcrumb
-        items={[
-          { label: 'Deck Material & Cost Estimator' }
-        ]}
-        onNavigate={onNavigate}
-      />
-
-      {/* Page Header */}
-      <section className="bg-slate-900 text-white py-14 border-b border-slate-800">
+    <div className="min-h-screen bg-white">
+      <Breadcrumb items={[{ label: 'Material Estimator' }]} onNavigate={onNavigate} />
+      <section className="bg-navy text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-            <div className="max-w-2xl space-y-3">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950 text-cyan-300 text-xs font-bold uppercase tracking-wider border border-cyan-800">
-                <Calculator className="w-3.5 h-3.5 text-cyan-400" />
-                Project Planning &amp; Takeoff Tool
-              </div>
-              <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
-                DeckRite Material &amp; Roll Estimator
-              </h1>
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-                Plan your project with accuracy. Calculate exact linear feet of 68&quot; wide master rolls, linear feet of PVC-clad perimeter drip edge, and adhesive bucket requirements for your deck dimensions.
-              </p>
+          <h1 className="text-3xl font-bold">Material estimator</h1>
+          <p className="text-white/80 mt-3 max-w-2xl">
+            Planning tool based on DeckRite&apos;s 68" × 90' rolls and water-based adhesive coverage of 120–150 sq. ft. per gallon. Always confirm quantities with your distributor.
+          </p>
+        </div>
+      </section>
+      <section className="py-12">
+        <div className="max-w-3xl mx-auto px-4 space-y-5">
+          {[
+            ['Deck length (ft)', length, setLength, 4, 80],
+            ['Deck width (ft)', width, setWidth, 4, 40],
+            ['Waste factor (%)', waste, setWaste, 5, 20],
+          ].map(([label, value, setter, min, max]) => (
+            <label key={String(label)} className="block">
+              <span className="text-sm font-semibold text-slate-800">{label}: {value as number}</span>
+              <input
+                type="range"
+                min={min as number}
+                max={max as number}
+                value={value as number}
+                onChange={(e) => (setter as (n: number) => void)(Number(e.target.value))}
+                className="w-full mt-2 slider-thumb"
+              />
+            </label>
+          ))}
+          <div className="rounded-xl bg-sand border border-slate-200 p-6 grid sm:grid-cols-2 gap-4">
+            <div>
+              <p className="text-xs uppercase text-slate-500 font-bold">Deck area</p>
+              <p className="text-2xl font-bold text-navy">{result.area.toFixed(0)} sq ft</p>
             </div>
-
-            <div className="flex flex-wrap items-center gap-3">
-              <button
-                onClick={onOpenSampleModal}
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs shadow-md transition-colors cursor-pointer"
-              >
-                <Package className="w-4 h-4" />
-                <span>Order Free Sample Kit</span>
-              </button>
-
-              <button
-                onClick={() => onNavigate('dealers')}
-                className="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs border border-slate-700 transition-colors cursor-pointer"
-              >
-                <MapPin className="w-4 h-4 text-cyan-400" />
-                <span>Send Takeoff to Local Dealer</span>
-              </button>
+            <div>
+              <p className="text-xs uppercase text-slate-500 font-bold">With waste</p>
+              <p className="text-2xl font-bold text-navy">{result.withWaste.toFixed(0)} sq ft</p>
             </div>
+            <div>
+              <p className="text-xs uppercase text-slate-500 font-bold">68" × 90' rolls</p>
+              <p className="text-2xl font-bold text-navy">{result.rolls}</p>
+            </div>
+            <div>
+              <p className="text-xs uppercase text-slate-500 font-bold">Adhesive (approx. gallons)</p>
+              <p className="text-2xl font-bold text-navy">{result.adhesiveGallons.toFixed(1)}</p>
+            </div>
+          </div>
+          <div className="flex gap-3">
+            <button onClick={onOpenSampleModal} className="px-5 py-3 rounded-md bg-rose text-white font-semibold text-sm">
+              Request samples
+            </button>
+            <button onClick={() => onNavigate('dealers')} className="px-5 py-3 rounded-md border border-slate-300 font-semibold text-sm">
+              Find a distributor
+            </button>
           </div>
         </div>
       </section>
-
-      {/* Embedded Estimator Calculator Component */}
-      <div className="py-4">
-        <EstimatorCalculator
-          onAddSample={onAddSample}
-          onNavigateToDealers={() => onNavigate('dealers')}
-        />
-      </div>
-
-      {/* Technical Material Calculation Guide */}
-      <section className="py-12 bg-white border-t border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto space-y-4 text-center">
-            <h3 className="text-xl font-bold text-slate-900">
-              Contractor Calculation Standard &amp; Yield Guidelines
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              DeckRite master rolls are manufactured at a standard 68&quot; width (5 ft 8 in) to optimize seams over typical 4 ft plywood sheet layouts. When ordering, always factor a minimum of 10% additional linear footage for overlapping hot-air welded seams (1.5&quot; to 2&quot; overlap), 6&quot; perimeter wall turn-ups, and drip-edge termination trims.
-            </p>
-            <div className="pt-2">
-              <button
-                onClick={() => onNavigate('resources')}
-                className="text-xs font-bold text-cyan-700 hover:underline inline-flex items-center gap-1"
-              >
-                <span>Read Full Plywood Subfloor Specification Guide &rarr;</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
     </div>
   );
 };
