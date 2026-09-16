@@ -46,6 +46,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
           </div>
 
           <div className="grid lg:grid-cols-2 gap-10">
+<<<<<<< HEAD
             {selected.id === 'adhesives-accessories' ? (
               <button
                 type="button"
@@ -69,6 +70,9 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
                 className="w-full h-72 object-cover rounded-xl border border-slate-200"
               />
             )}
+=======
+            <img src={selected.image} alt={selected.title} className="w-full h-72 object-cover rounded-xl border border-slate-200" />
+>>>>>>> 05c0d2f10e046a41509d46bde6cfef2e848fcd7e
             <div>
               <h2 className="text-2xl font-bold text-slate-900">{selected.title}</h2>
               <p className="text-slate-600 mt-3 leading-relaxed">{selected.description}</p>
