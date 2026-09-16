@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 248 321" width="248" height="321" style="background:#ffffff">
+  <!-- Outer CAD border -->
+  <rect x="4" y="4" width="240" height="313" fill="#ffffff" stroke="#0f2042" stroke-width="1.5" />
+  <rect x="7" y="7" width="234" height="307" fill="#ffffff" stroke="#94a3b8" stroke-width="0.5" />
+
+  <!-- Technical Grid Pattern -->
+  <defs>
+    <pattern id="grid" width="16" height="16" patternUnits="userSpaceOnUse">
+      <path d="M 16 0 L 0 0 0 16" fill="none" stroke="#f1f5f9" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect x="8" y="8" width="232" height="235" fill="url(#grid)" />
+
+  <!-- Diagram graphics -->
+  
+      <!-- Deck Edge Substrate -->
+      <line x1="30" y1="190" x2="180" y2="190" stroke="#0f172a" stroke-width="3" />
+      <line x1="180" y1="190" x2="180" y2="225" stroke="#0f172a" stroke-width="3" />
+      <!-- Post at Edge -->
+      <rect x="135" y="70" width="45" height="120" fill="#e2e8f0" stroke="#0f172a" stroke-width="2" />
+      <!-- Drip Edge at Rim -->
+      <path d="M 170 190 L 182 190 L 182 225 L 187 225" fill="none" stroke="#0f2042" stroke-width="2" />
+      <!-- Vinyl Layer -->
+      <path d="M 30 188 L 132 188 L 132 135 L 135 135 L 135 188 L 182 188" fill="none" stroke="#dc2626" stroke-width="2.5" />
+
+      <!-- Callout lines -->
+      <line x1="135" y1="135" x2="70" y2="135" stroke="#dc2626" stroke-width="0.75" />
+      <text x="50" y="130" font-family="Arial, sans-serif" font-size="7" font-weight="bold" fill="#dc2626">POST SLEEVE</text>
+      <line x1="182" y1="210" x2="205" y2="210" stroke="#0f2042" stroke-width="0.75" />
+      <text x="190" y="205" font-family="Arial, sans-serif" font-size="7" font-weight="bold" fill="#0f2042">PVC DRIP EDGE</text>
+    
+
+  <!-- Title Block Divider -->
+  <line x1="7" y1="243" x2="241" y2="243" stroke="#0f2042" stroke-width="1.2" />
+
+  <!-- Title Block Content -->
+  <rect x="8" y="244" width="232" height="70" fill="#f8fafc" />
+  <line x1="8" y1="272" x2="240" y2="272" stroke="#cbd5e1" stroke-width="0.8" />
+  <line x1="165" y1="244" x2="165" y2="314" stroke="#cbd5e1" stroke-width="0.8" />
+
+  <!-- Brand text -->
+  <text x="14" y="258" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#0f2042">DECKRITE L.L.C.</text>
+  <text x="14" y="267" font-family="Arial, sans-serif" font-size="6.5" fill="#64748b">WATERPROOF VINYL SYSTEM</text>
+
+  <!-- Sheet Code -->
+  <rect x="170" y="248" width="65" height="20" fill="#0f2042" rx="2" />
+  <text x="202" y="262" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">DR-116</text>
+
+  <!-- Title -->
+  <text x="14" y="286" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#1e293b">Edge Post Wrap Detail</text>
+  <text x="14" y="297" font-family="Arial, sans-serif" font-size="6.5" fill="#64748b">CAD Detail Specification</text>
+  <text x="14" y="307" font-family="Arial, sans-serif" font-size="6" font-weight="bold" fill="#dc2626">CLICK TO OPEN OFFICIAL PDF</text>
+
+  <text x="170" y="290" font-family="Arial, sans-serif" font-size="6" fill="#64748b">SCALE: N.T.S.</text>
+  <text x="170" y="302" font-family="Arial, sans-serif" font-size="6" font-weight="bold" fill="#0f2042">PDF SPEC</text>
+</svg>

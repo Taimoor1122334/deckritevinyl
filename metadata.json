@@ -1,0 +1,8 @@
+{
+  "name": "DeckRite Vinyl Decking",
+  "description": "Redesigned DeckRite website based on the existing deckrite.com site, with a MariDeck-style sister brand banner (MariDeck and DeckRite RV logos), official brand assets, and a cleaner Weatherdek/Deksmart-inspired layout.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

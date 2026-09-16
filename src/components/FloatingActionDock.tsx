@@ -1,0 +1,40 @@
+import React, { useEffect, useState } from 'react';
+import { MapPin, ArrowUp, Phone } from 'lucide-react';
+
+interface FloatingActionDockProps {
+  onNavigate: (page: string) => void;
+}
+
+export const FloatingActionDock: React.FC<FloatingActionDockProps> = ({ onNavigate }) => {
+  const [showTop, setShowTop] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setShowTop(window.scrollY > 400);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  return (
+    <aside className="fixed bottom-4 right-4 z-40 flex flex-col items-end gap-2">
+      {showTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="p-2.5 rounded-full bg-navy text-white shadow-lg"
+          aria-label="Back to top"
+        >
+          <ArrowUp className="w-4 h-4" />
+        </button>
+      )}
+      <a href="tel:18884503325" className="p-2.5 rounded-full bg-white border border-slate-200 shadow-lg text-navy" aria-label="Call DeckRite">
+        <Phone className="w-4 h-4" />
+      </a>
+      <button
+        onClick={() => onNavigate('contact')}
+        className="p-2.5 rounded-full bg-white border border-slate-200 shadow-lg text-navy"
+        aria-label="Find a distributor"
+      >
+        <MapPin className="w-4 h-4" />
+      </button>
+    </aside>
+  );
+};

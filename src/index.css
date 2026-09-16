@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #053975;
+  --color-navy-dark: #032650;
+  --color-rose: #c3364c;
+  --color-rose-dark: #9e2a3c;
+  --color-ink: #384565;
+  --color-plum: #623861;
+  --color-teal: #6ad0ca;
+  --color-sand: #f6f3ee;
+  --font-sans: "DM Sans", system-ui, sans-serif;
+  --font-display: "DM Sans", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: #1f2933;
+    background: #ffffff;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
+
+.brand-gradient {
+  background: linear-gradient(90deg, #053975 0%, #623861 50%, #c3364c 100%);
+}
+
+.slider-thumb::-webkit-slider-thumb {
+  appearance: none;
+  height: 22px;
+  width: 22px;
+  border-radius: 9999px;
+  background: #053975;
+  cursor: ew-resize;
+  border: 3px solid white;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.2);
+}

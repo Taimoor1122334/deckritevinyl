@@ -1,0 +1,1105 @@
+import {
+  ColorPattern,
+  ProductItem,
+  ProjectShowcase,
+  Dealer,
+  ResourceDoc,
+  DetailDrawing,
+  CornerPhotoGuide,
+  TechnicalBulletin,
+  TechnicalDataSheet,
+  FaqItem,
+} from '../types';
+
+export const DECKRITE_PATTERNS: ColorPattern[] = [
+  {
+    id: 'gray-storm',
+    name: 'Gray Storm',
+    thickness: 'Both',
+    tone: 'cool',
+    description: 'A deep, contemporary storm gray featuring subtle aggregate texture that pairs exceptionally with modern exteriors, stone, and dark accents.',
+    colorHex: '#4d5763',
+    image: '/swatches/gray-storm.jpg',
+    thumb: '/swatches/gray-storm-thumb.png',
+    isStandard: true,
+  },
+  {
+    id: 'sahara-tan',
+    name: 'Sahara Tan',
+    thickness: 'Both',
+    tone: 'warm',
+    description: 'A warm, sun-washed tan with a fine embossed texture that coordinates with cedar, brick, and traditional exteriors.',
+    colorHex: '#c9b08a',
+    image: '/swatches/sahara-tan.jpg',
+    thumb: '/swatches/sahara-tan-thumb.png',
+    isStandard: true,
+  },
+  {
+    id: 'slate-gray',
+    name: 'Slate Gray',
+    thickness: 'Both',
+    tone: 'cool',
+    description: 'A versatile architectural gray that pairs with stone, stucco, and contemporary exterior finishes.',
+    colorHex: '#7a8490',
+    image: '/swatches/slate-gray.jpg',
+    thumb: '/swatches/slate-gray-thumb.png',
+    isStandard: true,
+  },
+  {
+    id: 'tropical-cream',
+    name: 'Tropical Cream',
+    thickness: 'Both',
+    tone: 'neutral',
+    description: 'A light, high-reflectance cream that keeps outdoor living spaces bright and cooler underfoot.',
+    colorHex: '#e8dcc4',
+    image: '/swatches/tropical-cream.jpg',
+    thumb: '/swatches/tropical-cream-thumb.png',
+    isStandard: true,
+  },
+  {
+    id: 'lakewood-marble',
+    name: 'Lakewood Marble',
+    thickness: 'Both',
+    tone: 'neutral',
+    description: 'A veined marble-look finish that adds a clean, upscale walking surface without the maintenance of stone.',
+    colorHex: '#d5d0c8',
+    image: '/swatches/lakewood-marble.jpg',
+    thumb: '/swatches/lakewood-marble-thumb.png',
+    isStandard: true,
+  },
+  {
+    id: 'tuscany-sand',
+    name: 'Tuscany Sand',
+    thickness: 'Both',
+    tone: 'warm',
+    description: 'A sandy, Mediterranean-inspired tone that blends easily with landscaping, stucco, and timber homes.',
+    colorHex: '#d2b896',
+    image: '/swatches/tuscany-sand.jpg',
+    thumb: '/swatches/tuscany-sand-thumb.png',
+    isStandard: true,
+  },
+  {
+    id: 'harvest',
+    name: 'Harvest',
+    thickness: 'Both',
+    tone: 'warm',
+    description: 'A speckled harvest-tone pattern that camouflages dust and pollen between seasonal cleanings.',
+    colorHex: '#b8956a',
+    image: '/swatches/harvest.jpg',
+    thumb: '/swatches/harvest-thumb.png',
+    isStandard: false,
+  },
+  {
+    id: 'riverstone',
+    name: 'Riverstone',
+    thickness: 'Both',
+    tone: 'cool',
+    description: 'A multi-tone river-pebble gray designed for high-traffic decks, balconies, and commercial walkways.',
+    colorHex: '#9aa3ad',
+    image: '/swatches/riverstone.jpg',
+    thumb: '/swatches/riverstone-thumb.png',
+    isStandard: false,
+  },
+];
+
+export const DECKRITE_PRODUCTS: ProductItem[] = [
+  {
+    id: 'deckrite-600',
+    title: 'DeckRite 600 Series — 60 mil',
+    category: 'membranes',
+    mil: '60 mil (0.060")',
+    tagline: 'Heavier-duty 3-ply vinyl membrane for decks, balconies, and walkways that need extra puncture resistance.',
+    description:
+      'DeckRite is a three-ply laminated membrane: a color-printed, embossed vinyl wear layer, a heavy-duty polyester fabric core, and a vinyl bonding layer. The 600 Series is 60 mils thick and is the preferred choice for second-story walkouts, commercial properties, and any installation where one surface must waterproof and walk.',
+    warranty: '10-year limited manufacturer warranty against defects in material (60 mil). Installing contractor typically provides a 2-year workmanship warranty.',
+    applications: [
+      'Second-story walkout balconies over living space',
+      'Apartment, condominium, and hotel walkways',
+      'Rooftop patios and sun porches',
+      'Exterior stairs, docks, and commercial properties',
+    ],
+    specifications: {
+      Thickness: '0.060 inches (60 mils)',
+      'Weld thickness': 'Approximately 0.110 inches at the hot-air weld',
+      Width: '68 inches (1.72 m)',
+      Length: '90 feet (27.45 m) per roll',
+      Construction: '3-ply vinyl / polyester / vinyl laminate',
+      'Slip resistance': 'Meets ADA slip-coefficient requirements on a flat surface',
+      Seaming: '1-inch overlap, hot-air welded',
+    },
+    features: [
+      'Waterproof walking surface — one product for waterproofing and finish flooring',
+      'Slip resistant, mildew resistant, and formulated for sun, water, and foot traffic',
+      'Polyester core for dimensional stability, puncture strength, and tear resistance',
+      'No annual sanding, staining, or sealing',
+    ],
+    image: '/brand/lifestyle.jpg',
+  },
+  {
+    id: 'deckrite-500',
+    title: 'DeckRite 500 Series — 50 mil',
+    category: 'membranes',
+    mil: '50 mil (0.050")',
+    tagline: 'Residential-grade 3-ply vinyl covering for new or existing wood and concrete decks.',
+    description:
+      'The 500 Series uses the same three-ply laminated construction as the 600 Series in a 50 mil thickness. It is a popular alternative to high-maintenance wood decks and concrete patios, and installs over existing or new decks, walkways, balconies, docks, and sun porches.',
+    warranty: '7-year limited manufacturer warranty against defects in material (50 mil). Installing contractor typically provides a 2-year workmanship warranty.',
+    applications: [
+      'Residential backyard sundecks and patio walkouts',
+      'Covered front porches and sunrooms',
+      'Exterior walkways and stairs',
+      'Lakefront docks and boathouse walkways',
+    ],
+    specifications: {
+      Thickness: '0.050 inches (50 mils)',
+      'Weld thickness': 'Approximately 0.090 inches at the hot-air weld',
+      Width: '68 inches (1.72 m)',
+      Length: '90 feet (27.45 m) per roll',
+      Construction: '3-ply vinyl / polyester / vinyl laminate',
+      'Slip resistance': 'Meets ADA slip-coefficient requirements on a flat surface',
+      Seaming: '1-inch overlap, hot-air welded',
+    },
+    features: [
+      'Same 3-ply construction as the 600 Series in a residential thickness',
+      'Forget power washing, sanding, and resealing every year',
+      'No slivers, exposed nails, or rotting wood walking surface',
+      'Suitable for all types of climates across North America',
+    ],
+    image: '/gallery/balcony-1.jpg',
+  },
+  {
+    id: 'adhesives-accessories',
+    title: 'Adhesives, Drip Edge & Termination',
+    category: 'accessories',
+    tagline: 'Manufacturer-supplied adhesive, termination bar, and coated-metal drip edge for a complete waterproof system.',
+    description:
+      'DeckRite is installed with manufacturer-approved bonding adhesive, a 1" × 6\' termination bar, and coated-metal drip edge. Water-based adhesive coverage is approximately 120–150 sq. ft. per gallon (325–375 sq. ft. per 3-gallon pail). Seams are hot-air welded on a 1-inch overlap with no adhesive in the weld zone.',
+    warranty: 'System components are specified with the membrane manufacturer’s installation instructions.',
+    applications: [
+      'Field bonding to plywood or approved concrete substrates',
+      'Perimeter termination with term bar or coated drip edge',
+      'Wall turn-ups behind siding',
+      'Drain, scupper, and post flashing details',
+    ],
+    specifications: {
+      'Water-based adhesive': '120–150 sq. ft. per gallon; 325–375 sq. ft. per 3-gallon pail',
+      'Termination bar': '1" × 6\' bar supplied by the manufacturer',
+      'Drip edge': 'Coated metal drip edge (see DR-109 & DR-113)',
+      Substrate: 'Plywood or approved concrete; slope to drain',
+    },
+    features: [
+      'Adhesive formulated for the vinyl bonding layer',
+      'Approved perimeter details: termination bar or coated drip edge',
+      'Standard CAD details DR-101 through DR-116',
+      'Installation video series covering prep, layout, adhesive, and welding',
+    ],
+    image: '/brand/video.jpg',
+  },
+];
+
+export const SHOWCASE_PROJECTS: ProjectShowcase[] = [
+  {
+    id: 'proj-1',
+    title: 'Lakefront Walkout',
+    location: 'North America',
+    category: 'lakefront',
+    patternUsed: 'Tropical Cream',
+    patternId: 'tropical-cream',
+    description: 'A waterproof walking surface over a wood-framed deck with open views to the water.',
+    image: '/gallery/balcony-1.jpg',
+    thumb: '/gallery/image1.jpg',
+  },
+  {
+    id: 'proj-2',
+    title: 'Covered Residential Sundeck',
+    location: 'North America',
+    category: 'residential',
+    patternUsed: 'Sahara Tan',
+    patternId: 'sahara-tan',
+    description: 'Low-maintenance vinyl covering on a covered porch with furniture and daily family use.',
+    image: '/gallery/balcony-2.jpg',
+    thumb: '/gallery/image2.jpg',
+  },
+  {
+    id: 'proj-3',
+    title: 'Second-Story Balcony',
+    location: 'North America',
+    category: 'residential',
+    patternUsed: 'Slate Gray',
+    patternId: 'slate-gray',
+    description: 'Walkable waterproofing over living space — one surface for the walking deck and the roof below.',
+    image: '/gallery/balcony-3.jpg',
+    thumb: '/gallery/image3.jpg',
+  },
+  {
+    id: 'proj-4',
+    title: 'Elevated Lakefront Walkout',
+    location: 'North America',
+    category: 'lakefront',
+    patternUsed: 'Lakewood Marble',
+    patternId: 'lakewood-marble',
+    description: 'DeckRite membrane providing a continuous, waterproof walking surface for unobstructed outdoor living.',
+    image: '/gallery/balcony-7.jpg',
+    thumb: '/gallery/image7.jpg',
+  },
+  {
+    id: 'proj-5',
+    title: 'Wraparound Residential Deck',
+    location: 'North America',
+    category: 'residential',
+    patternUsed: 'Tuscany Sand',
+    patternId: 'tuscany-sand',
+    description: 'Continuous vinyl covering around stairs, landings, and outdoor seating.',
+    image: '/gallery/balcony-8.jpg',
+    thumb: '/gallery/image8.jpg',
+  },
+  {
+    id: 'proj-6',
+    title: 'Multi-Level Outdoor Living',
+    location: 'North America',
+    category: 'commercial',
+    patternUsed: 'Riverstone',
+    patternId: 'riverstone',
+    description: 'A preferred choice on apartments, condominiums, retirement communities, and hotels.',
+    image: '/gallery/balcony-12.jpg',
+    thumb: '/gallery/image12.jpg',
+  },
+];
+
+export const GALLERY_IMAGES = Array.from({ length: 16 }, (_, i) => ({
+  id: `g-${i + 1}`,
+  thumb: `/gallery/image${i + 1}.jpg`,
+  full: i + 1 <= 3 ? `/gallery/balcony-${i + 1}.jpg` : `/gallery/image${i + 1}.jpg`,
+  alt: `DeckRite project photo ${i + 1}`,
+}));
+
+export const SISTER_BRANDS = [
+  {
+    name: 'MariDeck',
+    tagline: 'Marine vinyl boat flooring',
+    url: 'https://marideck.net/',
+    logo: '/brand/marideck-logo.png',
+    description:
+      'MariDeck is DeckRite LLC’s marine vinyl flooring for pontoons, fishing boats, and sport boats. It has proven performance since the 1970\'s and is sold to elite boat builders and specialty retailers.',
+    highlight: 'Official marine flooring from the DeckRite family',
+  },
+  {
+    name: 'DeckRite RV',
+    tagline: 'Vinyl flooring for RVs and trailers',
+    url: 'https://deckriterv.com/',
+    logo: '/brand/deckrite-rv-logo.png',
+    description:
+      'DeckRite RV products are engineered for travel trailers, fifth wheels, sport trailers, and toy haulers — from garage floors to interior upgrades.',
+    highlight: 'Rugged PVC flooring for recreational vehicles',
+  },
+];
+
+export const TECHNICAL_BULLETINS: TechnicalBulletin[] = [
+  {
+    id: 'tb-001',
+    code: 'TB-001',
+    title: 'Care & Maintenance Guidelines',
+    subtitle: 'Routine cleaning and stain-removal guidance for DeckRite PVC membrane surfaces',
+    purpose:
+      'DeckRite requires far less maintenance than a traditional wood deck, but routine cleaning helps prevent dirt, sap, leaf residue and stains from becoming embedded. Start with the mildest cleaning method and thoroughly rinse the membrane after every cleaner.',
+    pdfUrl: '/pdf/TB-001.pdf',
+    status: 'published',
+    regularProcedure: [
+      {
+        step: 1,
+        title: 'Remove Loose Debris',
+        description: 'Sweep or rinse away loose dirt, leaves, pine needles and other debris before washing.',
+      },
+      {
+        step: 2,
+        title: 'Saturate and Apply Soap',
+        description:
+          'Wet the DeckRite surface with clean water. Apply approximately 2-3 tablespoons of mild dish soap per 100 sq. ft.; warm water may be used.',
+      },
+      {
+        step: 3,
+        title: 'Scrub Gently',
+        description:
+          'Use a soft-bristled deck brush or sponge mop. Work the soap and water over the surface, adding water as needed. Avoid aggressive scraping.',
+      },
+      {
+        step: 4,
+        title: 'Rinse Thoroughly',
+        description:
+          'Rinse completely with clean water so no soap or cleaner residue remains. Repeat the process if needed.',
+      },
+      {
+        step: 5,
+        title: 'Clean Regularly',
+        description:
+          'Perform routine cleaning three to four times per year, or as needed, and before winter or other extended periods of limited use.',
+      },
+    ],
+    cleanerMatrix: [
+      {
+        condition: 'Ground-in dirt or minor stains',
+        cleaner: 'Citrus-based cleaner',
+        instructions:
+          'Apply to a clean, dry rag and gently dab the stain. Test first in an inconspicuous area, then rinse thoroughly.',
+      },
+      {
+        condition: 'Eco-friendly option',
+        cleaner: 'Simple Green',
+        instructions:
+          'Spray the affected area, allow approximately 10 minutes of contact, wipe with a paper towel or soft cloth, and rinse.',
+      },
+      {
+        condition: 'Tougher stains',
+        cleaner: 'Spray Nine',
+        instructions:
+          'Use as a non-bleaching option. Follow the product label, minimize contact time, test first, and rinse completely.',
+      },
+      {
+        condition: 'Last resort',
+        cleaner: 'Tilex or CLR',
+        instructions:
+          'Use only if necessary. These products contain bleaching agents. Do not allow them to sit on the vinyl; rinse immediately. Extended contact may discolor or remove the printed pattern.',
+      },
+    ],
+    recommendedPractices: [
+      'Begin with mild dish soap and water.',
+      'Test stronger cleaners in a concealed area.',
+      'Follow label directions and minimize contact time.',
+      'Rinse completely after every cleaner.',
+      'Contact DeckRite for stubborn or unusual stains.',
+    ],
+    avoidPractices: [
+      'Allowing cleaners to dry or remain on the vinyl.',
+      'Using harsh or bleaching products for routine care.',
+      'Aggressive scraping or abrasive cleaning tools.',
+      'Mixing cleaners or cleaning chemicals.',
+      'Leaving sap, leaves or pine-needle residue in place.',
+    ],
+    importantNotice:
+      'IMPORTANT: Begin with the mildest method. Stronger or bleaching cleaners may alter the vinyl color or printed pattern. Always follow cleaner labels. Test first and contact DeckRite Technical Services for unusual stains or product-compatibility questions.',
+  },
+  {
+    id: 'tb-002',
+    code: 'TB-002',
+    title: 'Technical Bulletin 2',
+    subtitle: 'Official engineering bulletin currently in production by DeckRite Technical Services',
+    purpose:
+      'Technical Bulletin 2 is currently being finalized by the DeckRite engineering team and will be published here upon official release.',
+    status: 'pending',
+    recommendedPractices: [
+      'Check back soon for the official release.',
+      'Contact DeckRite Technical Support at (888) 450-3325 for immediate engineering assistance.',
+    ],
+    avoidPractices: [
+      'Proceeding with non-standard details without prior engineering consultation.',
+    ],
+    importantNotice:
+      'IN PREPARATION: Tech Bulletin 2 is undergoing editorial review. For urgent jobsite questions, contact DeckRite directly.',
+  },
+  {
+    id: 'tb-003',
+    code: 'TB-003',
+    title: 'Technical Bulletin 3',
+    subtitle: 'Official engineering bulletin currently in production by DeckRite Technical Services',
+    purpose:
+      'Technical Bulletin 3 is currently being finalized by the DeckRite engineering team and will be published here upon official release.',
+    status: 'pending',
+    recommendedPractices: [
+      'Check back soon for the official release.',
+      'Contact DeckRite Technical Support at (888) 450-3325 for immediate engineering assistance.',
+    ],
+    avoidPractices: [
+      'Proceeding with non-standard details without prior engineering consultation.',
+    ],
+    importantNotice:
+      'IN PREPARATION: Tech Bulletin 3 is undergoing editorial review. For urgent jobsite questions, contact DeckRite directly.',
+  },
+  {
+    id: 'tb-005',
+    code: 'TB-005',
+    title: 'Rugs, Mats & Furniture Feet',
+    subtitle: 'Material compatibility guidelines for DeckRite and MariDeck PVC surfaces',
+    purpose:
+      'DeckRite and MariDeck membranes are PVC-based products engineered for outdoor exposure. Materials placed directly on the surface must also be compatible with PVC. Rubber-based products — including EPDM and neoprene — can interact with the membrane and may cause discoloration, staining or long-term degradation.',
+    pdfUrl: '/pdf/TB-005.pdf',
+    status: 'published',
+    fieldChecks: [
+      'Check backing, feet and support materials before placement.',
+      'Confirm the manufacturer identifies the product as compatible with PVC or vinyl surfaces.',
+      'When compatibility is uncertain, contact supplier or DeckRite Technical Services before use.',
+    ],
+    recommendedPractices: [
+      'Unbacked rugs or mats',
+      'Nylon or plastic feet and bases under furniture legs',
+      'Products whose manufacturer confirms PVC/vinyl compatibility',
+      'Supplier-approved protective mats for grill areas (verify backing before placing)',
+    ],
+    avoidPractices: [
+      'Rubber-backed rugs or mats directly on vinyl',
+      'Rubber feet, pads or bases on patio furniture',
+      'Grill mats or protective pads with unknown or rubber backing',
+      'Continuous contact with any unverified rubber/plasticizer-leaching material',
+    ],
+    importantNotice:
+      'IMPORTANT: Material compatibility should be confirmed before prolonged surface contact. Rubber plasticizers can cause irreversible yellowing or surface marks on PVC membranes.',
+  },
+  {
+    id: 'tb-006',
+    code: 'TB-006',
+    title: 'Cold & Wet Weather Installation Guidelines',
+    subtitle: 'Field requirements for bonding DeckRite vinyl membrane in cold, damp or changing weather conditions',
+    purpose:
+      'Cold or wet conditions can reduce adhesive transfer, slow cure time and increase the risk of condensation below the membrane. Confirm the substrate, humidity and dew point before installation and maintain proper conditions until adhesive cure.',
+    pdfUrl: '/pdf/TB-006.pdf',
+    status: 'published',
+    specRows: [
+      { label: 'Ambient Air Temperature', value: '40°F (5°C) and rising' },
+      { label: 'Deck Surface Temperature', value: '40°F (5°C) and rising' },
+      { label: 'Wood Substrate Moisture', value: 'Below 20% moisture content' },
+      { label: 'Substrate Surface Condition', value: 'Clean, dry, completely frost-free' },
+      { label: 'Dew Point Margin', value: 'Surface must be at least 5°F (3°C) above dew point' },
+    ],
+    recommendedPractices: [
+      'Measure surface temperature, humidity and calculate dew point before spreading adhesive.',
+      'Field Rule: Deck surface must remain at least 5°F (3°C) above dew point during application and cure.',
+      'Temporary Enclosure: When below limits, enclose the deck to the ground and heat the entire envelope.',
+      'One Warm Environment: Keep both above and below the substrate at uniform temperature to prevent vapor drive.',
+      'Store adhesives in heated space (65°F–75°F) before use.',
+    ],
+    avoidPractices: [
+      'Installing over wet plywood, frost, dew, or standing water.',
+      'Installing when temperatures are expected to fall below dew point or freezing before adhesive cures.',
+      'Heating only one side of the deck (causes moisture vapor to drive through plywood joints into adhesive).',
+      'Trapping ambient humidity or frost under unbonded membrane.',
+    ],
+    importantNotice:
+      'CRITICAL FIELD RULE: Do not install unless deck surface temperature stays at least 5°F (3°C) above the calculated dew point throughout application and adhesive cure.',
+  },
+];
+
+export const TECHNICAL_DATA_SHEETS: TechnicalDataSheet[] = [
+  {
+    id: 'tds-proguard',
+    code: 'TDS-01',
+    title: 'ProGuard PVC Walk Tread',
+    subtitle: 'Heavy-duty textured slip-resistant walking tread for high-traffic paths and stairs',
+    category: 'Accessories',
+    pdfUrl: '/pdf/TDS-ProGuard-Walk-Tread.pdf',
+    image: '/brand/tds-proguard.png',
+    overview:
+      'A heavy-duty textured PVC walking surface that integrates seamlessly with DeckRite membranes, providing enhanced traction, wear resistance, and directional traffic paths on stairs and walkways.',
+    description:
+      'DeckRite ProGuard PVC Walk Tread is an embossed, non-directional traffic accessory hot-air welded directly onto DeckRite PVC membranes. Engineered for heavy residential foot traffic, apartment walkways, resort stairs, and commercial landings.',
+    construction:
+      'Heavy-duty 8.79 oz/sq. ft. embossed PVC walk tread. Roll size: 36 inches wide x 60 feet length. Tensile strength: 147 lbf/in (ASTM D751). Tear strength: 58 lbf. Mold & Mildew: Pass G21 (no growth after 28 days).',
+    colors: ['Gray', 'Tan'],
+    specs: [
+      { property: 'Roll Width', value: '36 in. (0.91 m)' },
+      { property: 'Roll Length', value: '60 ft. (18.28 m)' },
+      { property: 'Weight', value: '8.79 oz/sq. ft.' },
+      { property: 'Tensile Strength', value: '147 lbf/in (ASTM D751)' },
+      { property: 'Tear Strength', value: '58 lbf (ASTM D751)' },
+      { property: 'Peel Strength', value: '15 lbf/in (ASTM D751)' },
+      { property: 'Mildew Resistance', value: 'ASTM G21 — Pass (no mold @ 28 days)' },
+    ],
+    applicationPoints: [
+      'Prepare Surface: Clean DeckRite PVC membrane thoroughly. Surface must be completely dry and debris-free.',
+      'Position Material: Place ProGuard with textured side up. Cut into manageable lengths and allow material to relax before welding.',
+      'Hot-Air Welding: Hot-air weld perimeter edges to underlying DeckRite membrane using standard hand welder and silicone roller.',
+      'Layout Guidance: Do not cover membrane seams unnecessarily; orient tread to shed water freely toward perimeter drain.',
+    ],
+    storageNotes: 'Store rolls horizontally in a clean, dry location out of direct sunlight until installation.',
+    precautions: 'Wear heat-resistant gloves during hot-air welding. Ensure proper ventilation in enclosed applications.',
+  },
+  {
+    id: 'tds-metal',
+    code: 'TDS-02',
+    title: 'PVC Coated Sheet Metal',
+    subtitle: 'Heat-weldable galvanized fabrication sheet for custom flashings and perimeter details',
+    category: 'Flashing',
+    pdfUrl: '/pdf/TDS-PVC-Coated-Sheet-Metal.pdf',
+    image: '/brand/tds-metal.png',
+    overview:
+      'A galvanized sheet with factory-laminated PVC film that can be shop-brake formed into project-specific flashings, perimeter edges, and termination components for DeckRite PVC membrane systems.',
+    description:
+      'DeckRite PVC coated sheet metal is designed for decking, roofing, and sheet-metal professionals. Fabricated into parapet caps, inside/outside corner angles, door pans, and perimeter drips where direct hot-air welding to metal is required.',
+    construction:
+      '4 ft x 10 ft sheet of 24-gauge, hot-dipped galvanized Grade 90 steel with a factory-laminated 20-mil PVC film on one side. Total nominal thickness 0.052 in. Weight: 45 lb per sheet.',
+    colors: ['Gray', 'Tan', 'White'],
+    specs: [
+      { property: 'Sheet Size', value: '4 ft x 10 ft (1.22 m x 3.05 m)' },
+      { property: 'Base Metal', value: '24-gauge hot-dipped galvanized Grade 90 steel' },
+      { property: 'PVC Film', value: '20-mil heat-weldable PVC laminate' },
+      { property: 'Total Thickness', value: '0.052 in. nominal' },
+      { property: 'Weight / Sheet', value: '45 lb' },
+      { property: 'Packaging', value: '25 sheets per pallet (1,225 lb)' },
+      { property: 'Compatibility', value: 'Mechanically fastened & fully adhered PVC systems' },
+    ],
+    applicationPoints: [
+      'Direct Hot-Air Welding: The PVC film creates a permanent, heat-weldable bond directly to DeckRite membrane.',
+      'Forming: Brake-form the sheet with the PVC-coated side oriented outward to create project-specific edge and flashing profiles.',
+      'Asphalt Isolation: Do not install PVC coated metal in direct contact with asphalt or coal-tar products.',
+      'Fastening: Fasten mechanically with corrosion-resistant screws at recommended spacing prior to welding membrane.',
+    ],
+    storageNotes: 'Store flat on pallets in a dry, covered area. Keep free of dirt, oil, and moisture before welding.',
+    precautions: 'Wear cut-resistant gloves and safety glasses when handling and braking sheet metal.',
+  },
+  {
+    id: 'tds-drip-edge',
+    code: 'TDS-03',
+    title: 'PVC Coated Drip Edge',
+    subtitle: 'Preformed heat-weldable perimeter drip flashing for fast, waterproof perimeter edge termination',
+    category: 'Perimeter Edge',
+    pdfUrl: '/pdf/TDS-PVC-Drip-Edge.pdf',
+    image: '/brand/tds-drip-edge.png',
+    overview:
+      'A preformed galvanized-metal perimeter edge with laminated 20-mil PVC film, engineered for quick jobsite installation and direct hot-air welding along deck edges, fascias, and gutter lines.',
+    description:
+      'DeckRite PVC coated drip edge integrates with PVC-based single-ply decking membranes. It provides a clean, rigid, uniform perimeter drip line while allowing the membrane field sheet to weld directly onto the face.',
+    construction:
+      'Preformed 1-3/4 in. face x 2 in. roof/deck flange x 10 ft stick manufactured from 24-gauge hot-dipped galvanized Grade 90 steel with factory-laminated 20-mil PVC film. Weight: 5 lb per 10-ft stick.',
+    colors: ['Gray', 'Tan', 'White'],
+    specs: [
+      { property: 'Profile / Length', value: '1-3/4 in. face x 2 in. deck flange x 10 ft stick' },
+      { property: 'Base Metal', value: '24-gauge hot-dipped galvanized Grade 90 steel' },
+      { property: 'PVC Film', value: '20-mil heat-weldable PVC coating' },
+      { property: 'Total Thickness', value: '0.052 in.' },
+      { property: 'Weight / Stick', value: '5 lb' },
+      { property: 'Shipping Unit', value: '8 sticks per tube (40 lb total)' },
+      { property: 'Tube Size', value: '6 in. x 6 in. x 10 ft' },
+    ],
+    applicationPoints: [
+      'Edge Alignment: Install drip edge along deck fascia and perimeter edges over substrate before membrane placement.',
+      'Fastening: Fasten flange into plywood substrate at 4–6 inches on-center staggered with approved galvanized ring-shank nails or screws.',
+      'Butt Joints: Allow 1/4 in. expansion gap between sticks; cover joints with PVC joint clips or membrane cover strip.',
+      'Hot-Air Seaming: Hot-air weld DeckRite membrane directly to the PVC-coated top flange with a minimum 1-1/2 in. weld.',
+    ],
+    storageNotes: 'Store in original heavy shipping tubes until ready to install to protect coated surface.',
+    precautions: 'Wear protective gloves when cutting metal sticks. Deburr cut edges before membrane welding.',
+  },
+];
+
+export const CORNER_PHOTO_GUIDES: CornerPhotoGuide[] = [
+  {
+    id: 'in-corner-1',
+    type: 'inside',
+    stepNumber: 1,
+    title: 'Inside Corner - Step 1: Pig-Ear Fold & Alignment',
+    subtitle: 'Preparing the excess membrane fold in the 90° interior junction',
+    description:
+      'Turn the continuous membrane 90° upward into the wall junction. Fold the excess corner fabric neatly into a vertical pig-ear without cutting the waterproof barrier at the deck level.',
+    technique: 'Fold the corner membrane cleanly against the wall without stretching or puncturing the field sheet.',
+    drawingRef: 'DR-104',
+    image: '/brand/InCorner1.png',
+  },
+  {
+    id: 'in-corner-2',
+    type: 'inside',
+    stepNumber: 2,
+    title: 'Inside Corner - Step 2: Welded Corner Wrap & Seal',
+    subtitle: 'Hot-air welding the folded corner lap flat to the vertical upstand',
+    description:
+      'Tack and hot-air weld the folded pig-ear tight against the vertical wall substrate with a hand roller to achieve a seamless, continuous moisture barrier extending at least 4" up the vertical surface.',
+    technique: 'Maintain uniform hot-air heat gun temperature (approx. 700°F–800°F) and press firmly with silicone roller from inside crease outward.',
+    drawingRef: 'DR-104',
+    image: '/brand/InCorner2.png',
+  },
+  {
+    id: 'out-corner-1',
+    type: 'outside',
+    stepNumber: 1,
+    title: 'Outside Corner - Step 1: Field Sheet Relief & Slit',
+    subtitle: 'Precision relieving cut around exterior post or curb corners',
+    description:
+      'Make a clean 45° relief cut at the exterior junction point, wrapping the main membrane around the corner face and turning it down or up as required.',
+    technique: 'Do not overcut into the deck plane. Stop relieving cut precisely 1/8" before the exterior substrate corner point.',
+    drawingRef: 'DR-105',
+    image: '/brand/OutCorner1.png',
+  },
+  {
+    id: 'out-corner-2',
+    type: 'outside',
+    stepNumber: 2,
+    title: 'Outside Corner - Step 2: Welded Target Patch Reinforcement',
+    subtitle: 'Hot-air welding a pre-cut unreinforced PVC corner patch overlay',
+    description:
+      'Install a circular or shaped DeckRite PVC outside corner patch over the relief point. Hot-air weld completely around the 360° perimeter with minimum 1-1/2" lap for 100% waterproof seal.',
+    technique: 'Preheat the corner patch to soften vinyl, contour tightly over the radius, and roll firmly with steel or silicone seam probe roller.',
+    drawingRef: 'DR-105',
+    image: '/brand/OutCorner2.png',
+  },
+];
+
+export const RESOURCE_DOCUMENTS: ResourceDoc[] = [
+  {
+    id: 'doc-innovative',
+    title: 'DeckRite Innovative Waterproofing Systems Catalog',
+    category: 'Architectural & Specs',
+    docType: 'PDF',
+    fileSize: '1.6 MB PDF',
+    description:
+      'Complete product specification catalog detailing the 500 & 600 series flexible PVC membranes, system assemblies, and technical benefits.',
+    url: '/pdf/DR_Innovative_2023.pdf',
+  },
+  {
+    id: 'doc-install-417',
+    title: 'Comprehensive Membrane Installation Manual (Install417)',
+    category: 'Installation Guides',
+    docType: 'PDF',
+    fileSize: '183 KB PDF',
+    description:
+      'Official step-by-step jobsite manual covering substrate plywood/concrete prep, water-based & solvent-based adhesive application, perimeter termination, and heat welding.',
+    url: '/pdf/Install417.pdf',
+  },
+  {
+    id: 'doc-techbulletin-summary',
+    title: 'DeckRite Technical Bulletins Compilation (TB-001 - TB-006)',
+    category: 'Technical Data',
+    docType: 'PDF',
+    fileSize: '93 KB PDF',
+    description:
+      'Consolidated reference guide featuring care & maintenance, cleaning formulas, ice melt safety, and material compatibility.',
+    url: '/pdf/techbulletin.pdf',
+  },
+  {
+    id: 'doc-arch-specs',
+    title: 'DeckRite CSI Architectural Specifications (3-Part)',
+    category: 'Architectural & Specs',
+    docType: 'PDF',
+    fileSize: '268 KB PDF',
+    description:
+      'Full 3-part CSI format architectural master specification for traffic-bearing PVC waterproof membranes over wood and concrete decks.',
+    url: '/pdf/archspecs.pdf',
+  },
+  {
+    id: 'doc-water-msds',
+    title: 'Water-Based Deck Adhesive Safety Data Sheet (SDS)',
+    category: 'Technical Data',
+    docType: 'PDF',
+    fileSize: '381 KB PDF',
+    description:
+      'Official OSHA / GHS Safety Data Sheet for DeckRite water-based substrate bonding adhesive formulation.',
+    url: '/pdf/Water_Based_MSDS.pdf',
+  },
+  {
+    id: 'doc-solvent-msds',
+    title: 'Solvent-Based Deck Adhesive Safety Data Sheet (SDS)',
+    category: 'Technical Data',
+    docType: 'PDF',
+    fileSize: '453 KB PDF',
+    description:
+      'Official OSHA / GHS Safety Data Sheet for DeckRite contact/solvent-based adhesive used for concrete, edge flashing, and vertical flashings.',
+    url: '/pdf/Solvent_Based_MSDS.pdf',
+  },
+  {
+    id: 'doc-tb001',
+    title: 'TB-001 Care & Maintenance Guidelines',
+    category: 'Technical Data',
+    docType: 'PDF',
+    fileSize: '163 KB PDF',
+    description:
+      'Routine cleaning procedure, cleaner selection by condition matrix, recommended practices, and avoid guidelines for DeckRite PVC surfaces.',
+    url: '/pdf/TB-001.pdf',
+  },
+  {
+    id: 'doc-tb005',
+    title: 'TB-005 Rugs, Mats & Furniture Feet',
+    category: 'Technical Data',
+    docType: 'PDF',
+    fileSize: '297 KB PDF',
+    description:
+      'Material compatibility guidelines covering rubber-backed mats, furniture feet, plasticizer migration, and 3-step field checks.',
+    url: '/pdf/TB-005.pdf',
+  },
+  {
+    id: 'doc-tb006',
+    title: 'TB-006 Cold & Wet Weather Installation',
+    category: 'Installation Guides',
+    docType: 'PDF',
+    fileSize: '720 KB PDF',
+    description:
+      'Field temperature requirements (40°F+), surface moisture limits (<20%), dew point calculation rules, and temporary enclosure heating.',
+    url: '/pdf/TB-006.pdf',
+  },
+  {
+    id: 'doc-tds-proguard',
+    title: 'ProGuard PVC Walk Tread Technical Data Sheet',
+    category: 'Technical Data',
+    docType: 'PDF',
+    fileSize: '209 KB PDF',
+    description:
+      'ASTM D751 tensile/tear specs, ASTM G21 mold ratings, roll dimensions, and hot-air welding installation procedure.',
+    url: '/pdf/TDS-ProGuard-Walk-Tread.pdf',
+  },
+  {
+    id: 'doc-tds-metal',
+    title: 'PVC Coated Sheet Metal Technical Data Sheet',
+    category: 'Architectural & Specs',
+    docType: 'PDF',
+    fileSize: '161 KB PDF',
+    description:
+      '24-ga galvanized steel with 20-mil PVC laminate, 4x10 ft sheets, bending parameters, and welding specs in Gray, Tan, White.',
+    url: '/pdf/TDS-PVC-Coated-Sheet-Metal.pdf',
+  },
+  {
+    id: 'doc-tds-drip',
+    title: 'PVC Coated Drip Edge Technical Data Sheet',
+    category: 'Architectural & Specs',
+    docType: 'PDF',
+    fileSize: '163 KB PDF',
+    description:
+      'Preformed 1-3/4" x 2" x 10\' perimeter drip edge flashing profile, packaging data, and fastening specifications.',
+    url: '/pdf/TDS-PVC-Drip-Edge.pdf',
+  },
+  {
+    id: 'doc-brochure-legal',
+    title: 'DeckRite 8.5x14 Legal Trifold Brochure',
+    category: 'Warranty & Care',
+    docType: 'PDF',
+    fileSize: '876 KB PDF',
+    description:
+      'Complete full-color legal trifold architectural brochure detailing residential & commercial applications, color patterns, and warranty.',
+    url: '/pdf/DeckRite-Trifold-Brochure.pdf',
+  },
+];
+
+export const DETAIL_DRAWINGS: DetailDrawing[] = [
+  {
+    id: 'dr-101',
+    code: 'DR-101',
+    title: 'Edge Termination Detail',
+    system: 'Fully Adhered',
+    description: 'Substrate edge termination showing membrane turned down outside fascia with mechanical fastening and drip edge trim.',
+    image: '/brand/dr-101.png',
+    url: '/pdf/DR-101.pdf',
+  },
+  {
+    id: 'dr-102',
+    code: 'DR-102',
+    title: 'Gutter Edge Detail',
+    system: 'Fully Adhered',
+    description: 'Perimeter edge water evacuation detail directing runoff directly into external eaves trough and gutter system.',
+    image: '/brand/dr-102.png',
+    url: '/pdf/DR-102.pdf',
+  },
+  {
+    id: 'dr-103',
+    code: 'DR-103',
+    title: 'Compression Bar with Cover',
+    system: 'Fully Adhered',
+    description: 'Surface-mounted termination bar compression flashing with counterflashing cover and elastomeric sealant bead.',
+    image: '/brand/dr-103.png',
+    url: '/pdf/DR-103.pdf',
+  },
+  {
+    id: 'dr-104',
+    code: 'DR-104',
+    title: 'Base Finishings',
+    system: 'Fully Adhered',
+    description: 'Wall-to-deck horizontal-to-vertical base transition ensuring a minimum 4" continuous upward waterproofing lap.',
+    image: '/brand/dr-104.png',
+    url: '/pdf/DR-104.pdf',
+  },
+  {
+    id: 'dr-105',
+    code: 'DR-105',
+    title: 'High Parapet Wall Flashing',
+    system: 'Fully Adhered',
+    description: 'Extended vertical flashing up parapet wall surface with coping cap termination for full moisture enclosure.',
+    image: '/brand/dr-105.png',
+    url: '/pdf/DR-105.pdf',
+  },
+  {
+    id: 'dr-106',
+    code: 'DR-106',
+    title: 'Typical Drain Flashing Detail',
+    system: 'Fully Adhered',
+    description: 'Substrate recessed deck drain flashing assembly with mechanical clamping ring and waterproof vinyl compression seal.',
+    image: '/brand/dr-106.png',
+    url: '/pdf/DR-106.pdf',
+  },
+  {
+    id: 'dr-107',
+    code: 'DR-107',
+    title: 'Tie-In To Shingles',
+    system: 'Fully Adhered',
+    description: 'Roof-to-deck transition detail showing waterproof vinyl underlayment integrated beneath sloped shingle roofing.',
+    image: '/brand/dr-107.png',
+    url: '/pdf/DR-107.pdf',
+  },
+  {
+    id: 'dr-108',
+    code: 'DR-108',
+    title: 'Waterproofing of Post / Column Supports',
+    system: 'Fully Adhered',
+    description: 'Structural column and railing post base penetration flashing with custom field-welded vinyl boot enclosure.',
+    image: '/brand/dr-108.png',
+    url: '/pdf/DR-108.pdf',
+  },
+  {
+    id: 'dr-109',
+    code: 'DR-109',
+    title: 'Coated Metal Drip Edge',
+    system: 'Fully Adhered',
+    description: 'Factory PVC-coated galvanized metal drip edge perimeter detail allowing direct hot-air membrane welding.',
+    image: '/brand/dr-109.png',
+    url: '/pdf/DR-109.pdf',
+  },
+  {
+    id: 'dr-110',
+    code: 'DR-110',
+    title: 'Siding Detail',
+    system: 'Fully Adhered',
+    description: 'Exterior wall siding integration showing membrane extended behind building paper and exterior siding cladding.',
+    image: '/brand/dr-110.png',
+    url: '/pdf/DR-110.pdf',
+  },
+  {
+    id: 'dr-111',
+    code: 'DR-111',
+    title: 'Through-Wall Fitting Detail',
+    system: 'Fully Adhered',
+    description: 'Scupper and overflow drain penetration through parapet or wall assembly with perimeter vinyl flange weld.',
+    image: '/brand/dr-111.png',
+    url: '/pdf/DR-111.pdf',
+  },
+  {
+    id: 'dr-112',
+    code: 'DR-112',
+    title: 'Drain Detail',
+    system: 'Fully Adhered',
+    description: 'Internal deck drainage outlet detail with countersunk sump bowl, clamping collar, and debris strainer basket.',
+    image: '/brand/dr-112.png',
+    url: '/pdf/DR-112.pdf',
+  },
+  {
+    id: 'dr-113',
+    code: 'DR-113',
+    title: 'Drip Edge Flashing Over Plywood',
+    system: 'Fully Adhered',
+    description: 'Recessed PVC-coated metal drip edge over routed plywood rebate with 1/16" per foot slope and continuous hot-air weld.',
+    image: '/brand/dr-113.png',
+    url: '/pdf/DR-113.pdf',
+    steps: [
+      'Establish 1/16" : 1 ft minimum slope to ensure positive deck drainage.',
+      'Recess PVC-coated metal drip edge flush into plywood substrate (routed plywood rebate).',
+      'Fasten drip edge with roofing nails at 1 ft on-center spacing.',
+      'Apply DeckRite bonding adhesive across substrate up to drip edge zone.',
+      'Lay PVC membrane over adhesive and hot-air weld directly to the PVC-coated drip edge flange with 1" continuous weld.',
+    ],
+    callouts: [
+      '1/16" : 1ft Slope to exterior',
+      'Vinyl hot-air welded to PVC coated drip edge flashing',
+      'PVC coated metal drip edge recessed into plywood substrate',
+      '1ft spacing between roofing nails',
+      'PVC Membrane & Adhesive over Routed Plywood',
+    ],
+    notes: [
+      'Phone: (888) 450-3325 (DECK)',
+      'DeckRite L.L.C., 3912 E. Progress, North Little Rock, AR. 72114',
+      'System: Fully Adhered',
+    ],
+  },
+  {
+    id: 'dr-114',
+    code: 'DR-114',
+    title: 'Inside / Outside Corner Detail',
+    system: 'Fully Adhered',
+    description: 'Field-welded inside and outside corner wraps with 4" vertical turn-up, solvent adhesive, and continuous corner weld.',
+    image: '/brand/dr-114.png',
+    url: '/pdf/DR-114.pdf',
+    steps: [
+      'Expose 12" - 24" of the house wall\'s plywood sheathing above the deck surface. Lay out the vinyl membrane and cut to match the wall contour, allowing a minimum 4" vertical turn-up. For siding, extend the membrane at least 2" above the bottom of lowest panel.',
+      'When addressing an Inside Corner detail, cut a square off the corner of the vinyl membrane to allow the membrane to be turned up the wall.',
+      'When addressing an Outside Corner detail, cut a 45° degree slit from the corner into the vinyl to allow the membrane to be turned up the wall.',
+      'Fully adhere vinyl membrane to substrate.',
+      'Adhere vertical vinyl fold to wall using solvent-based adhesive. Due to the vertical application, ensure the membrane is properly supported until adhesive has fully cured.',
+      'When installing an Inside Corner, adhere the top portion of the corner to the vertical surface. Trim corners to the height of vertical membrane fold. Ensure the membrane is properly supported until adhesive has fully cured.',
+      'Remove excess material from corners, leaving only ~1.5" overlap for hot air weld.',
+      'When installing an Outside Corner, adhere the top portion of the corner to the vertical surface. Ensure the membrane is properly supported until adhesive has fully cured.',
+      'Hot air weld corners fully to deck membrane.',
+      'Secure vertical membrane to wall with termination bar. Apply continuous bead of caulk along the top edge of the bar.',
+    ],
+    notes: [
+      'Phone: (888) 450-3325 (DECK)',
+      'DeckRite L.L.C., 3912 E. Progress St, North Little Rock, AR. 72114',
+      'System: Fully Adhered',
+    ],
+  },
+  {
+    id: 'dr-115',
+    code: 'DR-115',
+    title: 'Inset Post Wrap Detail',
+    system: 'Fully Adhered',
+    description: 'Penetration wrap for interior posts with slit membrane, corner wrap patches, solvent adhesive, and perimeter caulking.',
+    image: '/brand/dr-115.png',
+    url: '/pdf/DR-115.pdf',
+    steps: [
+      'Measure and cut hole for post. Slit vinyl membrane from center of post to nearest membrane edge to allow vinyl to wrap around. Fully adhere the membrane once in position.',
+      'Measure inward from the outside edge of each side of the corner and trim off the excess material. For a 4x4 post, trim off approx 2.75". For a 6x6, trim off approx. 1.75".',
+      'Trim the flat portion of the corner so that it overlaps the membrane by 1.5" to 2".',
+      'Vinyl should wrap the post 4" to 6" up from the deck.',
+      'Use solvent-based adhesive to adhere the vertical portion of each corner to each side of the post.',
+      'Hot air weld each corner together with a minimum 1" overlap. Fully weld the horizontal part of each corner to the deck membrane.',
+      'Weld a 2" wide vinyl patch over the slit in the membrane.',
+      'Add a small bead of caulk to the edges of the corners around the perimeter of the post before finishing with a post sleeve.',
+    ],
+    notes: [
+      'Phone: (888) 450-3325 (DECK)',
+      'DeckRite L.L.C., 3912 E. Progress St, North Little Rock, AR. 72114',
+      'System: Fully Adhered',
+    ],
+  },
+  {
+    id: 'dr-116',
+    code: 'DR-116',
+    title: 'Edge Post Wrap Detail',
+    system: 'Fully Adhered',
+    description: 'Perimeter post wrap detail integrating corner flashings with PVC-coated drip edge and continuous welded laps.',
+    image: '/brand/dr-116.png',
+    url: '/pdf/DR-116.pdf',
+    steps: [
+      'Measure and cut hole for post. Fabricated corners will cover the exposed gap in the vinyl membrane between the post and the edge of the deck. Fully adhere the membrane once in position.',
+      'Measure inward from the outside edge of each side of the corner and trim off the excess material. For a 4x4 post, trim off approx 2.75". For a 6x6 post, trim off approx. 1.75".',
+      'Trim the flat portion of the corner even with the PVC coated drip edge.',
+      'Vinyl should wrap the post 4" to 6" up from the deck.',
+      'Use solvent-based adhesive to adhere the vertical portion of each corner to each side of the post.',
+      'Hot air weld each corner together with a minimum 1" overlap. Fully weld the horizontal part of each corner to the deck membrane and drip edge.',
+      'Add a small bead of caulk to the edges of the corners around the perimeter of the post before finishing with a post sleeve.',
+    ],
+    notes: [
+      'Phone: (888) 450-3325 (DECK)',
+      'DeckRite L.L.C., 3912 E. Progress St, North Little Rock, AR. 72114',
+      'System: Fully Adhered',
+    ],
+  },
+];
+
+export const FAQ_ITEMS: FaqItem[] = [
+  {
+    question: 'Is the DeckRite covering slippery when it is wet?',
+    answer:
+      'No. DeckRite is engineered to be slip resistant and has been tested to meet ADA requirements as a slip-resistant surface. It performs well wet or dry, but caution should be taken when snow, ice, or frost is present.',
+  },
+  {
+    question: 'Can homeowners install the product themselves?',
+    answer:
+      'DeckRite is installed across the United States and Canada by professional contractors instructed in the proper techniques. Capable homeowners have successfully installed the product using the published instructions, videos, and rental welding equipment.',
+  },
+  {
+    question: 'If I have a second-story balcony over a living area, will DeckRite keep the area under it dry?',
+    answer:
+      'Yes. Some of the most popular installations are over living areas, multi-level decks, or raised decks that need dry storage underneath. Because the covering is waterproof, you get both a finished walking surface and protection from the elements.',
+  },
+  {
+    question: 'How durable is the DeckRite product?',
+    answer:
+      'The core of the membrane is a heavy-duty polyester fabric that resists puncture and tearing. The rugged exterior resists normal wear from pets, deck furniture, and foot traffic, with a proven track record since the 1970\'s in harsh North American climates.',
+  },
+  {
+    question: 'What sizes and thicknesses are available?',
+    answer:
+      'DeckRite is manufactured in rolls 68 inches (1.72 m) wide and 90 feet (27.45 m) long. Thickness is 50 mils (500 Series) or 60 mils (600 Series). Thickness at the hot-air weld is approximately 0.090" and 0.110" respectively.',
+  },
+  {
+    question: 'How do I get free samples or find a distributor?',
+    answer:
+      'DeckRite is a manufacturer. On the original Contact page they ask you to provide a mailing address so they can send free samples of the decking material. Call (888) 450-DECK (3325) or email DeckRitesupport@deckrite.com for distributors near you — they do not install the product themselves.',
+  },
+];
+
+export const PHYSICAL_PROPERTIES = [
+  { property: 'Color', method: '—', value: 'Sahara Tan, Slate Gray, Gray Storm, Tropical Cream, Lakewood Marble, Tuscany Sand, Harvest, Riverstone' },
+  { property: 'Width', method: 'ASTM D751', value: '68"' },
+  { property: 'Thickness', method: 'ASTM D751', value: '0.050" / 0.060"' },
+  { property: 'Weight', method: 'ASTM D751', value: '42.5 oz/yd²' },
+  { property: 'Tensile strength (w / f)', method: 'ASTM D412A', value: '165 / 156 lb/inch' },
+  { property: 'Elongation @ break (w / f)', method: 'ASTM D412A', value: '32% / 38%' },
+  { property: 'Abrasion resistance', method: 'Tabor, CS10, 1000g, 1500 cycles', value: 'Pass' },
+  { property: 'Sulphide stain', method: 'GM9069P', value: 'No stain' },
+  { property: 'Light stability', method: 'SAE J1885 Xenon 1036 kJ', value: 'Pass' },
+  { property: 'Low-temp impact (−10°F / −20°F / −40°F)', method: 'ASTM D1790', value: '100% / 40% / 0%' },
+  { property: 'Heat aging (7 days @ 158°F)', method: 'LP463LB-13-01', value: 'No detrimental effects' },
+  { property: 'Shrinkage 24 h @ 175°F (w / f)', method: 'SAE J883', value: '−0.8% / 0.3%' },
+];
+
+export const AUTHORIZED_DEALERS: Dealer[] = [
+  {
+    id: 'd-1',
+    name: 'DeckRite L.L.C. Headquarters',
+    type: 'Headquarters',
+    address: '3912 East Progress',
+    city: 'North Little Rock',
+    stateOrProvince: 'AR',
+    country: 'USA',
+    postalCode: '72114',
+    phone: '(888) 450-DECK (3325)',
+    email: 'DeckRitesupport@deckrite.com',
+    website: 'https://www.deckrite.com/',
+    servesRegions: ['United States', 'Direct shipping throughout North America'],
+  },
+  {
+    id: 'd-2',
+    name: 'DeckRite Canada Sundecks Ltd.',
+    type: 'Canadian Affiliate',
+    address: 'See deckritecanada.com for current location',
+    city: 'Langley',
+    stateOrProvince: 'BC',
+    country: 'Canada',
+    postalCode: '',
+    phone: '1-888-303-2792',
+    email: 'info@deckritecanada.com',
+    website: 'https://deckritecanada.com/',
+    servesRegions: ['Canada'],
+  },
+];
+
+export const INSTALL_VIDEOS = [
+  {
+    id: 'install-overview',
+    title: 'Overview of Installation',
+    seriesPart: 'Part 1',
+    youtubeId: 's3RwJvlGsyE',
+    description:
+      'Introduction and walkthrough of the full 4-part installation series for DeckRite vinyl membrane over wood substrates.',
+  },
+  {
+    id: 'prep',
+    title: 'Prepping The Surface',
+    seriesPart: 'Part 2',
+    youtubeId: '7mqD92QXpkM',
+    description:
+      'Wood substrate preparation: patching joints and knotholes with leveling compound, sanding smooth, and cleaning for maximum adhesion.',
+  },
+  {
+    id: 'preinstall',
+    title: 'Pre-Install Process',
+    seriesPart: 'Part 3',
+    youtubeId: '3bn-rfFs7kE',
+    description:
+      'Installing PVC coated metal drip-edge, siding removal, and flashing vertical wall turn-ups before laying out the membrane.',
+  },
+  {
+    id: 'membrane',
+    title: 'Installing The Membrane',
+    seriesPart: 'Part 4',
+    youtubeId: 'jeA4k7JGWMg',
+    description:
+      'Membrane layout, precision trim cuts, adhesive application methods, and preparing overlap margins for seam welding.',
+  },
+  {
+    id: 'weld',
+    title: 'Hot Air Welding Explained',
+    seriesPart: 'Part 5',
+    youtubeId: 'FSr68TZ2tGQ',
+    description:
+      'Hot air welder temperature/speed settings and technique for welding the overlap into a 100% monolithic waterproof seam.',
+  },
+  {
+    id: 'why-choose',
+    title: 'Why Choose DeckRite?',
+    seriesPart: 'System Overview',
+    youtubeId: '_kQ0GmUtutY',
+    description: 'Overview of the DeckRite waterproof vinyl decking system, performance benefits, and long-term warranties.',
+  },
+];
