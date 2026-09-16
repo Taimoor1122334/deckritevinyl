@@ -17,7 +17,6 @@ import { GalleryPage } from './pages/GalleryPage';
 import { ResourcesPage } from './pages/ResourcesPage';
 import { EstimatorPage } from './pages/EstimatorPage';
 import { ContactPage } from './pages/ContactPage';
-import { DeckRailPage } from './pages/DeckRailPage';
 
 const PAGES = [
   'home',
@@ -33,7 +32,6 @@ const PAGES = [
   'sister-brands',
   'contact',
   'about',
-  'deckrail',
 ];
 
 export default function App() {
@@ -42,12 +40,16 @@ export default function App() {
 
   useEffect(() => {
     const handleHashChange = () => {
-      const hash = window.location.hash.replace('#', '').toLowerCase();
+      const rawHash = window.location.hash.replace('#', '').toLowerCase();
+      const hash = rawHash === 'deckrail' ? 'products' : rawHash;
       if (hash && PAGES.includes(hash)) {
         if (hash === 'visualizer') setCurrentPage('colors');
-        else if (hash === 'faq' || hash === 'why-deckrite') setCurrentPage('resources');
+        else if (hash === 'faq') setCurrentPage('contact');
+        else if (hash === 'why-deckrite') setCurrentPage('resources');
         else if (hash === 'about' || hash === 'dealers' || hash === 'sister-brands') setCurrentPage('contact');
         else setCurrentPage(hash);
+      } else if (rawHash === 'techdata' || rawHash === 'tech-data' || rawHash === 'technical-data' || rawHash === 'corners') {
+        setCurrentPage('resources');
       } else if (!hash) {
         setCurrentPage('home');
       }
@@ -70,6 +72,7 @@ export default function App() {
 
   const handleNavigate = (pageId: string) => {
     let target = pageId.toLowerCase();
+    if (target === 'deckrail') target = 'products';
     if (target === 'calculator') target = 'estimator';
     if (target === 'specs' || target === 'codes' || target === 'faq' || target === 'why-deckrite') target = 'resources';
     if (target === 'visualizer') target = 'colors';
@@ -91,7 +94,6 @@ export default function App() {
         {currentPage === 'gallery' && <GalleryPage onNavigate={handleNavigate} />}
         {currentPage === 'resources' && <ResourcesPage onNavigate={handleNavigate} />}
         {currentPage === 'estimator' && <EstimatorPage onNavigate={handleNavigate} />}
-        {currentPage === 'deckrail' && <DeckRailPage onNavigate={handleNavigate} />}
         {currentPage === 'contact' && <ContactPage onNavigate={handleNavigate} />}
       </main>
 

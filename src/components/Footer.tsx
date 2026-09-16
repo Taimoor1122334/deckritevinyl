@@ -50,7 +50,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         <div className="space-y-4">
           <img src="/brand/deckrite-logo.png" alt="DeckRite" className="h-10 w-auto" />
           <p className="text-sm text-slate-600 leading-relaxed">
-            DeckRite L.L.C. manufactures waterproof vinyl membranes for decks, patios, balconies, and exterior walkways. Headquartered in North Little Rock, Arkansas, part of the Little Rock Holdings group of companies.
+            DeckRite L.L.C. is a manufacturer of vinyl films and membranes — not an installation contractor. Headquartered in North Little Rock, Arkansas, serving the construction, marine, and RV industries since the 1970's.
           </p>
         </div>
 
@@ -81,8 +81,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <button onClick={() => onNavigate('products')} className="text-left hover:text-navy">Products</button>
             <button onClick={() => onNavigate('colors')} className="text-left hover:text-navy">Colors</button>
             <button onClick={() => onNavigate('gallery')} className="text-left hover:text-navy">Gallery</button>
-            <button onClick={() => onNavigate('resources')} className="text-left hover:text-navy">Resources</button>
-            <button onClick={() => onNavigate('contact')} className="text-left hover:text-navy">Contact</button>
+            <button onClick={() => onNavigate('resources')} className="text-left hover:text-navy">Resources &amp; Tech Data</button>
+            <button onClick={() => onNavigate('contact')} className="text-left hover:text-navy">Contact &amp; FAQs</button>
           </div>
         </div>
 

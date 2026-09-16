@@ -16,7 +16,7 @@ export interface ColorPattern {
 export interface ProductItem {
   id: string;
   title: string;
-  category: 'membranes' | 'railings' | 'accessories';
+  category: 'membranes' | 'accessories';
   mil?: string;
   tagline: string;
   description: string;
@@ -68,8 +68,70 @@ export interface DetailDrawing {
   id: string;
   code: string;
   title: string;
+  description?: string;
+  updated?: string;
+  system?: string;
+  isNew?: boolean;
   image: string;
-  url: string;
+  url?: string;
+  steps?: string[];
+  notes?: string[];
+  callouts?: string[];
+}
+
+export interface CornerPhotoGuide {
+  id: string;
+  type: 'inside' | 'outside';
+  stepNumber: number;
+  title: string;
+  subtitle: string;
+  description: string;
+  technique: string;
+  drawingRef: string;
+  image: string;
+}
+
+export interface TechnicalBulletin {
+  id: string;
+  code: string;
+  title: string;
+  subtitle: string;
+  purpose: string;
+  pdfUrl?: string;
+  status?: 'published' | 'pending';
+  regularProcedure?: {
+    step: number;
+    title: string;
+    description: string;
+  }[];
+  cleanerMatrix?: {
+    condition: string;
+    cleaner: string;
+    instructions: string;
+  }[];
+  recommendedPractices: string[];
+  avoidPractices: string[];
+  importantNotice: string;
+  fieldChecks?: string[];
+  specRows?: { label: string; value: string }[];
+}
+
+export interface TechnicalDataSheet {
+  id: string;
+  code: string;
+  title: string;
+  subtitle: string;
+  category: 'Accessories' | 'Flashing' | 'Perimeter Edge';
+  pdfUrl: string;
+  image: string;
+  overview: string;
+  description: string;
+  construction: string;
+  colors: string[];
+  specs: { property: string; value: string }[];
+  applicationPoints: string[];
+  storageNotes?: string;
+  precautions?: string;
 }
 
 export interface FaqItem {

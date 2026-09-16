@@ -70,7 +70,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onNav
           <div>
             <p className="text-[11px] font-bold uppercase text-slate-400 mb-2">Products</p>
             {products.map((p) => (
-              <button key={p.id} onClick={() => go(p.id === 'deckrail' ? 'deckrail' : 'products')} className="w-full text-left px-3 py-2 rounded-md hover:bg-slate-50 text-sm">
+              <button key={p.id} onClick={() => go('products')} className="w-full text-left px-3 py-2 rounded-md hover:bg-slate-50 text-sm">
                 {p.title}
               </button>
             ))}

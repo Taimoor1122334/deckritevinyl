@@ -14,12 +14,12 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mb-10">
           <p className="text-xs font-bold uppercase tracking-[0.16em] text-rose">Products</p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mt-2">500 Series, 600 Series &amp; DeckRail</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mt-2">500 Series, 600 Series &amp; Accessories</h2>
           <p className="text-slate-600 mt-2">
             DeckRite is a three-ply laminated membrane: a printed, embossed vinyl wear layer, a polyester fabric core, and a vinyl bonding layer. Rolls are 68 inches wide by 90 feet long.
           </p>
         </div>
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {DECKRITE_PRODUCTS.map((product) => (
             <article key={product.id} className="rounded-xl border border-slate-200 overflow-hidden bg-white">
               <img src={product.image} alt={product.title} className="w-full h-44 object-cover" />

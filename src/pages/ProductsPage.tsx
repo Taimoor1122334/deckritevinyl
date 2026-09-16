@@ -78,8 +78,8 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
             >
               Download brochure <ExternalLink className="w-4 h-4" />
             </a>
-            <button onClick={() => onNavigate('deckrail')} className="inline-flex items-center gap-2 px-5 py-3 rounded-md border border-slate-300 font-semibold text-sm">
-              DeckRail Infinity Glass
+            <button onClick={() => onNavigate('resources')} className="inline-flex items-center gap-2 px-5 py-3 rounded-md border border-slate-300 font-semibold text-sm hover:border-navy">
+              Architectural &amp; Detail Drawings
             </button>
           </div>
 

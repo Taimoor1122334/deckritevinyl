@@ -28,7 +28,7 @@ export const WhyDeckRite: React.FC = () => {
           <p className="text-xs font-bold uppercase tracking-[0.16em] text-teal">Why DeckRite</p>
           <h2 className="text-2xl sm:text-3xl font-bold mt-2">A system that can&apos;t be beat</h2>
           <p className="text-white/80 mt-3 leading-relaxed">
-            Traditional balcony waterproofing requires a roof membrane plus a separate walking surface. DeckRite does both. The membrane has a proven track record of over 20 years of exposure in some of the harshest climates in North America.
+            Traditional balcony waterproofing requires a roof membrane plus a separate walking surface. DeckRite does both. The membrane has a proven track record since the 1970's in some of the harshest climates in North America.
           </p>
         </div>
         <div className="grid sm:grid-cols-2 gap-6">

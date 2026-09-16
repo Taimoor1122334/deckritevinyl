@@ -31,7 +31,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
   };
 
   const isActive = (id: string) => {
-    if (id === 'products') return ['products', 'deckrail'].includes(currentPage);
+    if (id === 'products') return currentPage === 'products';
     if (id === 'resources') return ['resources', 'estimator', 'why-deckrite'].includes(currentPage);
     if (id === 'contact') return ['contact', 'about', 'dealers'].includes(currentPage);
     if (id === 'colors') return currentPage === 'colors' || currentPage === 'visualizer';

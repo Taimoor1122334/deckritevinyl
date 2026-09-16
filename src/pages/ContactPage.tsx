@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Breadcrumb } from '../components/Breadcrumb';
 import { DealerLocator } from '../components/DealerLocator';
-import { Mail, MapPin, Phone } from 'lucide-react';
+import { FAQ_ITEMS } from '../data/deckData';
+import { Mail, MapPin, Phone, ChevronDown, HelpCircle } from 'lucide-react';
 
 interface ContactPageProps {
   onNavigate: (page: string) => void;
@@ -9,6 +10,7 @@ interface ContactPageProps {
 
 export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
   const [submitted, setSubmitted] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   return (
     <div className="min-h-screen bg-white">
@@ -25,11 +27,14 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
       <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12">
           <div className="space-y-5 text-slate-600 leading-relaxed">
+            <div>
+              <h2 id="about" className="text-xl font-bold text-slate-900 mb-2">About DeckRite</h2>
+              <p>
+                DeckRite L.L.C. is a manufacturer of vinyl films and membranes — not an installation contractor. We are headquartered in North Little Rock, Arkansas. We serve the construction, marine, and RV industries. We refer customers to stocking distributors and installing contractors in their area.
+              </p>
+            </div>
             <p>
-              DeckRite L.L.C. is a manufacturer of vinyl films and membranes — not an installation contractor. We are headquartered in North Little Rock, Arkansas, as part of the Little Rock Holdings group of companies serving the construction, hot tub, marine, and swimming pool industries. We refer customers to stocking distributors and installing contractors in their area.
-            </p>
-            <p>
-              DeckRite L.L.C. has been supplying decking membrane to the North American construction industry since the late 1970s. Originating in Western Canada, the deck membrane industry has flourished in Canada and in various parts of the United States. Today, over 20 million square feet of product has protected decks, patios, balconies, and exterior walkways around North America.
+              DeckRite L.L.C. has been supplying decking membrane to the North American construction industry since the 1970's. Originating in Western Canada, the deck membrane industry has flourished in Canada and in various parts of the United States. Today, over 20 million square feet of product has protected decks, patios, balconies, and exterior walkways around North America.
             </p>
             <div className="rounded-xl bg-sand border border-slate-200 p-6 space-y-3 text-slate-800">
               <p className="flex items-start gap-2">
@@ -80,6 +85,65 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                 </button>
               </form>
             )}
+          </div>
+        </div>
+      </section>
+
+      {/* FREQUENTLY ASKED QUESTIONS (FAQS) */}
+      <section id="contact-faqs" className="py-14 bg-slate-50/70 border-t border-b border-slate-200">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose/10 text-rose text-xs font-bold tracking-wide mb-2">
+              <HelpCircle className="w-3.5 h-3.5" />
+              <span>Contractor &amp; Homeowner Inquiries</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-slate-600 text-sm mt-2 max-w-2xl mx-auto">
+              Answers to common questions regarding slip resistance, waterproofing over living spaces, installation over concrete, and distributor referrals.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            {FAQ_ITEMS.map((item, i) => (
+              <div
+                key={item.question}
+                className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm transition-colors hover:border-navy"
+              >
+                <button
+                  type="button"
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left font-semibold text-slate-900 text-sm hover:bg-slate-50 cursor-pointer"
+                >
+                  <span>{item.question}</span>
+                  <ChevronDown
+                    className={`w-4 h-4 text-slate-400 shrink-0 transition-transform duration-200 ${
+                      openFaq === i ? 'rotate-180 text-navy' : ''
+                    }`}
+                  />
+                </button>
+                {openFaq === i && (
+                  <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100">
+                    {item.answer}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 p-5 rounded-xl bg-white border border-slate-200 text-center">
+            <p className="text-sm text-slate-600">
+              Have a question not answered here? Call our technical and sales department directly at{' '}
+              <a href="tel:18884503325" className="font-bold text-navy hover:underline">
+                (888) 450-DECK (3325)
+              </a>{' '}
+              or email{' '}
+              <a href="mailto:DeckRitesupport@deckrite.com" className="font-bold text-navy hover:underline">
+                DeckRitesupport@deckrite.com
+              </a>
+              .
+            </p>
           </div>
         </div>
       </section>
