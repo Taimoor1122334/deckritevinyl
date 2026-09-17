@@ -22,8 +22,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* <section className="bg-sand/60 py-10 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-6">
-            {/* Homeowners / Property Owners */}
-            {/* <div className="bg-white p-6 sm:p-7 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+            Homeowners / Property Owners
+            <div className="bg-white p-6 sm:p-7 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
               <div>
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-800 text-xs font-bold mb-3">
                   <Home className="w-3.5 h-3.5 text-navy" />
@@ -48,10 +48,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   View Deck Photos
                 </button>
               </div>
-            </div> */}
+            </div>
 
-            {/* Contractors, Builders & Architects */}
-            {/* <div className="bg-white p-6 sm:p-7 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+            Contractors, Builders & Architects
+            <div className="bg-white p-6 sm:p-7 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
               <div>
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-800 text-xs font-bold mb-3">
                   <Building2 className="w-3.5 h-3.5 text-rose" />
@@ -76,12 +76,12 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   50 &amp; 60 mil Series Specs
                 </button>
               </div>
-            </div> */}
-          {/* </div>
+            </div>
+          </div>
         </div>
-      </section> */} 
+      </section>  */}
 
-      {/* 3. Core Product & Overview: A Waterproof Walking Surface */}
+       {/* 3. Core Product & Overview: A Waterproof Walking Surface */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-7 space-y-4">
