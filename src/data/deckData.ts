@@ -975,6 +975,58 @@ export const DETAIL_DRAWINGS: DetailDrawing[] = [
   },
 ];
 
+export const WHY_DECKRITE_BENEFITS = [
+  {
+    title: 'Waterproof and walkable',
+    copy: 'One surface waterproofs the structure and becomes the finished walking deck — ideal over living space or dry storage.',
+  },
+  {
+    title: 'True 3-ply construction',
+    copy: 'A heavy-duty polyester fabric is encapsulated between two vinyl films for dimensional stability, puncture strength, and tear resistance.',
+  },
+  {
+    title: 'Low annual maintenance',
+    copy: 'Forget power washing, sanding, and resealing every year. No slivers, exposed nails, or rotting wood underfoot.',
+  },
+  {
+    title: 'ADA slip resistance',
+    copy: 'Engineered and tested as a slip-resistant surface. Use caution when snow, ice, or frost is present.',
+  },
+] as const;
+
+export const WHY_DECKRITE_APPLICATIONS = [
+  'Second-story walkout balconies over living space',
+  'Residential sundecks, patios, and covered porches',
+  'Apartment, condominium, hotel, and retirement community walkways',
+  'Lakefront docks, boathouses, and exterior stairs',
+  'Rooftop patios and multi-level decks with dry storage below',
+] as const;
+
+export const WHY_DECKRITE_INTRO = {
+  lead: 'Traditional balcony waterproofing requires a roof membrane plus a separate walking surface. DeckRite does both with a proven track record since the 1970\'s in some of the harshest climates in North America.',
+  paragraphs: [
+    'DeckRite\'s waterproof exterior vinyl is a popular alternative to high-maintenance wood decks and concrete patios. The system installs over existing or new decks and is a cost-efficient option for exterior walkways, balconies, docks, and sun porches.',
+    'With DeckRite you can forget about power washing, sanding, and resealing your deck every year. No more slivers, exposed nails, or rotting wood. The product is slip resistant, mildew resistant, and waterproof.',
+    'DeckRite is a popular choice for second-story walkout balconies that require a waterproof installation yet can be walked on. Traditional methods require building a deck or installing carpet on a waterproofing membrane. With DeckRite, one surface provides the waterproofing and the walking surface.',
+    'Although designed for the residential market, DeckRite is a preferred choice on commercial properties including apartment complexes, condominiums, retirement communities, and hotels. Over 20 million square feet of product has protected decks, patios, balconies, and exterior walkways across North America.',
+  ],
+  comparisonIntro:
+    'Many projects stack a waterproof membrane under a separate finish floor. DeckRite combines waterproofing and the walking surface in one laminated vinyl system.',
+  traditionalPainPoints: [
+    'Separate roof membrane plus deck boards, carpet, or coating',
+    'Annual staining, sealing, sanding, or power washing on wood',
+    'Splinters, exposed fasteners, and rot on traditional wood decks',
+    'More layers, more trades, and more maintenance over time',
+  ],
+  deckRiteAdvantages: [
+    '100% waterproof walking surface in one 3-ply membrane',
+    '50 mil and 60 mil options for residential and heavy-duty use',
+    'Slip-resistant surface tested to meet ADA requirements on a flat surface',
+    'Hot-air welded seams for a monolithic waterproof field',
+    'Manufacturer limited warranty with professional installation',
+  ],
+} as const;
+
 export const FAQ_ITEMS: FaqItem[] = [
   {
     question: 'Is the DeckRite covering slippery when it is wet?',

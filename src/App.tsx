@@ -17,6 +17,7 @@ import { GalleryPage } from './pages/GalleryPage';
 import { ResourcesPage } from './pages/ResourcesPage';
 import { EstimatorPage } from './pages/EstimatorPage';
 import { ContactPage } from './pages/ContactPage';
+import { WhyDeckRitePage } from './pages/WhyDeckRitePage';
 
 const PAGES = [
   'home',
@@ -45,7 +46,6 @@ export default function App() {
       if (hash && PAGES.includes(hash)) {
         if (hash === 'visualizer') setCurrentPage('colors');
         else if (hash === 'faq') setCurrentPage('contact');
-        else if (hash === 'why-deckrite') setCurrentPage('resources');
         else if (hash === 'about' || hash === 'dealers' || hash === 'sister-brands') setCurrentPage('contact');
         else setCurrentPage(hash);
       } else if (rawHash === 'techdata' || rawHash === 'tech-data' || rawHash === 'technical-data' || rawHash === 'corners') {
@@ -74,7 +74,7 @@ export default function App() {
     let target = pageId.toLowerCase();
     if (target === 'deckrail') target = 'products';
     if (target === 'calculator') target = 'estimator';
-    if (target === 'specs' || target === 'codes' || target === 'faq' || target === 'why-deckrite') target = 'resources';
+    if (target === 'specs' || target === 'codes' || target === 'faq') target = 'resources';
     if (target === 'visualizer') target = 'colors';
     if (target === 'about' || target === 'dealers' || target === 'sister-brands') target = 'contact';
     setCurrentPage(target);
@@ -89,6 +89,7 @@ export default function App() {
 
       <main className="flex-1">
         {currentPage === 'home' && <HomePage onNavigate={handleNavigate} />}
+        {currentPage === 'why-deckrite' && <WhyDeckRitePage onNavigate={handleNavigate} />}
         {currentPage === 'products' && <ProductsPage onNavigate={handleNavigate} />}
         {currentPage === 'colors' && <VisualizerPage onNavigate={handleNavigate} />}
         {currentPage === 'gallery' && <GalleryPage onNavigate={handleNavigate} />}

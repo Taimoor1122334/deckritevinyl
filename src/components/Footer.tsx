@@ -80,7 +80,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           <div className="grid grid-cols-1 gap-1.5 text-sm">
             <button onClick={() => onNavigate('products')} className="text-left hover:text-navy">Products</button>
             <button onClick={() => onNavigate('colors')} className="text-left hover:text-navy">Colors</button>
-            <button onClick={() => onNavigate('gallery')} className="text-left hover:text-navy">Gallery</button>
+            <button onClick={() => onNavigate('gallery')} className="text-left hover:text-navy">Inspiration</button>
+            <button onClick={() => onNavigate('why-deckrite')} className="text-left hover:text-navy">Why DeckRite</button>
             <button onClick={() => onNavigate('resources')} className="text-left hover:text-navy">Resources &amp; Tech Data</button>
             <button onClick={() => onNavigate('contact')} className="text-left hover:text-navy">Contact &amp; FAQs</button>
           </div>

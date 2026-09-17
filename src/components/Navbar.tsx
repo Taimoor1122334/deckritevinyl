@@ -10,7 +10,8 @@ const NAV = [
   { id: 'home', label: 'Home' },
   { id: 'products', label: 'Products' },
   { id: 'colors', label: 'Colors' },
-  { id: 'gallery', label: 'Gallery' },
+  { id: 'gallery', label: 'Inspiration' },
+  { id: 'why-deckrite', label: 'Why DeckRite' },
   { id: 'resources', label: 'Resources' },
   { id: 'contact', label: 'Contact' },
 ];
@@ -21,6 +22,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 8);
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -32,7 +34,8 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
 
   const isActive = (id: string) => {
     if (id === 'products') return currentPage === 'products';
-    if (id === 'resources') return ['resources', 'estimator', 'why-deckrite'].includes(currentPage);
+    if (id === 'why-deckrite') return currentPage === 'why-deckrite';
+    if (id === 'resources') return ['resources', 'estimator'].includes(currentPage);
     if (id === 'contact') return ['contact', 'about', 'dealers'].includes(currentPage);
     if (id === 'colors') return currentPage === 'colors' || currentPage === 'visualizer';
     return currentPage === id;
@@ -46,9 +49,19 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-[72px] gap-6">
+        <div
+          className={`flex items-center justify-between gap-6 transition-[height] duration-300 ease-out ${
+            isScrolled ? 'h-[68px]' : 'h-[80px]'
+          }`}
+        >
           <button id="nav-logo-btn" onClick={() => go('home')} className="shrink-0" aria-label="DeckRite home">
-            <img src="/brand/deckrite-logo.png" alt="DeckRite" className="h-10 w-auto" />
+            <img
+              src="/brand/deckrite-logo.png"
+              alt="DeckRite"
+              className={`w-auto transition-[height] duration-300 ease-out ${
+                isScrolled ? 'h-10 sm:h-11' : 'h-14 sm:h-16'
+              }`}
+            />
           </button>
 
           <div className="hidden md:flex items-center gap-1">

@@ -1,8 +1,7 @@
 import React from 'react';
 import { Hero } from '../components/Hero';
 import { ColorSwatchGrid } from '../components/ColorSwatchGrid';
-import { WhyDeckRite } from '../components/WhyDeckRite';
-import { ArrowRight, FileSpreadsheet, Home, Building2, ExternalLink } from 'lucide-react';
+import { ArrowRight, FileSpreadsheet, Home, Building2 } from 'lucide-react';
 
 interface HomePageProps {
   onNavigate: (page: string) => void;
@@ -143,8 +142,25 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* 5. Proven Value Proposition: Why DeckRite */}
-      <WhyDeckRite />
+      {/* 5. Teaser → dedicated Why DeckRite page */}
+      <section className="py-12 bg-navy text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div className="max-w-2xl">
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-teal">Why DeckRite</p>
+            <h2 className="text-2xl sm:text-3xl font-bold mt-2">Waterproofing and walking surface in one system</h2>
+            <p className="text-white/80 mt-3 text-sm leading-relaxed">
+              See how DeckRite compares to traditional membranes plus finish flooring — benefits, applications, and performance since the 1970&apos;s.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => onNavigate('why-deckrite')}
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-white text-navy font-semibold text-sm hover:bg-sand shrink-0"
+          >
+            Why DeckRite <ArrowRight className="w-4 h-4" />
+          </button>
+        </div>
+      </section>
 
       {/* 6. Simple Bottom Banner: Where to Buy / Distributor Referral */}
       <section className="py-10 bg-slate-50 border-t border-slate-200">
