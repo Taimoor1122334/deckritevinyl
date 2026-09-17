@@ -26,13 +26,13 @@ export const Hero: React.FC<HeroProps> = ({
                 <span>North Little Rock, AR • Since the 1970's</span>
               </div>
               
-              <div className="pt-1">
+              {/* <div className="pt-1">
                 <img
                   src="/brand/deckrite-logo.png"
                   alt="DeckRite"
                   className="h-12 sm:h-14 w-auto object-contain"
                 />
-              </div>
+              </div> */}
 
               <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight">
                 Waterproof Exterior Vinyl Decking
