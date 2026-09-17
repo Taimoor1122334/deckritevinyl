@@ -28,6 +28,18 @@ export const WhyDeckRitePage: React.FC<WhyDeckRitePageProps> = ({ onNavigate }) 
               <p className="text-xs font-bold uppercase tracking-[0.16em] text-teal">Why DeckRite</p>
               <h1 className="text-3xl sm:text-4xl font-bold mt-2">A system that can&apos;t be beat</h1>
               <p className="text-white/80 mt-4 leading-relaxed">{WHY_DECKRITE_INTRO.lead}</p>
+              {overviewVideo && (
+                <a
+                  href={`https://www.youtube.com/watch?v=${overviewVideo.youtubeId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-flex items-center gap-2 rounded-lg bg-white px-5 py-3 text-sm font-bold text-navy transition-colors hover:bg-sand"
+                  aria-label="Watch the Why Choose DeckRite video on YouTube"
+                >
+                  <PlayCircle className="h-5 w-5 text-rose" />
+                  Watch Video
+                </a>
+              )}
             </div>
             <div className="rounded-2xl overflow-hidden border border-white/15 shadow-xl">
               <img

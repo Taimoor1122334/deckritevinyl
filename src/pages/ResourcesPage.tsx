@@ -38,49 +38,106 @@ export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate }) => {
     }
   };
 
+  const resourceLinks = [
+    {
+      label: 'CAD Drawings',
+      description: 'Installation and flashing details',
+      target: 'section-drawings',
+      icon: Compass,
+    },
+    {
+      label: 'Corner Photos',
+      description: 'Step-by-step field guides',
+      target: 'section-corners',
+      icon: Camera,
+    },
+    {
+      label: 'Data Sheets',
+      description: 'Product technical data',
+      target: 'section-tds',
+      icon: FileSpreadsheet,
+    },
+    {
+      label: 'Documents & Specs',
+      description: 'Specifications and downloads',
+      target: 'section-docs',
+      icon: FolderArchive,
+    },
+    {
+      label: 'Technical Bulletins',
+      description: 'Important product guidance',
+      target: 'section-bulletin',
+      icon: FileText,
+    },
+    {
+      label: 'Physical Properties',
+      description: 'Test methods and results',
+      target: 'section-properties',
+      icon: Layers,
+    },
+  ];
+
   return (
     <div id="resources-page" className="min-h-screen bg-white">
       <Breadcrumb items={[{ label: 'Resources & Technical Data' }]} onNavigate={onNavigate} />
 
-      {/* Hero Header matching site aesthetic */}
-      <section className="bg-navy text-white py-12">
+      <section className="relative overflow-hidden bg-navy text-white pt-14 pb-20">
+        <div className="absolute -right-28 -top-28 h-80 w-80 rounded-full bg-teal/10" />
+        <div className="absolute right-28 bottom-0 h-36 w-36 rounded-full bg-white/5" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-teal">
-              Technical Documentation &amp; Submittals
-            </p>
-            <h1 className="text-3xl sm:text-4xl font-bold mt-2">
-              Resources &amp; Technical Data
-            </h1>
-            <p className="text-white/80 mt-3 leading-relaxed">
-              Official DeckRite CAD detail drawings, step-by-step corner installation photos, downloadable architectural specifications, technical data sheets, and bulletins.
-            </p>
+          <div className="relative grid lg:grid-cols-12 gap-10 items-center">
+            <div className="lg:col-span-8 max-w-3xl">
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-teal">
+                Technical Documentation &amp; Submittals
+              </p>
+              <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight mt-3">
+                Build with confidence
+              </h1>
+              <p className="text-lg sm:text-xl font-semibold text-white mt-2">
+                Resources &amp; Technical Data
+              </p>
+              <p className="text-white/75 mt-4 leading-relaxed max-w-2xl">
+                Access official installation details, architectural specifications, product data,
+                technical bulletins, and field-ready photo guides in one organized library.
+              </p>
+            </div>
+            <div className="lg:col-span-4">
+              <div className="rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur-sm">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-teal/15 text-teal">
+                  <FileText className="h-5 w-5" />
+                </div>
+                <p className="mt-5 text-lg font-bold">Professional documentation</p>
+                <p className="mt-2 text-sm leading-relaxed text-white/70">
+                  Find the information needed to specify, plan, and install a complete DeckRite system.
+                </p>
+              </div>
+            </div>
           </div>
+        </div>
+      </section>
 
-          {/* Quick-Access Section Navigation matching site button style */}
-          <div className="mt-8 flex flex-wrap gap-2 sm:gap-3">
-            {[
-              { label: 'CAD Drawings', target: 'section-drawings', count: DETAIL_DRAWINGS.length },
-              { label: 'Corner Photos', target: 'section-corners', count: CORNER_PHOTO_GUIDES.length },
-              { label: 'Data Sheets (TDS)', target: 'section-tds', count: TECHNICAL_DATA_SHEETS.length },
-              { label: 'Documents & Specs', target: 'section-docs', count: RESOURCE_DOCUMENTS.length },
-              { label: 'Technical Bulletins', target: 'section-bulletin', count: TECHNICAL_BULLETINS.length },
-              { label: 'Physical Properties', target: 'section-properties' },
-            ].map((btn) => (
+      <section className="bg-slate-50 border-b border-slate-200">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 pb-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {resourceLinks.map((item) => {
+              const Icon = item.icon;
+              return (
               <button
-                key={btn.label}
+                key={item.label}
                 type="button"
-                onClick={() => scrollToSection(btn.target)}
-                className="px-4 py-2 rounded-md text-sm font-semibold bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer inline-flex items-center gap-2"
+                onClick={() => scrollToSection(item.target)}
+                className="group flex items-center gap-4 rounded-xl border border-slate-200 bg-white p-4 text-left shadow-sm transition-all hover:-translate-y-0.5 hover:border-navy hover:shadow-md"
               >
-                <span>{btn.label}</span>
-                {btn.count !== undefined && (
-                  <span className="px-1.5 py-0.5 rounded text-[11px] bg-white/15 text-white/90 font-mono">
-                    {btn.count}
-                  </span>
-                )}
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-navy/5 text-navy transition-colors group-hover:bg-navy group-hover:text-white">
+                  <Icon className="h-5 w-5" />
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="block text-sm font-bold text-slate-900">{item.label}</span>
+                  <span className="block text-xs text-slate-500 mt-0.5">{item.description}</span>
+                </span>
               </button>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

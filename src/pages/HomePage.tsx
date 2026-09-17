@@ -112,8 +112,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           </div>
           <div className="lg:col-span-5">
             <img
-              src="/brand/lifestyle.jpg"
-              alt="Finished DeckRite deck with outdoor furniture"
+              src="/brand/lifestyle-vinyl-deck.jpeg"
+              alt="Finished DeckRite Dove Grey vinyl deck with outdoor table"
               className="w-full h-auto aspect-[4/3] object-cover rounded-2xl border border-slate-200 shadow-md"
             />
           </div>

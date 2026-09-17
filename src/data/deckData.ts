@@ -133,7 +133,7 @@ export const DECKRITE_PRODUCTS: ProductItem[] = [
       'Polyester core for dimensional stability, puncture strength, and tear resistance',
       'No annual sanding, staining, or sealing',
     ],
-    image: '/brand/lifestyle.jpg',
+    image: '/brand/product-600-vinyl-deck.jpeg',
   },
   {
     id: 'deckrite-500',
