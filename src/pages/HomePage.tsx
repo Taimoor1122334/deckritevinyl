@@ -114,11 +114,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           <div className="lg:col-span-5">
             <img
               src="/brand/lifestyle.jpg"
-<<<<<<< HEAD
-              alt="Outdoor patio with dining furniture at a brick home"
-=======
               alt="Finished DeckRite deck with outdoor furniture"
->>>>>>> 05c0d2f10e046a41509d46bde6cfef2e848fcd7e
               className="w-full h-auto aspect-[4/3] object-cover rounded-2xl border border-slate-200 shadow-md"
             />
           </div>
