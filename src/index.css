@@ -29,6 +29,11 @@
   }
 }
 
+.script-accent {
+  font-family: "Dancing Script", var(--font-sans);
+  font-weight: 600;
+}
+
 .brand-gradient {
   background: linear-gradient(90deg, #053975 0%, #623861 50%, #c3364c 100%);
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Hero } from '../components/Hero';
-import { ColorSwatchGrid } from '../components/ColorSwatchGrid';
+import { ValueProposition } from '../components/ValueProposition';
+import { ColorStrip } from '../components/ColorStrip';
 import { ArrowRight, FileSpreadsheet, Home, Building2 } from 'lucide-react';
 
 interface HomePageProps {
@@ -10,12 +11,14 @@ interface HomePageProps {
 export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   return (
     <div id="home-page">
-      {/* 1. Hero with clear branding, client copy & primary actions */}
-      <Hero
-        onExploreVisualizer={() => onNavigate('colors')}
-        onFindDealer={() => onNavigate('contact')}
-        onExploreProducts={() => onNavigate('products')}
-      />
+      {/* 1. Hero (~70%): photography, headline, key benefits & primary actions */}
+      <Hero onFindDealer={() => onNavigate('contact')} onExploreProducts={() => onNavigate('products')} />
+
+      {/* 2. Supporting value proposition (~30%) */}
+      <ValueProposition onWhyDeckRite={() => onNavigate('why-deckrite')} />
+
+      {/* 3. Colors */}
+      <ColorStrip onViewAllColors={() => onNavigate('colors')} />
 
       {/* 2. Weatherdek-inspired Dual-Audience Pathway: Homeowners vs. Contractors/Architects */}
       {/* <section className="bg-sand/60 py-10 border-b border-slate-200">
@@ -80,7 +83,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         </div>
       </section>  */}
 
-       {/* 3. Core Product & Overview: A Waterproof Walking Surface */}
+       {/* 4. Core Product & Overview: A Waterproof Walking Surface */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-7 space-y-4">
@@ -112,57 +115,15 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           </div>
           <div className="lg:col-span-5">
             <img
-              src="/brand/lifestyle-vinyl-deck.jpeg"
-              alt="Finished DeckRite Dove Grey vinyl deck with outdoor table"
+              src="/brand/product-600-vinyl-deck.jpeg"
+              alt="DeckRite membrane installed with a waterproof wall turn-up at the deck perimeter"
               className="w-full h-auto aspect-[4/3] object-cover rounded-2xl border border-slate-200 shadow-md"
             />
           </div>
         </div>
       </section>
 
-      {/* 4. Swatch & Color Selector (Clean, user-friendly interactive grid) */}
-      <section className="py-12 bg-sand/40 border-y border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-wider text-rose">Available Colors</p>
-              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mt-1">Click a color for a close-up</h2>
-              <p className="text-slate-600 text-sm mt-1">
-                Tap any swatch to view the embossed texture, thickness availability, and coordinate pairings.
-              </p>
-            </div>
-            <button
-              onClick={() => onNavigate('colors')}
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-navy hover:underline shrink-0"
-            >
-              Side-by-side color comparison →
-            </button>
-          </div>
-          <ColorSwatchGrid />
-        </div>
-      </section>
-
-      {/* 5. Teaser → dedicated Why DeckRite page */}
-      <section className="py-12 bg-navy text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div className="max-w-2xl">
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-teal">Why DeckRite</p>
-            <h2 className="text-2xl sm:text-3xl font-bold mt-2">Waterproofing and walking surface in one system</h2>
-            <p className="text-white/80 mt-3 text-sm leading-relaxed">
-              See how DeckRite compares to traditional membranes plus finish flooring — benefits, applications, and performance since the 1970&apos;s.
-            </p>
-          </div>
-          <button
-            type="button"
-            onClick={() => onNavigate('why-deckrite')}
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-white text-navy font-semibold text-sm hover:bg-sand shrink-0"
-          >
-            Why DeckRite <ArrowRight className="w-4 h-4" />
-          </button>
-        </div>
-      </section>
-
-      {/* 6. Simple Bottom Banner: Where to Buy / Distributor Referral */}
+      {/* 5. Simple Bottom Banner: Where to Buy / Distributor Referral */}
       <section className="py-10 bg-slate-50 border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>

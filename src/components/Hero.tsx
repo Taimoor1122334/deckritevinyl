@@ -1,127 +1,101 @@
 import React from 'react';
-import { ArrowRight, MapPin, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, MapPin, Droplets, Footprints, Wrench, Star, Map, Leaf } from 'lucide-react';
 
 interface HeroProps {
-  onExploreVisualizer: () => void;
-  onFindDealer: () => void;
   onExploreProducts: () => void;
+  onFindDealer: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({
-  onExploreVisualizer,
-  onFindDealer,
-  onExploreProducts,
-}) => {
-  return (
-    <section id="hero" className="bg-white">
-      {/* Main Hero Container */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 lg:pt-12 lg:pb-16">
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-          {/* Left Column: Business Brand, Headline, Client Copy & Actions */}
-          <div className="lg:col-span-6 space-y-6">
-            <div className="space-y-2">
-              <h1 className="font-extrabold tracking-tight text-slate-900 leading-tight">
-                <span className="block text-[1.75rem] sm:text-4xl text-navy">Waterproof Your Deck</span>
-                <span className="block text-3xl sm:text-[2.75rem] lg:text-5xl mt-1.5">Protect What&apos;s Below</span>
-              </h1>
-            </div>
+const HERO_FEATURES = [
+  { icon: Droplets, label: '100% Waterproof' },
+  { icon: Footprints, label: 'Slip Resistant' },
+  { icon: Wrench, label: 'Low Maintenance', note: 'No annual staining or sealing' },
+];
 
-            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-              DeckRite&apos;s waterproof exterior vinyl creates a durable, attractive walking surface while providing a complete waterproof membrane for decks, balconies, porches, and more.
+const TRUST_STATS = [
+  { icon: Star, value: "Since the 1970's", caption: 'Proven performance' },
+  { icon: Map, value: '20M+ Sq. Ft.', caption: 'Installed across North America' },
+  { icon: Droplets, value: '100% Waterproof', caption: 'Protection + walking surface' },
+  { icon: Leaf, value: 'Low Maintenance', caption: 'No annual staining or sealing' },
+];
+
+export const Hero: React.FC<HeroProps> = ({ onExploreProducts, onFindDealer }) => {
+  return (
+    <section id="hero">
+      <div className="relative isolate flex min-h-[70vh] items-center overflow-hidden bg-sand">
+        <img
+          src="/brand/lifestyle-vinyl-deck.jpeg"
+          alt="Finished DeckRite Gray Storm waterproof vinyl deck overlooking a wooded backyard"
+          className="absolute inset-0 -z-10 h-full w-full object-cover object-center"
+        />
+        <div
+          className="absolute inset-0 -z-10 bg-gradient-to-b from-white/95 via-white/80 to-white/45 md:bg-gradient-to-r md:from-white md:from-25% md:via-white/85 md:via-55% md:to-transparent"
+          aria-hidden="true"
+        />
+
+        <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+          <div className="max-w-xl space-y-6">
+            <h1 className="text-[2rem] sm:text-4xl lg:text-[2.9rem] font-extrabold tracking-tight leading-[1.1] text-navy">
+              Waterproof Your Deck.
+              <br />
+              Protect What&apos;s Below.
+            </h1>
+
+            <p className="text-base sm:text-lg text-slate-700 leading-relaxed">
+              DeckRite&apos;s waterproof exterior vinyl creates a durable, attractive walking surface while providing a
+              complete waterproof membrane for decks, balconies, porches, and more.
             </p>
 
-            {/* Core Feature Checklist */}
-            <div className="grid sm:grid-cols-2 gap-3 pt-1 text-sm text-slate-700">
-              <div className="flex items-center gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-navy shrink-0" />
-                <span>Slip resistant — meets ADA standards</span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-navy shrink-0" />
-                <span>100% waterproof walking deck</span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-navy shrink-0" />
-                <span>Mildew resistant membrane</span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-navy shrink-0" />
-                <span>No annual staining or sealing</span>
-              </div>
+            <div className="flex gap-4 sm:gap-8 pt-1">
+              {HERO_FEATURES.map((feature) => (
+                <div key={feature.label} className="w-[6.5rem] text-center sm:w-32">
+                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-navy text-white shadow-sm sm:h-16 sm:w-16">
+                    <feature.icon className="h-6 w-6 sm:h-7 sm:w-7" strokeWidth={1.75} />
+                  </div>
+                  <p className="mt-2 text-sm font-bold leading-tight text-slate-900">{feature.label}</p>
+                  {feature.note && <p className="mt-0.5 text-[11px] leading-tight text-slate-600">{feature.note}</p>}
+                </div>
+              ))}
             </div>
 
-            {/* Primary Action Buttons */}
-            <div className="flex flex-wrap items-center gap-3 pt-2">
+            <div className="flex flex-wrap items-center gap-3 pt-1">
               <button
                 onClick={onExploreProducts}
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-lg bg-navy hover:bg-navy-dark text-white font-semibold text-sm shadow-sm transition-all"
+                className="inline-flex items-center gap-2 rounded-lg bg-navy px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-navy-dark"
               >
-                View DeckRite Products
-                <ArrowRight className="w-4 h-4" />
-              </button>
-              <button
-                onClick={onExploreVisualizer}
-                className="inline-flex items-center gap-2 px-5 py-3.5 rounded-lg border border-slate-300 hover:border-navy text-slate-800 font-semibold text-sm bg-white hover:bg-slate-50 transition-all"
-              >
-                View Colors
+                Explore DeckRite
+                <ArrowRight className="h-4 w-4" />
               </button>
               <button
                 onClick={onFindDealer}
-                className="inline-flex items-center gap-1.5 px-4 py-3.5 text-navy font-semibold text-sm hover:underline"
+                className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-5 py-3.5 text-sm font-semibold text-slate-800 transition-colors hover:border-navy hover:bg-slate-50"
               >
-                <MapPin className="w-4 h-4 text-rose" />
+                <MapPin className="h-4 w-4 text-navy" />
                 Find a Distributor
               </button>
             </div>
           </div>
-
-          {/* Right Column: Crisp, High-Resolution Architectural Photography (No Blur) */}
-          <div className="lg:col-span-6">
-            <div className="relative rounded-2xl overflow-hidden border border-slate-200 shadow-xl bg-slate-100">
-              <img
-                src="/brand/hero-vinyl-deck.jpeg"
-                alt="Finished DeckRite Dove Grey waterproof vinyl deck"
-                className="w-full h-auto aspect-[16/10] object-cover object-center"
-              />
-              <div className="p-5 bg-sand/70 border-t border-slate-200 flex items-center justify-between gap-4">
-                <div>
-                  <p className="text-sm font-bold text-slate-900">
-                    Dual Function: Waterproofing &amp; Walking Surface
-                  </p>
-                  <p className="text-xs text-slate-600 mt-0.5">
-                    A single 3-ply membrane serves as both roof-grade waterproofing and durable walking deck.
-                  </p>
-                </div>
-                <button
-                  onClick={onExploreVisualizer}
-                  className="shrink-0 text-xs font-bold text-navy hover:text-navy-dark hover:underline flex items-center gap-1"
-                >
-                  See colors →
-                </button>
-              </div>
-            </div>
-          </div>
         </div>
+
+        <p className="script-accent absolute bottom-7 right-8 hidden text-right text-3xl leading-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)] lg:block">
+          Beautiful Above,
+          <br />
+          Protected Below.
+        </p>
       </div>
 
-      {/* Trust & Specification Bar */}
       <div className="bg-navy text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-center">
-          <div className="space-y-1.5">
-            <div className="text-2xl sm:text-[1.65rem] font-bold leading-snug">Since the 1970&apos;s</div>
-            <div className="text-sm sm:text-base text-white/85">Proven performance</div>
-          </div>
-          <div className="space-y-1.5">
-            <div className="text-2xl sm:text-[1.65rem] font-bold leading-snug">20M+ Sq. Ft.</div>
-            <div className="text-sm sm:text-base text-white/85">Installed across North America</div>
-          </div>
-          <div className="space-y-1.5">
-            <div className="text-2xl sm:text-[1.65rem] font-bold leading-snug">100%</div>
-            <div className="text-sm sm:text-base text-white/85">Waterproof</div>
-          </div>
-          <div className="space-y-1.5">
-            <div className="text-2xl sm:text-[1.65rem] font-bold leading-snug">Low Maintenance</div>
-            <div className="text-sm sm:text-base text-white/85">No annual staining or sealing</div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 gap-y-5 py-6 lg:grid-cols-4 lg:gap-0 lg:divide-x lg:divide-white/15">
+            {TRUST_STATS.map((stat) => (
+              <div key={stat.value} className="flex items-center gap-3 lg:px-6 lg:first:pl-0 lg:last:pr-0">
+                <stat.icon className="h-7 w-7 shrink-0 text-white/80" strokeWidth={1.5} />
+                <div>
+                  <div className="text-sm font-bold leading-tight sm:text-base">{stat.value}</div>
+                  <div className="mt-0.5 text-[11px] leading-tight text-white/70 sm:text-xs">{stat.caption}</div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
