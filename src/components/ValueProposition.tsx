@@ -11,7 +11,7 @@ export const ValueProposition: React.FC<ValuePropositionProps> = ({ onWhyDeckRit
       <div className="lg:grid lg:grid-cols-2">
         <div className="relative h-60 sm:h-80 lg:h-auto lg:min-h-[19rem]">
           <img
-            src="/brand/hero-vinyl-deck.jpeg"
+            src="/brand/second-section-image.png"
             alt="DeckRite vinyl deck surface with outdoor furniture on a second-story deck"
             className="absolute inset-0 h-full w-full object-cover"
           />
@@ -36,7 +36,7 @@ export const ValueProposition: React.FC<ValuePropositionProps> = ({ onWhyDeckRit
             </p>
             <button
               onClick={onWhyDeckRite}
-              className="mt-6 inline-flex items-center gap-2 rounded-lg bg-white px-5 py-3 text-sm font-semibold text-navy transition-colors hover:bg-sand"
+              className="mt-6 inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-navy transition-colors hover:border-navy hover:bg-slate-50"
             >
               Why Choose DeckRite
               <ArrowRight className="h-4 w-4" />

@@ -115,8 +115,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           </div>
           <div className="lg:col-span-5">
             <img
-              src="/brand/product-600-vinyl-deck.jpeg"
-              alt="DeckRite membrane installed with a waterproof wall turn-up at the deck perimeter"
+              src="/brand/hero-vinyl-deck.jpeg"
+              alt="Covered outdoor living area protected by an elevated waterproof deck"
               className="w-full h-auto aspect-[4/3] object-cover rounded-2xl border border-slate-200 shadow-md"
             />
           </div>

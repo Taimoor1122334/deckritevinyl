@@ -24,12 +24,12 @@ export const Hero: React.FC<HeroProps> = ({ onExploreProducts, onFindDealer }) =
     <section id="hero">
       <div className="relative isolate flex min-h-[70vh] items-center overflow-hidden bg-sand">
         <img
-          src="/brand/lifestyle-vinyl-deck.jpeg"
-          alt="Finished DeckRite Gray Storm waterproof vinyl deck overlooking a wooded backyard"
+          src="/brand/hero-image.png"
+          alt="Elevated waterproof deck with a protected outdoor living area below"
           className="absolute inset-0 -z-10 h-full w-full object-cover object-center"
         />
         <div
-          className="absolute inset-0 -z-10 bg-gradient-to-b from-white/95 via-white/80 to-white/45 md:bg-gradient-to-r md:from-white md:from-25% md:via-white/85 md:via-55% md:to-transparent"
+          className="absolute inset-0 -z-10 bg-gradient-to-b from-white/50 via-white/55 to-white/60 md:bg-gradient-to-r md:from-white md:from-46% md:via-white/48 md:via-55% md:to-transparent"
           aria-hidden="true"
         />
 
@@ -77,7 +77,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreProducts, onFindDealer }) =
           </div>
         </div>
 
-        <p className="script-accent absolute bottom-7 right-8 hidden text-right text-3xl leading-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)] lg:block">
+        <p className="script-accent absolute bottom-16 rotate-[-16deg] right-26 hidden text-right text-3xl leading-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)] lg:block">
           Beautiful Above,
           <br />
           Protected Below.
