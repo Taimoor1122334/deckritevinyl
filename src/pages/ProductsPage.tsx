@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Breadcrumb } from '../components/Breadcrumb';
 import { ColorSwatchGrid } from '../components/ColorSwatchGrid';
+import { ColorVisualizer } from '../components/ColorVisualizer';
 import { DECKRITE_PRODUCTS } from '../data/deckData';
 import { ExternalLink } from 'lucide-react';
 
@@ -16,20 +17,20 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
 
   return (
     <div id="products-page" className="min-h-screen bg-white">
-      <Breadcrumb items={[{ label: 'Premium Flooring' }]} onNavigate={onNavigate} />
+      <Breadcrumb items={[{ label: 'Products' }]} onNavigate={onNavigate} />
       <section className="bg-navy text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-          <p className="text-xs font-bold uppercase tracking-[0.16em] text-teal">Product information</p>
-          <h1 className="text-3xl sm:text-4xl font-bold mt-2">Premium Flooring</h1>
-          <p className="text-white/80 mt-3 leading-relaxed">
-            DeckRite is a three-ply laminated membrane consisting of a heavy-duty polyester fabric encapsulated between two vinyl films. Finish thickness is 50 mils and 60 mils. The top film is color printed and embossed; the polyester core provides dimensional stability, puncture strength, and tear resistance; the bottom film is the bonding layer and allows two pieces to be molecularly fused during seaming.
-          </p>
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-teal">Product information</p>
+            <h1 className="text-3xl sm:text-4xl font-bold mt-2">Premium Flooring</h1>
+            <p className="text-white/80 mt-3 leading-relaxed">
+              DeckRite is a three-ply laminated membrane consisting of a heavy-duty polyester fabric encapsulated between two vinyl films. Finish thickness is 50 mils and 60 mils. The top film is color printed and embossed; the polyester core provides dimensional stability, puncture strength, and tear resistance; the bottom film is the bonding layer and allows two pieces to be molecularly fused during seaming.
+            </p>
           </div>
         </div>
       </section>
 
-      <section className="py-10">
+      <section id="product-series" className="scroll-mt-24 py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap gap-2 mb-8">
             {DECKRITE_PRODUCTS.map((product) => (
@@ -64,7 +65,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
               </button>
             ) : (
               <img
-                src={selected.image}  
+                src={selected.image}
                 alt="Outdoor patio with dining furniture at a brick home"
                 className="w-full h-72 object-cover rounded-xl border border-slate-200"
               />
@@ -83,24 +84,43 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
               </dl>
             </div>
           </div>
+        </div>
+      </section>
 
-          <h3 className="text-xl font-bold text-slate-900 mt-14 mb-2">Available colors</h3>
-          <p className="text-sm text-slate-600 mb-6">Click a color for a large close-up of the membrane texture, the same way the original DeckRite site shows samples.</p>
-          <ColorSwatchGrid />
+      <section id="product-colors" className="scroll-mt-24 py-12 border-t border-slate-200 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-rose">Colors</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mt-2">Available colors</h2>
+            <p className="text-slate-600 mt-2 leading-relaxed">
+              Standard colors are Sahara Tan, Slate Gray, Tropical Cream, Lakewood Marble, and Tuscany Sand; Harvest and
+              Riverstone are also offered. Click any color for a large close-up of the membrane texture. Because screens
+              vary, DeckRite will mail free material samples — send your mailing address from the Contact page.
+            </p>
+          </div>
+          <div className="mt-8">
+            <ColorSwatchGrid />
+          </div>
+        </div>
+      </section>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            <button onClick={() => onNavigate('contact')} className="inline-flex items-center gap-2 px-5 py-3 rounded-md bg-navy text-white font-semibold text-sm">
+      <ColorVisualizer />
+
+      <section className="py-12 border-t border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap gap-3">
+            <button onClick={() => onNavigate('contact')} className="inline-flex items-center gap-2 px-6 py-3.5 rounded-md bg-navy text-white font-bold text-base hover:bg-navy-dark transition-colors">
               Contact for a distributor
             </button>
             <a
               href="https://www.deckrite.com/assets/files/pdf/DR_Innovative_2023.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-md border border-slate-300 font-semibold text-sm"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-md border border-slate-300 font-bold text-base hover:border-navy transition-colors"
             >
               Download brochure <ExternalLink className="w-4 h-4" />
             </a>
-            <button onClick={() => onNavigate('resources')} className="inline-flex items-center gap-2 px-5 py-3 rounded-md border border-slate-300 font-semibold text-sm hover:border-navy">
+            <button onClick={() => onNavigate('resources')} className="inline-flex items-center gap-2 px-6 py-3.5 rounded-md border border-slate-300 font-bold text-base hover:border-navy transition-colors">
               Architectural &amp; Detail Drawings
             </button>
           </div>

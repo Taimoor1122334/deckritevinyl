@@ -12,7 +12,6 @@ import { FloatingActionDock } from './components/FloatingActionDock';
 
 import { HomePage } from './pages/HomePage';
 import { ProductsPage } from './pages/ProductsPage';
-import { VisualizerPage } from './pages/VisualizerPage';
 import { GalleryPage } from './pages/GalleryPage';
 import { ResourcesPage } from './pages/ResourcesPage';
 import { EstimatorPage } from './pages/EstimatorPage';
@@ -35,16 +34,26 @@ const PAGES = [
   'about',
 ];
 
+/** Colors live on the products page, so these routes deep-link to a section instead of a page. */
+const COLOR_SECTION_ROUTES: Record<string, string> = {
+  colors: 'product-colors',
+  visualizer: 'visualizer',
+};
+
 export default function App() {
   const [currentPage, setCurrentPage] = useState<string>('home');
   const [searchModalOpen, setSearchModalOpen] = useState(false);
+  const [pendingSection, setPendingSection] = useState<string | null>(null);
 
   useEffect(() => {
     const handleHashChange = () => {
       const rawHash = window.location.hash.replace('#', '').toLowerCase();
       const hash = rawHash === 'deckrail' ? 'products' : rawHash;
       if (hash && PAGES.includes(hash)) {
-        if (hash === 'visualizer') setCurrentPage('colors');
+        if (COLOR_SECTION_ROUTES[hash]) {
+          setCurrentPage('products');
+          setPendingSection(COLOR_SECTION_ROUTES[hash]);
+        }
         else if (hash === 'faq') setCurrentPage('contact');
         else if (hash === 'about' || hash === 'dealers' || hash === 'sister-brands') setCurrentPage('contact');
         else setCurrentPage(hash);
@@ -70,16 +79,45 @@ export default function App() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  const handleNavigate = (pageId: string) => {
+  useEffect(() => {
+    if (!pendingSection) return;
+    const sectionId = pendingSection;
+    let attempts = 0;
+    let frame = 0;
+
+    const tryScroll = () => {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        setPendingSection(null);
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return;
+      }
+      attempts += 1;
+      if (attempts < 20) frame = requestAnimationFrame(tryScroll);
+      else setPendingSection(null);
+    };
+
+    frame = requestAnimationFrame(tryScroll);
+    return () => cancelAnimationFrame(frame);
+  }, [pendingSection, currentPage]);
+
+  const handleNavigate = (pageId: string, sectionId?: string) => {
     let target = pageId.toLowerCase();
     if (target === 'deckrail') target = 'products';
     if (target === 'calculator') target = 'estimator';
     if (target === 'specs' || target === 'codes' || target === 'faq') target = 'resources';
-    if (target === 'visualizer') target = 'colors';
     if (target === 'about' || target === 'dealers' || target === 'sister-brands') target = 'contact';
+
+    const colorSection = COLOR_SECTION_ROUTES[target];
+    if (colorSection) {
+      target = 'products';
+      sectionId = colorSection;
+    }
+
     setCurrentPage(target);
     window.location.hash = target === 'home' ? '' : target;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (sectionId) setPendingSection(sectionId);
+    else window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -91,7 +129,6 @@ export default function App() {
         {currentPage === 'home' && <HomePage onNavigate={handleNavigate} />}
         {currentPage === 'why-deckrite' && <WhyDeckRitePage onNavigate={handleNavigate} />}
         {currentPage === 'products' && <ProductsPage onNavigate={handleNavigate} />}
-        {currentPage === 'colors' && <VisualizerPage onNavigate={handleNavigate} />}
         {currentPage === 'gallery' && <GalleryPage onNavigate={handleNavigate} />}
         {currentPage === 'resources' && <ResourcesPage onNavigate={handleNavigate} />}
         {currentPage === 'estimator' && <EstimatorPage onNavigate={handleNavigate} />}

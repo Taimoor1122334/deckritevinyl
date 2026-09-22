@@ -18,7 +18,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreProducts, onFindDealer }) =
     <section id="hero">
       <div className="relative isolate flex min-h-[78vh] items-end overflow-hidden bg-navy-dark">
         <img
-          src="/brand/hero-waterfront-deck.jpg"
+          src="/brand/hero-image.png"
           alt="Expansive elevated waterproof deck with lounge seating overlooking a lake"
           className="absolute inset-0 -z-20 h-full w-full object-cover object-[center_62%]"
         />

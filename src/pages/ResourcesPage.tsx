@@ -143,7 +143,7 @@ export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* SECTION 1: DETAILED CAD DRAWINGS */}
-      <section id="section-drawings" className="py-14 bg-slate-50/70 border-b border-slate-200">
+      <section id="section-drawings" className="scroll-mt-28 py-14 bg-slate-50/70 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
             <span className="text-xs font-bold uppercase tracking-wider text-rose">
@@ -241,7 +241,7 @@ export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* SECTION 2: CORNER INSTALLATION PHOTO STEP-BY-STEP (INSIDE & OUTSIDE CORNERS) */}
-      <section id="section-corners" className="py-14 bg-white border-b border-slate-200">
+      <section id="section-corners" className="scroll-mt-28 py-14 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-navy/10 text-navy text-xs font-bold tracking-wide mb-2">
@@ -261,7 +261,7 @@ export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* SECTION 3: TECHNICAL DATA SHEETS (NEW TDS SPECIFICATIONS) */}
-      <section id="section-tds" className="py-14 bg-slate-50/70 border-b border-slate-200">
+      <section id="section-tds" className="scroll-mt-28 py-14 bg-slate-50/70 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose/10 text-rose text-xs font-bold tracking-wide mb-2">
@@ -281,7 +281,7 @@ export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* SECTION 4: INFORMATIVE TECHNICAL DOCUMENTS & PDF SPECIFICATIONS LIBRARY */}
-      <section id="section-docs" className="py-14 bg-white border-b border-slate-200">
+      <section id="section-docs" className="scroll-mt-28 py-14 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-8">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-navy/10 text-navy text-xs font-bold tracking-wide mb-2">
@@ -348,7 +348,7 @@ export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* SECTION 5: TECHNICAL BULLETINS (TB-001, TB-002, TB-003, TB-005, TB-006) */}
-      <section id="section-bulletin" className="py-14 bg-slate-50/70 border-b border-slate-200">
+      <section id="section-bulletin" className="scroll-mt-28 py-14 bg-slate-50/70 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           <div className="max-w-3xl">
             <span className="text-xs font-bold uppercase tracking-wider text-rose">
@@ -367,7 +367,7 @@ export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* SECTION 6: VIDEO INSTALLATION GUIDES */}
-      <section id="section-videos" className="py-14 bg-white border-b border-slate-200">
+      <section id="section-videos" className="scroll-mt-28 py-14 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-8">
             <span className="text-xs font-bold uppercase tracking-wider text-rose">
@@ -434,7 +434,7 @@ export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* SECTION 7: MATERIAL PHYSICAL PROPERTIES */}
-      <section id="section-properties" className="py-14 bg-slate-50/70 border-b border-slate-200">
+      <section id="section-properties" className="scroll-mt-28 py-14 bg-slate-50/70 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-6">
             <div className="flex items-center gap-2">

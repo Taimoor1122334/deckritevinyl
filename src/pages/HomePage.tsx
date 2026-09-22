@@ -84,40 +84,44 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       </section>  */}
 
        {/* 4. Core Product & Overview: A Waterproof Walking Surface */}
-      <section className="py-12 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-8 items-center">
-          <div className="lg:col-span-7 space-y-4">
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 lg:gap-14 items-stretch">
+          <div className="flex flex-col justify-center space-y-5">
             <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">A waterproof walking surface</h2>
             <p className="text-slate-600 leading-relaxed text-base">
-              With DeckRite you can forget about power washing, sanding, and resealing your deck every year. No more slivers, exposed nails, or rotting wood. The product is slip resistant, mildew resistant, and waterproof, with a proven track record since the 1970's in some of the harshest climates in North America.
+              With DeckRite you can forget the yearly routine of power washing, sanding, and resealing — along with the
+              slivers, exposed nails, and rotting boards that come with a traditional wood deck. The membrane is slip
+              resistant, mildew resistant, and completely waterproof, with a proven track record since the 1970&apos;s in
+              some of the harshest climates in North America.
             </p>
             <p className="text-slate-600 leading-relaxed text-base">
-              DeckRite is a popular choice for second-story walkout balconies that require a waterproof installation yet can be walked on. Traditional methods require building a deck or installing carpet on a waterproofing membrane. With DeckRite, one surface provides the waterproofing and the walking surface.
+              It is a popular choice for second-story walkout balconies that need a waterproof installation yet still have
+              to be walked on. Traditional methods require building a separate deck or laying carpet over a waterproofing
+              membrane; with DeckRite, one surface does both jobs. Although designed for the residential market, it is
+              equally at home on commercial properties including apartment complexes, condominiums, retirement
+              communities, and hotels.
             </p>
-            <p className="text-slate-600 leading-relaxed text-sm">
-              Although designed for the residential market, DeckRite is a preferred choice on commercial properties including apartment complexes, condominiums, retirement communities, and hotels.
-            </p>
-            <div className="pt-2 flex flex-wrap items-center gap-3">
+            <div className="pt-2 flex flex-wrap items-center gap-4">
               <button
                 onClick={() => onNavigate('products')}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-navy text-white font-semibold text-xs hover:bg-navy-dark shadow-sm transition-colors"
+                className="inline-flex items-center gap-2 px-7 py-4 rounded-lg bg-navy text-white font-bold text-base hover:bg-navy-dark shadow-sm transition-colors"
               >
-                View 500 &amp; 600 Series Products <ArrowRight className="w-3.5 h-3.5" />
+                Explore Decking Products <ArrowRight className="w-5 h-5" />
               </button>
               <button
                 onClick={() => onNavigate('estimator')}
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-slate-300 text-slate-800 font-semibold text-xs hover:border-navy bg-white transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-4 rounded-lg border border-slate-300 text-slate-800 font-bold text-base hover:border-navy bg-white transition-colors"
               >
-                <FileSpreadsheet className="w-3.5 h-3.5 text-navy" />
+                <FileSpreadsheet className="w-5 h-5 text-navy" />
                 Material Estimator
               </button>
             </div>
           </div>
-          <div className="lg:col-span-5">
+          <div className="min-h-[20rem]">
             <img
-              src="/brand/hero-vinyl-deck.jpeg"
-              alt="Covered outdoor living area protected by an elevated waterproof deck"
-              className="w-full h-auto aspect-[4/3] object-cover rounded-2xl border border-slate-200 shadow-md"
+              src="/brand/covered-porch-deck.jpg"
+              alt="Covered residential porch with lounge seating opening onto a wooded backyard"
+              className="w-full h-full min-h-[20rem] object-cover object-[55%_center] rounded-2xl border border-slate-200 shadow-md"
             />
           </div>
         </div>
@@ -135,13 +139,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           <div className="flex flex-wrap items-center gap-3 shrink-0">
             <button
               onClick={() => onNavigate('contact')}
-              className="px-5 py-2.5 rounded-lg bg-navy hover:bg-navy-dark text-white font-semibold text-xs shadow-sm transition-colors"
+              className="px-6 py-3.5 rounded-lg bg-navy hover:bg-navy-dark text-white font-bold text-sm shadow-sm transition-colors"
             >
               Find Local Distributor / Contact
             </button>
             <a
               href="tel:18884503325"
-              className="px-4 py-2.5 rounded-lg border border-slate-300 text-slate-800 font-semibold text-xs hover:border-navy bg-white transition-colors"
+              className="px-6 py-3.5 rounded-lg border border-slate-300 text-slate-800 font-bold text-sm hover:border-navy bg-white transition-colors"
             >
               Call (888) 450-DECK
             </a>

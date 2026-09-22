@@ -15,8 +15,9 @@ export const ColorStrip: React.FC<ColorStripProps> = ({ onViewAllColors }) => {
   const colorCount = COUNT_WORDS[DECKRITE_PATTERNS.length] ?? String(DECKRITE_PATTERNS.length);
 
   return (
-    <section className="py-20  bg-white">
+    <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="rounded-3xl border border-slate-200 bg-slate-50 px-5 py-10 sm:px-10 sm:py-12">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-rose">Explore the possibilities</p>
           <h2 className="mt-2 text-2xl font-bold text-slate-900 sm:text-3xl lg:text-[2rem]">
@@ -30,7 +31,7 @@ export const ColorStrip: React.FC<ColorStripProps> = ({ onViewAllColors }) => {
         <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-8">
           {DECKRITE_PATTERNS.map((pattern) => (
             <button key={pattern.id} type="button" onClick={() => setActive(pattern)} className="group text-center">
-              <div className="aspect-square overflow-hidden rounded-lg border border-slate-200 bg-slate-100 transition-all group-hover:border-navy group-hover:shadow-md">
+              <div className="aspect-square overflow-hidden rounded-lg border border-slate-200 bg-white transition-all group-hover:border-navy group-hover:shadow-md">
                 <img
                   src={pattern.image}
                   alt={`${pattern.name} vinyl membrane`}
@@ -45,14 +46,15 @@ export const ColorStrip: React.FC<ColorStripProps> = ({ onViewAllColors }) => {
           ))}
         </div>
 
-        <div className="mt-8 text-center">
+        <div className="mt-10 text-center">
           <button
             onClick={onViewAllColors}
-            className="inline-flex items-center gap-2 rounded-lg bg-navy px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-navy-dark"
+            className="inline-flex items-center gap-2 rounded-lg bg-navy px-8 py-4 text-base font-bold text-white shadow-sm transition-colors hover:bg-navy-dark"
           >
-            View All Colors
-            <ArrowRight className="h-4 w-4" />
+            View Color Details
+            <ArrowRight className="h-5 w-5" />
           </button>
+        </div>
         </div>
       </div>
 
