@@ -35,7 +35,49 @@
 }
 
 .brand-gradient {
-  background: linear-gradient(90deg, #053975 0%, #623861 50%, #c3364c 100%);
+  background: #053975;
+}
+
+.hero-text-gradient {
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #ffffff 22%,
+    rgba(255, 255, 255, 0.92) 34%,
+    rgba(255, 255, 255, 0.35) 82%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+@media (min-width: 1024px) {
+  .hero-text-gradient {
+    background: linear-gradient(
+      90deg,
+      #ffffff 0%,
+      #ffffff 38%,
+      rgba(255, 255, 255, 0.94) 48%,
+      rgba(255, 255, 255, 0.55) 52%,
+      rgba(255, 255, 255, 0.12) 56%,
+      rgba(255, 255, 255, 0) 76%
+    );
+  }
+}
+
+.value-join-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 100%;
+  width: 12rem;
+  pointer-events: none;
+  background: linear-gradient(
+    270deg,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0.88) 32%,
+    rgba(255, 255, 255, 0.4) 64%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  box-shadow: -18px 0 36px -10px rgba(15, 23, 42, 0.16);
 }
 
 .slider-thumb::-webkit-slider-thumb {

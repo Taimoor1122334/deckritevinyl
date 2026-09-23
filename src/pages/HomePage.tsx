@@ -119,7 +119,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           </div>
           <div className="min-h-[20rem]">
             <img
-              src="/brand/covered-porch-deck.jpg"
+              src="/brand/Side-walk.png"
               alt="Covered residential porch with lounge seating opening onto a wooded backyard"
               className="w-full h-full min-h-[20rem] object-cover object-[55%_center] rounded-2xl border border-slate-200 shadow-md"
             />

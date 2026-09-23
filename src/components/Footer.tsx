@@ -8,7 +8,7 @@ interface FooterProps {
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
     <footer id="main-footer" className="bg-white text-slate-700 text-sm border-t border-slate-200">
-      <div className="brand-gradient text-white py-10">
+      <div className="bg-navy text-white py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
             <h3 className="text-xl font-bold">Need a distributor near you?</h3>

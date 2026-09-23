@@ -27,6 +27,19 @@ export interface ProductItem {
   image: string;
 }
 
+export type GalleryCategory = 'deck' | 'balcony' | 'lakefront' | 'pool' | 'walkway';
+
+export interface GalleryImage {
+  id: string;
+  title: string;
+  category: GalleryCategory;
+  caption: string;
+  alt: string;
+  thumb: string;
+  full: string;
+  featured?: boolean;
+}
+
 export interface ProjectShowcase {
   id: string;
   title: string;
