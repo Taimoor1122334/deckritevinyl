@@ -452,8 +452,8 @@ export const CUSTOMER_PROJECTS: CustomerProject[] = [
     pattern: 'Lakewood Marble',
     caption: 'Lakewood Marble vinyl on an elevated residential deck.',
     images: [
-      { src: '/gallery/projects/lakeville/elevated.png', alt: 'Elevated Lakewood Marble DeckRite deck in Lakeville, Minnesota' },
-      { src: '/gallery/projects/lakeville/surface.png', alt: 'Lakewood Marble vinyl surface in Lakeville, Minnesota' },
+      { src: '/gallery/projects/lakeville/elevated.jpg', alt: 'Elevated Lakewood Marble DeckRite deck in Lakeville, Minnesota' },
+      { src: '/gallery/projects/lakeville/surface.jpg', alt: 'Lakewood Marble vinyl surface in Lakeville, Minnesota' },
     ],
   },
   {
@@ -462,7 +462,7 @@ export const CUSTOMER_PROJECTS: CustomerProject[] = [
     title: 'Second-story deck',
     caption: 'A worn wood deck replaced with a finished vinyl walking surface.',
     images: [
-      { src: '/gallery/projects/loudon/after-3.png', alt: 'Finished DeckRite vinyl deck with Adirondack chairs in Loudon, Tennessee' },
+      { src: '/gallery/projects/loudon/after-3.jpg', alt: 'Finished DeckRite vinyl deck with Adirondack chairs in Loudon, Tennessee' },
       { src: '/gallery/projects/loudon/after-1.jpg', alt: 'Vinyl deck overlooking trees in Loudon, Tennessee' },
       { src: '/gallery/projects/loudon/after-2.jpg', alt: 'Vinyl deck surface beside the house in Loudon, Tennessee' },
       { src: '/gallery/projects/loudon/before.jpg', alt: 'Wood deck in Loudon, Tennessee before DeckRite vinyl' },

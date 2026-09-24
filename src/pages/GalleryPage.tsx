@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ArrowRight, ChevronLeft, ChevronRight, MapPin, X } from 'lucide-react';
 import { Breadcrumb } from '../components/Breadcrumb';
 import { CUSTOMER_PROJECTS, GALLERY_IMAGES } from '../data/deckData';
@@ -49,6 +49,70 @@ const projectImageClass = (count: number, index: number) => {
   if (count === 3 && index === 0) return 'sm:col-span-2 sm:row-span-2';
   if (count >= 5 && index === 0) return 'sm:col-span-2';
   return '';
+};
+
+const CLICK_ZOOM = 2.35;
+
+const ZoomablePhoto: React.FC<{ src: string; alt: string }> = ({ src, alt }) => {
+  const stageRef = useRef<HTMLButtonElement>(null);
+  const [origin, setOrigin] = useState({ x: 50, y: 50 });
+  const [zoomed, setZoomed] = useState(false);
+
+  useEffect(() => {
+    setZoomed(false);
+    setOrigin({ x: 50, y: 50 });
+  }, [src]);
+
+  const originFromEvent = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const box = stageRef.current?.getBoundingClientRect();
+    if (!box) return { x: 50, y: 50 };
+    return {
+      x: Math.min(100, Math.max(0, ((event.clientX - box.left) / box.width) * 100)),
+      y: Math.min(100, Math.max(0, ((event.clientY - box.top) / box.height) * 100)),
+    };
+  };
+
+  return (
+    <button
+      type="button"
+      ref={stageRef}
+      aria-label={zoomed ? 'Zoom out' : 'Zoom in'}
+      className={`relative block h-[min(78vh,760px)] w-full overflow-hidden bg-white ${
+        zoomed ? 'cursor-zoom-out' : 'cursor-zoom-in'
+      }`}
+      onMouseMove={(event) => {
+        if (zoomed) setOrigin(originFromEvent(event));
+      }}
+      onMouseLeave={() => {
+        if (!zoomed) setOrigin({ x: 50, y: 50 });
+      }}
+      onClick={(event) => {
+        event.stopPropagation();
+        if (zoomed) {
+          setZoomed(false);
+          setOrigin({ x: 50, y: 50 });
+          return;
+        }
+        setOrigin(originFromEvent(event));
+        setZoomed(true);
+      }}
+    >
+      <img
+        src={src}
+        alt={alt}
+        draggable={false}
+        className="h-full w-full object-contain will-change-transform"
+        style={{
+          transform: `scale(${zoomed ? CLICK_ZOOM : 1})`,
+          transformOrigin: `${origin.x}% ${origin.y}%`,
+          transition: zoomed ? 'transform 180ms ease-out' : 'transform 280ms ease-out',
+        }}
+      />
+      <p className="pointer-events-none absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-black/55 px-3 py-1 text-[11px] font-semibold text-white/90">
+        {zoomed ? 'Click to zoom out' : 'Click to zoom'}
+      </p>
+    </button>
+  );
 };
 
 export const GalleryPage: React.FC<GalleryPageProps> = ({ onNavigate }) => {
@@ -272,10 +336,10 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onNavigate }) => {
           </button>
 
           <div
-            className="w-full max-w-5xl overflow-hidden rounded-2xl bg-white shadow-2xl"
+            className="w-full max-w-6xl overflow-hidden rounded-2xl bg-white shadow-2xl"
             onClick={(event) => event.stopPropagation()}
           >
-            <img src={active.src} alt={active.title} className="max-h-[70vh] w-full object-contain bg-slate-950" />
+            <ZoomablePhoto src={active.src} alt={active.title} />
             <div className="flex flex-col gap-4 p-5 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <p className="text-[11px] font-bold uppercase tracking-wide text-navy">
