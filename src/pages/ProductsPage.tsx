@@ -55,8 +55,8 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
               >
                 <img
                   src={selected.image}
-                  alt="DeckRite installer preparing membrane and adhesive"
-                  className="w-full h-72 object-cover object-[center_20%] group-hover:scale-[1.02] transition-transform duration-300"
+                  alt="DeckRite vinyl stair landing with coated drip edge and termination"
+                  className="w-full h-72 object-cover object-[center_15%] group-hover:scale-[1.02] transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-navy/80 via-navy/25 to-transparent" />
                 <p className="absolute left-5 bottom-5 right-5 text-white text-2xl sm:text-3xl font-extrabold leading-tight drop-shadow-md">
@@ -66,8 +66,8 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
             ) : (
               <img
                 src={selected.image}
-                alt="Outdoor patio with dining furniture at a brick home"
-                className="w-full h-72 object-cover rounded-xl border border-slate-200"
+                alt={selected.title}
+                className="w-full h-72 object-cover object-[center_70%] rounded-xl border border-slate-200"
               />
             )}
             <div>

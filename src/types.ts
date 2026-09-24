@@ -40,6 +40,20 @@ export interface GalleryImage {
   featured?: boolean;
 }
 
+export interface CustomerProjectImage {
+  src: string;
+  alt: string;
+}
+
+export interface CustomerProject {
+  id: string;
+  location: string;
+  title: string;
+  pattern?: string;
+  caption: string;
+  images: CustomerProjectImage[];
+}
+
 export interface ProjectShowcase {
   id: string;
   title: string;

@@ -3,6 +3,7 @@ import {
   ProductItem,
   ProjectShowcase,
   GalleryImage,
+  CustomerProject,
   Dealer,
   ResourceDoc,
   DetailDrawing,
@@ -134,7 +135,7 @@ export const DECKRITE_PRODUCTS: ProductItem[] = [
       'Polyester core for dimensional stability, puncture strength, and tear resistance',
       'No annual sanding, staining, or sealing',
     ],
-    image: '/brand/product-600-vinyl-deck.jpeg',
+    image: '/gallery/projects/lincoln/elevated.jpg',
   },
   {
     id: 'deckrite-500',
@@ -166,7 +167,7 @@ export const DECKRITE_PRODUCTS: ProductItem[] = [
       'No slivers, exposed nails, or rotting wood walking surface',
       'Suitable for all types of climates across North America',
     ],
-    image: '/gallery/big/balcony_1.jpg',
+    image: '/gallery/projects/sand-pointe/lounge.jpg',
   },
   {
     id: 'adhesives-accessories',
@@ -194,7 +195,7 @@ export const DECKRITE_PRODUCTS: ProductItem[] = [
       'Standard CAD details DR-101 through DR-116',
       'Installation video series covering prep, layout, adhesive, and welding',
     ],
-    image: '/brand/video.jpg',
+    image: '/gallery/projects/sand-pointe/landing.jpg',
   },
 ];
 
@@ -416,6 +417,104 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     thumb: '/gallery/image16.jpg',
     full: '/gallery/big/balcony_16.jpg',
     featured: true,
+  },
+];
+
+export const CUSTOMER_PROJECTS: CustomerProject[] = [
+  {
+    id: 'anchorage',
+    location: 'Anchorage, AK',
+    title: 'Raised residential deck',
+    caption: 'A waterproof vinyl walking surface on a raised deck and porch.',
+    images: [
+      { src: '/gallery/projects/anchorage/after.jpg', alt: 'Finished DeckRite vinyl deck in Anchorage, Alaska' },
+      { src: '/gallery/projects/anchorage/porch.jpg', alt: 'Vinyl-covered porch with wood railing in Anchorage' },
+      { src: '/gallery/projects/anchorage/elevated.jpg', alt: 'Elevated vinyl deck over a driveway in Anchorage' },
+      { src: '/gallery/projects/anchorage/surface.jpg', alt: 'Close view of the finished vinyl deck surface in Anchorage' },
+    ],
+  },
+  {
+    id: 'cassville',
+    location: 'Cassville, MI',
+    title: 'Walkout and balcony',
+    caption: 'Marble-look vinyl on a walkout deck and second-story balcony.',
+    images: [
+      { src: '/gallery/projects/cassville/surface-1.jpg', alt: 'Marble-look DeckRite vinyl on a Cassville, Michigan walkout' },
+      { src: '/gallery/projects/cassville/walkout.jpg', alt: 'Vinyl balcony walkout in Cassville, Michigan' },
+      { src: '/gallery/projects/cassville/surface-2.jpg', alt: 'Vinyl deck with white railing in Cassville, Michigan' },
+      { src: '/gallery/projects/cassville/balcony.jpg', alt: 'Second-story vinyl balcony in Cassville, Michigan' },
+    ],
+  },
+  {
+    id: 'lakeville',
+    location: 'Lakeville, MN',
+    title: 'Elevated deck',
+    pattern: 'Lakewood Marble',
+    caption: 'Lakewood Marble vinyl on an elevated residential deck.',
+    images: [
+      { src: '/gallery/projects/lakeville/elevated.png', alt: 'Elevated Lakewood Marble DeckRite deck in Lakeville, Minnesota' },
+      { src: '/gallery/projects/lakeville/surface.png', alt: 'Lakewood Marble vinyl surface in Lakeville, Minnesota' },
+    ],
+  },
+  {
+    id: 'loudon',
+    location: 'Loudon, TN',
+    title: 'Second-story deck',
+    caption: 'A worn wood deck replaced with a finished vinyl walking surface.',
+    images: [
+      { src: '/gallery/projects/loudon/after-3.png', alt: 'Finished DeckRite vinyl deck with Adirondack chairs in Loudon, Tennessee' },
+      { src: '/gallery/projects/loudon/after-1.jpg', alt: 'Vinyl deck overlooking trees in Loudon, Tennessee' },
+      { src: '/gallery/projects/loudon/after-2.jpg', alt: 'Vinyl deck surface beside the house in Loudon, Tennessee' },
+      { src: '/gallery/projects/loudon/before.jpg', alt: 'Wood deck in Loudon, Tennessee before DeckRite vinyl' },
+    ],
+  },
+  {
+    id: 'michigan',
+    location: 'Michigan',
+    title: 'Dining deck',
+    pattern: 'Tuscany Sand',
+    caption: 'Tuscany Sand vinyl as the finished floor for outdoor dining.',
+    images: [
+      { src: '/gallery/projects/michigan/dining.jpg', alt: 'Tuscany Sand DeckRite dining deck in Michigan' },
+      { src: '/gallery/projects/michigan/surface-1.jpg', alt: 'Tuscany Sand vinyl texture beside outdoor chairs' },
+      { src: '/gallery/projects/michigan/surface-2.jpg', alt: 'Tuscany Sand vinyl deck with dining furniture in Michigan' },
+    ],
+  },
+  {
+    id: 'oak-harbor',
+    location: 'Oak Harbor, WA',
+    title: 'Slate Gray deck and balcony',
+    pattern: 'Slate Gray',
+    caption: 'Slate Gray vinyl on a residential deck and balcony.',
+    images: [
+      { src: '/gallery/projects/oak-harbor/balcony.jpg', alt: 'Slate Gray DeckRite balcony in Oak Harbor, Washington' },
+      { src: '/gallery/projects/oak-harbor/after-2.jpg', alt: 'Finished Slate Gray vinyl deck with white railing in Oak Harbor' },
+      { src: '/gallery/projects/oak-harbor/after-3.jpg', alt: 'Open vinyl deck with white railing in Oak Harbor' },
+      { src: '/gallery/projects/oak-harbor/after-4.jpg', alt: 'Corner view of the Oak Harbor vinyl deck' },
+      { src: '/gallery/projects/oak-harbor/after-1.jpg', alt: 'Vinyl deck beside the house in Oak Harbor' },
+    ],
+  },
+  {
+    id: 'sand-pointe',
+    location: 'Sand Pointe, MI',
+    title: 'Lakeside deck',
+    pattern: 'Slate Gray',
+    caption: 'Slate Gray vinyl wrapping a lakeside deck, landing, and lounge area.',
+    images: [
+      { src: '/gallery/projects/sand-pointe/deck.jpg', alt: 'Slate Gray DeckRite lakeside deck in Sand Pointe, Michigan' },
+      { src: '/gallery/projects/sand-pointe/lounge.jpg', alt: 'Lounge chairs on Slate Gray vinyl in Sand Pointe, Michigan' },
+      { src: '/gallery/projects/sand-pointe/landing.jpg', alt: 'Vinyl-covered stair landing in Sand Pointe, Michigan' },
+    ],
+  },
+  {
+    id: 'lincoln',
+    location: 'Lincoln, NE',
+    title: 'Elevated family deck',
+    caption: 'Vinyl decking on a new elevated deck with outdoor dining.',
+    images: [
+      { src: '/gallery/projects/lincoln/elevated.jpg', alt: 'Elevated DeckRite vinyl deck in Lincoln, Nebraska' },
+      { src: '/gallery/projects/lincoln/surface.jpg', alt: 'Vinyl dining deck surface in Lincoln, Nebraska' },
+    ],
   },
 ];
 

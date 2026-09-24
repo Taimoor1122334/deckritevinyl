@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowRight, ChevronLeft, ChevronRight, MapPin, X } from 'lucide-react';
 import { Breadcrumb } from '../components/Breadcrumb';
-import { GALLERY_IMAGES } from '../data/deckData';
-import { GalleryCategory, GalleryImage } from '../types';
+import { CUSTOMER_PROJECTS, GALLERY_IMAGES } from '../data/deckData';
+import { CustomerProject, GalleryCategory, GalleryImage } from '../types';
 
 interface GalleryPageProps {
   onNavigate: (page: string) => void;
+}
+
+interface LightboxPhoto {
+  src: string;
+  title: string;
+  caption: string;
+  eyebrow: string;
 }
 
 const CATEGORY_LABELS: Record<GalleryCategory, string> = {
@@ -16,37 +23,87 @@ const CATEGORY_LABELS: Record<GalleryCategory, string> = {
   walkway: 'Walkway',
 };
 
-export const GalleryPage: React.FC<GalleryPageProps> = ({ onNavigate }) => {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const active = activeIndex === null ? null : GALLERY_IMAGES[activeIndex] ?? null;
+const officialPhotos: LightboxPhoto[] = GALLERY_IMAGES.map((image) => ({
+  src: image.full,
+  title: image.title,
+  caption: image.caption,
+  eyebrow: CATEGORY_LABELS[image.category],
+}));
 
-  const openPhoto = (image: GalleryImage) => {
-    setActiveIndex(GALLERY_IMAGES.findIndex((item) => item.id === image.id));
+const projectPhotos = (project: CustomerProject): LightboxPhoto[] =>
+  project.images.map((image) => ({
+    src: image.src,
+    title: project.title,
+    caption: project.caption,
+    eyebrow: project.pattern ? `${project.location} · ${project.pattern}` : project.location,
+  }));
+
+const projectGridClass = (count: number) => {
+  if (count <= 1) return 'grid-cols-1 auto-rows-[20rem]';
+  if (count === 4) return 'grid-cols-1 auto-rows-[16rem] sm:grid-cols-2 sm:auto-rows-[18rem]';
+  return 'grid-flow-dense grid-cols-1 auto-rows-[16rem] sm:grid-cols-3 sm:auto-rows-[18rem]';
+};
+
+const projectImageClass = (count: number, index: number) => {
+  if (count === 2 && index === 0) return 'sm:col-span-2';
+  if (count === 3 && index === 0) return 'sm:col-span-2 sm:row-span-2';
+  if (count >= 5 && index === 0) return 'sm:col-span-2';
+  return '';
+};
+
+export const GalleryPage: React.FC<GalleryPageProps> = ({ onNavigate }) => {
+  const [lightbox, setLightbox] = useState<{ photos: LightboxPhoto[]; index: number } | null>(null);
+  const active = lightbox ? lightbox.photos[lightbox.index] ?? null : null;
+
+  const openOfficial = (image: GalleryImage) => {
+    setLightbox({
+      photos: officialPhotos,
+      index: GALLERY_IMAGES.findIndex((item) => item.id === image.id),
+    });
+  };
+
+  const openProject = (project: CustomerProject, index: number) => {
+    setLightbox({ photos: projectPhotos(project), index });
   };
 
   const showPrev = () => {
-    if (activeIndex === null) return;
-    setActiveIndex((activeIndex - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length);
+    if (!lightbox) return;
+    setLightbox({
+      photos: lightbox.photos,
+      index: (lightbox.index - 1 + lightbox.photos.length) % lightbox.photos.length,
+    });
   };
 
   const showNext = () => {
-    if (activeIndex === null) return;
-    setActiveIndex((activeIndex + 1) % GALLERY_IMAGES.length);
+    if (!lightbox) return;
+    setLightbox({
+      photos: lightbox.photos,
+      index: (lightbox.index + 1) % lightbox.photos.length,
+    });
   };
 
   useEffect(() => {
-    if (activeIndex === null) return;
+    if (!lightbox) return;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     const onKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setActiveIndex(null);
+      if (event.key === 'Escape') setLightbox(null);
       if (event.key === 'ArrowLeft') {
-        setActiveIndex((current) =>
-          current === null ? current : (current - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length
+        setLightbox((current) =>
+          current
+            ? {
+                photos: current.photos,
+                index: (current.index - 1 + current.photos.length) % current.photos.length,
+              }
+            : current
         );
       }
       if (event.key === 'ArrowRight') {
-        setActiveIndex((current) => (current === null ? current : (current + 1) % GALLERY_IMAGES.length));
+        setLightbox((current) =>
+          current
+            ? { photos: current.photos, index: (current.index + 1) % current.photos.length }
+            : current
+        );
       }
     };
     window.addEventListener('keydown', onKey);
@@ -54,7 +111,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onNavigate }) => {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener('keydown', onKey);
     };
-  }, [activeIndex]);
+  }, [lightbox]);
 
   return (
     <div className="min-h-screen bg-white">
@@ -64,19 +121,64 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onNavigate }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl sm:text-4xl font-bold">Inspiration</h1>
           <p className="mt-3 max-w-2xl text-white/80 leading-relaxed">
-            Completed DeckRite decks, balconies, and outdoor living spaces. Click any photo for a closer look.
+            Completed DeckRite projects from homeowners across the country. Photos are grouped by
+            location — click any image for a closer look.
           </p>
         </div>
       </section>
 
       <section className="py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
+          {CUSTOMER_PROJECTS.map((project) => (
+            <article key={project.id}>
+              <div className="mb-4">
+                <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-navy">
+                  {project.location}
+                  {project.pattern ? ` · ${project.pattern}` : ''}
+                </p>
+                <h2 className="mt-1 text-2xl font-bold text-slate-900">{project.title}</h2>
+                <p className="mt-1 max-w-2xl text-sm text-slate-600">{project.caption}</p>
+              </div>
+              <div className={`grid gap-3 ${projectGridClass(project.images.length)}`}>
+                {project.images.map((image, index) => (
+                  <button
+                    key={image.src}
+                    type="button"
+                    onClick={() => openProject(project, index)}
+                    aria-label={image.alt}
+                    className={`group relative overflow-hidden rounded-2xl bg-slate-100 text-left ${projectImageClass(
+                      project.images.length,
+                      index
+                    )}`}
+                  >
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/35 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+                  </button>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="border-t border-slate-200 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-6">
+            <h2 className="text-2xl font-bold text-slate-900">More completed projects</h2>
+            <p className="mt-1 max-w-2xl text-sm text-slate-600">
+              Additional decks, balconies, and outdoor living spaces finished in DeckRite vinyl.
+            </p>
+          </div>
           <div className="grid grid-flow-dense grid-cols-1 auto-rows-[17rem] gap-4 sm:grid-cols-2 sm:auto-rows-[18rem] lg:grid-cols-3">
             {GALLERY_IMAGES.map((image) => (
               <button
                 key={image.id}
                 type="button"
-                onClick={() => openPhoto(image)}
+                onClick={() => openOfficial(image)}
                 className={`group relative overflow-hidden rounded-2xl bg-slate-100 text-left ${
                   image.featured ? 'sm:col-span-2' : ''
                 }`}
@@ -91,7 +193,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onNavigate }) => {
                   <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-white/75">
                     {CATEGORY_LABELS[image.category]}
                   </p>
-                  <h2 className="mt-1 text-lg font-bold text-white">{image.title}</h2>
+                  <h3 className="mt-1 text-lg font-bold text-white">{image.title}</h3>
                   <p className="mt-1 max-w-md text-sm text-white/85 line-clamp-2">{image.caption}</p>
                 </div>
               </button>
@@ -130,17 +232,17 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {active && activeIndex !== null && (
+      {active && lightbox && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/88 p-4"
-          onClick={() => setActiveIndex(null)}
+          onClick={() => setLightbox(null)}
           role="dialog"
           aria-modal="true"
           aria-label={active.title}
         >
           <button
             type="button"
-            onClick={() => setActiveIndex(null)}
+            onClick={() => setLightbox(null)}
             className="absolute top-4 right-4 text-white/80 hover:text-white"
             aria-label="Close"
           >
@@ -173,11 +275,11 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onNavigate }) => {
             className="w-full max-w-5xl overflow-hidden rounded-2xl bg-white shadow-2xl"
             onClick={(event) => event.stopPropagation()}
           >
-            <img src={active.full} alt={active.alt} className="max-h-[70vh] w-full object-contain bg-slate-950" />
+            <img src={active.src} alt={active.title} className="max-h-[70vh] w-full object-contain bg-slate-950" />
             <div className="flex flex-col gap-4 p-5 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <p className="text-[11px] font-bold uppercase tracking-wide text-navy">
-                  {CATEGORY_LABELS[active.category]} · {activeIndex + 1} of {GALLERY_IMAGES.length}
+                  {active.eyebrow} · {lightbox.index + 1} of {lightbox.photos.length}
                 </p>
                 <h3 className="mt-1 text-xl font-bold text-slate-900">{active.title}</h3>
                 <p className="mt-1 text-sm text-slate-600">{active.caption}</p>
