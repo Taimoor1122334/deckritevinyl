@@ -46,20 +46,20 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
             ))}
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-10">
+          <div className="grid items-start lg:grid-cols-2 gap-10">
             {selected.id === 'adhesives-accessories' ? (
               <button
                 type="button"
                 onClick={() => onNavigate('resources')}
-                className="relative block w-full overflow-hidden text-left group"
+                className="relative block w-full self-start overflow-hidden text-left group"
               >
                 <img
                   src={selected.image}
                   alt="DeckRite vinyl stair landing with coated drip edge and termination"
-                  className="w-full h-72 object-cover object-[center_40%] group-hover:scale-[1.02] transition-transform duration-300"
+                  className="w-full h-72 object-cover rounded-xl border border-slate-200 object-[center_40%] group-hover:scale-[1.02] transition-transform duration-300"
                 />
-                <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-navy/85 via-navy/40 to-transparent" />
-                <p className="absolute left-5 bottom-5 right-5 text-white text-2xl sm:text-3xl font-extrabold leading-tight drop-shadow-md">
+                <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t rounded-b-xl from-navy/85 via-navy/40 to-transparent" />
+                <p className="absolute left-5 bottom-5 right-5 text-white text-2xl sm:text-3xl font-extrabold leading-tight drop-shadow-md  bg-slate-200/50 hover:bg-slate-200/70 transition-colors p-2 rounded-lg">
                   Watch Our Installation Process!
                 </p>
               </button>
