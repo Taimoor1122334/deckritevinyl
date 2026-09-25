@@ -51,14 +51,14 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
               <button
                 type="button"
                 onClick={() => onNavigate('resources')}
-                className="relative block w-full rounded-xl overflow-hidden border border-slate-200 text-left group"
+                className="relative block w-full overflow-hidden text-left group"
               >
                 <img
                   src={selected.image}
                   alt="DeckRite vinyl stair landing with coated drip edge and termination"
-                  className="w-full h-72 object-cover object-[center_15%] group-hover:scale-[1.02] transition-transform duration-300"
+                  className="w-full h-72 object-cover object-[center_40%] group-hover:scale-[1.02] transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-navy/80 via-navy/25 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-navy/85 via-navy/40 to-transparent" />
                 <p className="absolute left-5 bottom-5 right-5 text-white text-2xl sm:text-3xl font-extrabold leading-tight drop-shadow-md">
                   Watch Our Installation Process!
                 </p>
@@ -67,7 +67,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
               <img
                 src={selected.image}
                 alt={selected.title}
-                className="w-full h-72 object-cover object-[center_70%] rounded-xl border border-slate-200"
+                className="w-full h-72 object-cover rounded-xl border border-slate-200"
               />
             )}
             <div>
@@ -92,10 +92,11 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
           <div className="max-w-3xl">
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-rose">Colors</p>
             <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mt-2">Available colors</h2>
-            <p className="text-slate-600 mt-2 leading-relaxed">
-              Standard colors are Sahara Tan, Slate Gray, Tropical Cream, Lakewood Marble, and Tuscany Sand; Harvest and
-              Riverstone are also offered. Click any color for a large close-up of the membrane texture. Because screens
-              vary, DeckRite will mail free material samples — send your mailing address from the Contact page.
+            <p className="text-slate-600 mt-2 leading-relaxed leading-loose">
+            Standard colors are Sahara Tan, Slate Gray, Tropical Cream, Lakewood Marble, and Tuscany Sand; <br />
+Harvest and Riverstone are also offered. <br />
+Click any color for a large close-up of the membrane texture. <br />
+Because screens vary, DeckRite will mail free material samples — send your mailing address from the Contact page. <br />
             </p>
           </div>
           <div className="mt-8">

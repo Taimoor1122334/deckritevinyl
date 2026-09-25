@@ -20,17 +20,17 @@ export const DealerLocator: React.FC = () => {
             <article key={dealer.id} className="rounded-xl border border-slate-200 p-6">
               <p className="text-[11px] font-bold uppercase tracking-wide text-navy">{dealer.type}</p>
               <h3 className="text-lg font-bold text-slate-900 mt-1">{dealer.name}</h3>
-              <p className="text-sm text-slate-600 mt-2 flex items-start gap-2">
-                <MapPin className="w-4 h-4 mt-0.5 text-navy shrink-0" />
-                {dealer.address}<br />
-                {dealer.city}, {dealer.stateOrProvince} {dealer.postalCode}
-              </p>
               <a href={`tel:${dealer.phone.replace(/[^\d]/g, '')}`} className="mt-2 flex items-center gap-2 text-sm font-semibold text-navy">
                 <Phone className="w-4 h-4" /> {dealer.phone}
               </a>
               <a href={`mailto:${dealer.email}`} className="mt-1 flex items-center gap-2 text-sm text-slate-700">
                 <Mail className="w-4 h-4" /> {dealer.email}
               </a>
+              <p className="text-sm text-slate-600 mt-2 flex items-start gap-2">
+                <MapPin className="w-4 h-4 mt-0.5 text-navy shrink-0" />
+                {dealer.address}<br />
+                {dealer.city}, {dealer.stateOrProvince} {dealer.postalCode}
+              </p>
               {dealer.website && (
                 <a href={dealer.website} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex items-center gap-1 text-sm text-navy">
                   Visit website <ExternalLink className="w-3.5 h-3.5" />

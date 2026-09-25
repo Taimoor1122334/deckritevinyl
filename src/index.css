@@ -10,7 +10,7 @@
   --color-teal: #6ad0ca;
   --color-sand: #f6f3ee;
   --font-sans: "DM Sans", system-ui, sans-serif;
-  --font-display: "DM Sans", system-ui, sans-serif;
+  --font-display: "Source Serif 4", "Iowan Old Style", "Palatino Linotype", serif;
 }
 
 @layer base {

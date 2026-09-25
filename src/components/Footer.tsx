@@ -56,11 +56,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
         <div>
           <h4 className="text-xs font-bold uppercase tracking-wider text-navy mb-3">Headquarters</h4>
-          <p className="text-sm text-slate-600">
-            3912 East Progress<br />
-            North Little Rock, AR 72114
-          </p>
-          <p className="mt-3">
+          <p>
             <a href="tel:18884503325" className="inline-flex items-center gap-1.5 text-navy font-semibold">
               <Phone className="w-4 h-4" />
               (888) 450-DECK (3325)
@@ -72,6 +68,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <Mail className="w-4 h-4" />
               DeckRitesupport@deckrite.com
             </a>
+          </p>
+          <p className="mt-3 text-sm text-slate-600">
+            3912 East Progress<br />
+            North Little Rock, AR 72114
           </p>
         </div>
 

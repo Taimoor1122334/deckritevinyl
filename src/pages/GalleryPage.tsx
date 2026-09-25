@@ -40,14 +40,11 @@ const projectPhotos = (project: CustomerProject): LightboxPhoto[] =>
 
 const projectGridClass = (count: number) => {
   if (count <= 1) return 'grid-cols-1 auto-rows-[20rem]';
-  if (count === 4) return 'grid-cols-1 auto-rows-[16rem] sm:grid-cols-2 sm:auto-rows-[18rem]';
-  return 'grid-flow-dense grid-cols-1 auto-rows-[16rem] sm:grid-cols-3 sm:auto-rows-[18rem]';
+  return 'grid-cols-1 auto-rows-[16rem] sm:grid-cols-2 sm:auto-rows-[18rem]';
 };
 
 const projectImageClass = (count: number, index: number) => {
-  if (count === 2 && index === 0) return 'sm:col-span-2';
-  if (count === 3 && index === 0) return 'sm:col-span-2 sm:row-span-2';
-  if (count >= 5 && index === 0) return 'sm:col-span-2';
+  if (count === 3 && index === 0) return 'sm:col-span-2';
   return '';
 };
 
@@ -185,8 +182,8 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onNavigate }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl sm:text-4xl font-bold">Inspiration</h1>
           <p className="mt-3 max-w-2xl text-white/80 leading-relaxed">
-            Completed DeckRite projects from homeowners across the country. Photos are grouped by
-            location — click any image for a closer look.
+            Completed DeckRite projects from homeowners across the country.<br />
+            Photos are grouped by location — click any image for a closer look.
           </p>
         </div>
       </section>
@@ -252,13 +249,13 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onNavigate }) => {
                   alt={image.alt}
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/10 to-transparent opacity-80 transition-opacity group-hover:opacity-90" />
-                <div className="absolute inset-x-0 bottom-0 p-5">
-                  <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-white/75">
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/55 to-transparent px-5 pb-5 pt-10">
+                  <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-white/90">
                     {CATEGORY_LABELS[image.category]}
                   </p>
-                  <h3 className="mt-1 text-lg font-bold text-white">{image.title}</h3>
-                  <p className="mt-1 max-w-md text-sm text-white/85 line-clamp-2">{image.caption}</p>
+                  <h3 className="mt-1 text-lg font-bold text-white drop-shadow-sm">{image.title}</h3>
+                  <p className="mt-1 max-w-md text-sm text-white/95 line-clamp-2">{image.caption}</p>
                 </div>
               </button>
             ))}

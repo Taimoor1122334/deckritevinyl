@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Breadcrumb } from '../components/Breadcrumb';
 import {
   WHY_DECKRITE_BENEFITS,
@@ -16,6 +16,7 @@ const benefitIcons = [Droplets, Layers, Wrench, Shield];
 
 export const WhyDeckRitePage: React.FC<WhyDeckRitePageProps> = ({ onNavigate }) => {
   const overviewVideo = INSTALL_VIDEOS.find((v) => v.id === 'why-choose');
+  const [playing, setPlaying] = useState(false);
 
   return (
     <div id="why-deckrite-page" className="min-h-screen bg-white">
@@ -29,24 +30,40 @@ export const WhyDeckRitePage: React.FC<WhyDeckRitePageProps> = ({ onNavigate }) 
               <h1 className="text-3xl sm:text-4xl font-bold mt-2">A system that can&apos;t be beat</h1>
               <p className="text-white/80 mt-4 leading-relaxed">{WHY_DECKRITE_INTRO.lead}</p>
               {overviewVideo && (
-                <a
-                  href={`https://www.youtube.com/watch?v=${overviewVideo.youtubeId}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  type="button"
+                  onClick={() => setPlaying(true)}
                   className="mt-6 inline-flex items-center gap-2 rounded-lg bg-white px-5 py-3 text-sm font-bold text-navy transition-colors hover:bg-sand"
-                  aria-label="Watch the Why Choose DeckRite video on YouTube"
+                  aria-label="Watch the Why Choose DeckRite video"
                 >
                   <PlayCircle className="h-5 w-5 text-rose" />
                   Watch Video
-                </a>
+                </button>
               )}
             </div>
-            <div className="rounded-2xl overflow-hidden border border-white/15 shadow-xl">
-              <img
-                src="/brand/why-deckrite.png"
-                alt="DeckRite waterproof vinyl decking system overview"
-                className="w-full h-auto object-cover"
-              />
+            <div className="overflow-hidden rounded-2xl border border-white/15 bg-black shadow-xl aspect-video">
+              {playing && overviewVideo ? (
+                <iframe
+                  src={`https://www.youtube.com/embed/${overviewVideo.youtubeId}?autoplay=1`}
+                  title={overviewVideo.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  className="h-full w-full"
+                />
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setPlaying(true)}
+                  className="relative h-full w-full"
+                  aria-label="Play the Why Choose DeckRite video"
+                >
+                  <img
+                    src="/brand/why-deckrite.png"
+                    alt="DeckRite waterproof vinyl decking system overview"
+                    className="h-full w-full  object-cover object-[center_85%]"
+                  />
+                </button>
+              )}
             </div>
           </div>
         </div>

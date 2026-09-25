@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { ColorPattern } from '../types';
 import { DECKRITE_PATTERNS } from '../data/deckData';
@@ -9,8 +9,19 @@ interface SwatchLightboxProps {
   onChange: (pattern: ColorPattern) => void;
 }
 
+const CLICK_ZOOM = 2.2;
+const SQUARE = 'min(32rem, calc(100vw - 5.5rem), calc(100vh - 6rem))';
+
 export const SwatchLightbox: React.FC<SwatchLightboxProps> = ({ pattern, onClose, onChange }) => {
   const index = pattern ? DECKRITE_PATTERNS.findIndex((p) => p.id === pattern.id) : -1;
+  const stageRef = useRef<HTMLButtonElement>(null);
+  const [zoomed, setZoomed] = useState(false);
+  const [origin, setOrigin] = useState({ x: 50, y: 50 });
+
+  useEffect(() => {
+    setZoomed(false);
+    setOrigin({ x: 50, y: 50 });
+  }, [pattern?.id]);
 
   useEffect(() => {
     if (!pattern) return;
@@ -37,6 +48,15 @@ export const SwatchLightbox: React.FC<SwatchLightboxProps> = ({ pattern, onClose
 
   const prev = DECKRITE_PATTERNS[(index - 1 + DECKRITE_PATTERNS.length) % DECKRITE_PATTERNS.length];
   const next = DECKRITE_PATTERNS[(index + 1) % DECKRITE_PATTERNS.length];
+
+  const originFromEvent = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const box = stageRef.current?.getBoundingClientRect();
+    if (!box) return { x: 50, y: 50 };
+    return {
+      x: Math.min(100, Math.max(0, ((event.clientX - box.left) / box.width) * 100)),
+      y: Math.min(100, Math.max(0, ((event.clientY - box.top) / box.height) * 100)),
+    };
+  };
 
   return (
     <div
@@ -71,21 +91,50 @@ export const SwatchLightbox: React.FC<SwatchLightboxProps> = ({ pattern, onClose
       </button>
 
       <div
-        className="max-w-3xl w-full bg-white rounded-2xl overflow-hidden shadow-2xl"
+        className="relative overflow-hidden rounded-2xl bg-white shadow-2xl"
+        style={{ width: SQUARE, height: SQUARE }}
         onClick={(e) => e.stopPropagation()}
       >
-        <img
-          src={pattern.image}
-          alt={`${pattern.name} vinyl membrane close-up`}
-          className="w-full max-h-[70vh] object-cover"
-        />
-        <div className="p-5">
-          <p className="text-[11px] font-bold uppercase tracking-wide text-navy">
-            {pattern.isStandard ? 'Standard color' : 'Available color'}
-          </p>
-          <h3 className="text-xl font-bold text-slate-900">{pattern.name}</h3>
-          <p className="text-sm text-slate-600 mt-1">{pattern.description}</p>
-        </div>
+        <button
+          type="button"
+          ref={stageRef}
+          aria-label={zoomed ? 'Zoom out' : 'Zoom in'}
+          className={`absolute inset-0 overflow-hidden ${zoomed ? 'cursor-zoom-out' : 'cursor-zoom-in'}`}
+          onMouseMove={(event) => {
+            if (zoomed) setOrigin(originFromEvent(event));
+          }}
+          onClick={(event) => {
+            if (zoomed) {
+              setZoomed(false);
+              setOrigin({ x: 50, y: 50 });
+              return;
+            }
+            setOrigin(originFromEvent(event));
+            setZoomed(true);
+          }}
+        >
+          <img
+            src={pattern.image}
+            alt={`${pattern.name} vinyl membrane close-up`}
+            draggable={false}
+            className="absolute inset-0 h-full w-full object-cover will-change-transform"
+            style={{
+              transform: `scale(${zoomed ? CLICK_ZOOM : 1})`,
+              transformOrigin: `${origin.x}% ${origin.y}%`,
+              transition: zoomed ? 'transform 180ms ease-out' : 'transform 280ms ease-out',
+            }}
+          />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/35 to-transparent px-5 pb-4 pt-16 text-left">
+            <p className="text-[11px] font-bold uppercase tracking-wide text-white/80">
+              {pattern.isStandard ? 'Standard color' : 'Available color'}
+            </p>
+            <h3 className="text-xl font-bold text-white">{pattern.name}</h3>
+            <p className="mt-1 text-sm text-white/85">{pattern.description}</p>
+            <p className="mt-3 text-[11px] font-semibold text-white/80">
+              {zoomed ? 'Click to zoom out' : 'Click to zoom'}
+            </p>
+          </div>
+        </button>
       </div>
     </div>
   );

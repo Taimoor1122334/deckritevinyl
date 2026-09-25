@@ -37,10 +37,6 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
               DeckRite L.L.C. has been supplying decking membrane to the North American construction industry since the 1970's. Originating in Western Canada, the deck membrane industry has flourished in Canada and in various parts of the United States. Today, over 20 million square feet of product has protected decks, patios, balconies, and exterior walkways around North America.
             </p>
             <div className="rounded-xl bg-sand border border-slate-200 p-6 space-y-3 text-slate-800">
-              <p className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 mt-1 text-navy" />
-                3912 East Progress<br />North Little Rock, AR 72114
-              </p>
               <a href="tel:18884503325" className="flex items-center gap-2 font-semibold text-navy">
                 <Phone className="w-4 h-4" /> (888) 450-DECK (3325)
               </a>
@@ -48,6 +44,10 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
               <a href="mailto:DeckRitesupport@deckrite.com" className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-navy" /> DeckRitesupport@deckrite.com
               </a>
+              <p className="flex items-start gap-2">
+                <MapPin className="w-4 h-4 mt-1 text-navy" />
+                3912 East Progress<br />North Little Rock, AR 72114
+              </p>
             </div>
           </div>
 
