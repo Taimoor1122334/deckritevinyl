@@ -96,7 +96,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
             Standard colors are Sahara Tan, Slate Gray, Tropical Cream, Lakewood Marble, and Tuscany Sand; <br />
 Harvest and Riverstone are also offered. <br />
 Click any color for a large close-up of the membrane texture. <br />
-Because screens vary, DeckRite will mail free material samples — send your mailing address from the Contact page. <br />
+Because screens vary, DeckRite will mail free material samples — send your mailing address from the <a  onClick={() => onNavigate('contact')} className="underline hover:cursor-pointer hover:text-navy transition-colors">Contact page</a>. <br />
             </p>
           </div>
           <div className="mt-8">
