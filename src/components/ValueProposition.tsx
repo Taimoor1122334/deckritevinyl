@@ -11,7 +11,7 @@ export const ValueProposition: React.FC<ValuePropositionProps> = ({ onWhyDeckRit
       <div className="lg:grid lg:grid-cols-2">
         <div className="relative h-60 sm:h-80 lg:h-auto lg:min-h-[40rem]">
           <img
-            src="/brand/house-image.png"
+            src="/brand/second-section-image.png"
             alt="DeckRite vinyl deck surface with outdoor furniture on a second-story deck"
             className="absolute inset-0 h-full w-full object-cover"
           />
