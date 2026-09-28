@@ -89,7 +89,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           <div className="flex flex-col justify-center space-y-5">
             <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">A waterproof walking surface</h2>
             <p className="text-slate-600 leading-relaxed text-base">
-              With DeckRite you can forget the yearly routine of power washing, sanding, and resealing — along with the
+              With DeckRite you can forget the yearly routine of power washing, sanding, and resealing, along with the
               slivers, exposed nails, and rotting boards that come with a traditional wood deck. The membrane is slip
               resistant, mildew resistant, and completely waterproof, with a proven track record since the 1970&apos;s in
               some of the harshest climates in North America.

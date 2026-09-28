@@ -50,7 +50,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         <div className="space-y-4">
           <img src="/brand/deckrite-logo.png" alt="DeckRite" className="h-10 w-auto" />
           <p className="text-sm text-slate-600 leading-relaxed">
-            DeckRite L.L.C. is a manufacturer of vinyl films and membranes — not an installation contractor. Headquartered in North Little Rock, Arkansas, serving the construction, marine, and RV industries since the 1970's.
+            DeckRite L.L.C. is a manufacturer of vinyl films and membranes, not an installation contractor. Headquartered in North Little Rock, Arkansas, serving the construction, marine, and RV industries since the 1970's.
           </p>
         </div>
 

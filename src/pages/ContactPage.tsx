@@ -30,7 +30,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
             <div>
               <h2 id="about" className="text-xl font-bold text-slate-900 mb-2">About DeckRite</h2>
               <p>
-                DeckRite L.L.C. is a manufacturer of vinyl films and membranes — not an installation contractor. We are headquartered in North Little Rock, Arkansas. We serve the construction, marine, and RV industries. We refer customers to stocking distributors and installing contractors in their area.
+                DeckRite L.L.C. is a manufacturer of vinyl films and membranes, not an installation contractor. We are headquartered in North Little Rock, Arkansas. We serve the construction, marine, and RV industries. We refer customers to stocking distributors and installing contractors in their area.
               </p>
             </div>
             <p>
@@ -75,7 +75,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
                   <input required placeholder="State" className="w-full px-3 py-2.5 rounded-md border border-slate-300 text-sm" />
                 </div>
                 <input required placeholder="ZIP / postal code" className="w-full px-3 py-2.5 rounded-md border border-slate-300 text-sm" />
-                <textarea placeholder="Message (optional) — distributors, specs, or colors you want to see" rows={4} className="w-full px-3 py-2.5 rounded-md border border-slate-300 text-sm" />
+                <textarea placeholder="Message (optional): distributors, specs, or colors you want to see" rows={4} className="w-full px-3 py-2.5 rounded-md border border-slate-300 text-sm" />
                 <label className="flex items-start gap-2 text-sm text-slate-700">
                   <input type="checkbox" defaultChecked className="mt-1" />
                   Send me free samples of the decking material

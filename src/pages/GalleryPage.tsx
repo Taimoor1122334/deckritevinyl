@@ -183,7 +183,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onNavigate }) => {
           <h1 className="text-3xl sm:text-4xl font-bold">Inspiration</h1>
           <p className="mt-3 max-w-2xl text-white/80 leading-relaxed">
             Completed DeckRite projects from homeowners across the country.<br />
-            Photos are grouped by location — click any image for a closer look.
+            Photos are grouped by location. Click any image for a closer look.
           </p>
         </div>
       </section>

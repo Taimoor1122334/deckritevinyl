@@ -107,7 +107,7 @@ export const DECKRITE_PATTERNS: ColorPattern[] = [
 export const DECKRITE_PRODUCTS: ProductItem[] = [
   {
     id: 'deckrite-600',
-    title: 'DeckRite 600 Series — 60 mil',
+    title: 'DeckRite 600 Series, 60 mil',
     category: 'membranes',
     mil: '60 mil (0.060")',
     tagline: 'Heavier-duty 3-ply vinyl membrane for decks, balconies, and walkways that need extra puncture resistance.',
@@ -130,7 +130,7 @@ export const DECKRITE_PRODUCTS: ProductItem[] = [
       Seaming: '1-inch overlap, hot-air welded',
     },
     features: [
-      'Waterproof walking surface — one product for waterproofing and finish flooring',
+      'Waterproof walking surface: one product for waterproofing and finish flooring',
       'Slip resistant, mildew resistant, and formulated for sun, water, and foot traffic',
       'Polyester core for dimensional stability, puncture strength, and tear resistance',
       'No annual sanding, staining, or sealing',
@@ -139,7 +139,7 @@ export const DECKRITE_PRODUCTS: ProductItem[] = [
   },
   {
     id: 'deckrite-500',
-    title: 'DeckRite 500 Series — 50 mil',
+    title: 'DeckRite 500 Series, 50 mil',
     category: 'membranes',
     mil: '50 mil (0.050")',
     tagline: 'Residential-grade 3-ply vinyl covering for new or existing wood and concrete decks.',
@@ -229,7 +229,7 @@ export const SHOWCASE_PROJECTS: ProjectShowcase[] = [
     category: 'residential',
     patternUsed: 'Slate Gray',
     patternId: 'slate-gray',
-    description: 'Walkable waterproofing over living space — one surface for the walking deck and the roof below.',
+    description: 'Walkable waterproofing over living space: one surface for the walking deck and the roof below.',
     image: '/gallery/big/balcony_3.jpg',
     thumb: '/gallery/image3.jpg',
   },
@@ -273,7 +273,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     id: 'g-1',
     title: 'Lakefront walkout',
     category: 'lakefront',
-    caption: 'A waterproof walking surface at the water’s edge — one membrane for the deck you live on.',
+    caption: 'A waterproof walking surface at the water’s edge. One membrane for the deck you live on.',
     alt: 'Couple standing on a DeckRite vinyl walkout deck overlooking a lake',
     thumb: '/gallery/image1.jpg',
     full: '/gallery/big/balcony_1.jpg',
@@ -320,7 +320,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     id: 'g-8',
     title: 'Second-story balcony',
     category: 'balcony',
-    caption: 'Walkable waterproofing over living space — one surface for the deck above and protection below.',
+    caption: 'Walkable waterproofing over living space: one surface for the deck above and protection below.',
     alt: 'Second-story residential balcony with DeckRite vinyl and a glass railing',
     thumb: '/gallery/image8.jpg',
     full: '/gallery/big/balcony_8.jpg',
@@ -338,7 +338,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     id: 'g-10',
     title: 'Waterfront house deck',
     category: 'lakefront',
-    caption: 'Vinyl decking wrapping a waterfront home where the view — and the dry space below — both matter.',
+    caption: 'Vinyl decking wrapping a waterfront home where the view and the dry space below both matter.',
     alt: 'Waterfront house with a wraparound DeckRite vinyl deck',
     thumb: '/gallery/image10.jpg',
     full: '/gallery/big/balcony_10.jpg',
@@ -357,7 +357,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     id: 'g-12',
     title: 'Balcony walking surface',
     category: 'balcony',
-    caption: 'The membrane is the finished floor — slip resistant, waterproof, and ready for furniture.',
+    caption: 'The membrane is the finished floor: slip resistant, waterproof, and ready for furniture.',
     alt: 'Close view of DeckRite vinyl on a balcony with a chair and metal railing',
     thumb: '/gallery/image12.jpg',
     full: '/gallery/big/balcony_12.jpg',
@@ -477,7 +477,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     id: 'g-26',
     title: 'Pool from the balcony',
     category: 'pool',
-    caption: 'A glass rail above a pool patio — the same outdoor living space, upper and lower.',
+    caption: 'A glass rail above a pool patio. The same outdoor living space, upper and lower.',
     alt: 'View from a balcony rail down to a kidney-shaped pool and patio',
     thumb: '/gallery/big/balcony_26.jpg',
     full: '/gallery/big/balcony_26.jpg',
@@ -538,7 +538,7 @@ export const CUSTOMER_PROJECTS: CustomerProject[] = [
       // { src: '/gallery/projects/loudon/after-3.jpg', alt: 'Finished DeckRite vinyl deck with Adirondack chairs in Loudon, Tennessee' },
       { src: '/gallery/projects/loudon/before.jpg', alt: 'Wood deck in Loudon, Tennessee before DeckRite vinyl' },
       { src: '/gallery/projects/loudon/after-1.jpg', alt: 'Vinyl deck overlooking trees in Loudon, Tennessee' },
-      { src: '/gallery/projects/loudon/after-4.jpg', alt: 'Vinyl deck and chairs facing the treeline in Loudon, Tennessee' },
+      // { src: '/gallery/projects/loudon/after-4.jpg', alt: 'Vinyl deck and chairs facing the treeline in Loudon, Tennessee' },
       // { src: '/gallery/projects/loudon/after-2.jpg', alt: 'Vinyl deck surface beside the house in Loudon, Tennessee' },
       // { src: '/gallery/projects/loudon/before.jpg', alt: 'Wood deck in Loudon, Tennessee before DeckRite vinyl' },
     ],
@@ -605,7 +605,7 @@ export const SISTER_BRANDS = [
     url: 'https://deckriterv.com/',
     logo: '/brand/deckrite-rv-logo.png',
     description:
-      'DeckRite RV products are engineered for travel trailers, fifth wheels, sport trailers, and toy haulers — from garage floors to interior upgrades.',
+      'DeckRite RV products are engineered for travel trailers, fifth wheels, sport trailers, and toy haulers, from garage floors to interior upgrades.',
     highlight: 'Rugged PVC flooring for recreational vehicles',
   },
 ];
@@ -736,7 +736,7 @@ export const TECHNICAL_BULLETINS: TechnicalBulletin[] = [
     title: 'Rugs, Mats & Furniture Feet',
     subtitle: 'Material compatibility guidelines for DeckRite and MariDeck PVC surfaces',
     purpose:
-      'DeckRite and MariDeck membranes are PVC-based products engineered for outdoor exposure. Materials placed directly on the surface must also be compatible with PVC. Rubber-based products — including EPDM and neoprene — can interact with the membrane and may cause discoloration, staining or long-term degradation.',
+      'DeckRite and MariDeck membranes are PVC-based products engineered for outdoor exposure. Materials placed directly on the surface must also be compatible with PVC. Rubber-based products, including EPDM and neoprene, can interact with the membrane and may cause discoloration, staining or long-term degradation.',
     pdfUrl: '/pdf/TB-005.pdf',
     status: 'published',
     fieldChecks: [
@@ -816,7 +816,7 @@ export const TECHNICAL_DATA_SHEETS: TechnicalDataSheet[] = [
       { property: 'Tensile Strength', value: '147 lbf/in (ASTM D751)' },
       { property: 'Tear Strength', value: '58 lbf (ASTM D751)' },
       { property: 'Peel Strength', value: '15 lbf/in (ASTM D751)' },
-      { property: 'Mildew Resistance', value: 'ASTM G21 — Pass (no mold @ 28 days)' },
+      { property: 'Mildew Resistance', value: 'ASTM G21, Pass (no mold @ 28 days)' },
     ],
     applicationPoints: [
       'Prepare Surface: Clean DeckRite PVC membrane thoroughly. Surface must be completely dry and debris-free.',
@@ -1294,7 +1294,7 @@ export const DETAIL_DRAWINGS: DetailDrawing[] = [
 export const WHY_DECKRITE_BENEFITS = [
   {
     title: 'Waterproof and walkable',
-    copy: 'One surface waterproofs the structure and becomes the finished walking deck — ideal over living space or dry storage.',
+    copy: 'One surface waterproofs the structure and becomes the finished walking deck, ideal over living space or dry storage.',
   },
   {
     title: 'True 3-ply construction',
@@ -1372,12 +1372,12 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     question: 'How do I get free samples or find a distributor?',
     answer:
-      'DeckRite is a manufacturer. On the original Contact page they ask you to provide a mailing address so they can send free samples of the decking material. Call (888) 450-DECK (3325) or email DeckRitesupport@deckrite.com for distributors near you — they do not install the product themselves.',
+      'DeckRite is a manufacturer. On the original Contact page they ask you to provide a mailing address so they can send free samples of the decking material. Call (888) 450-DECK (3325) or email DeckRitesupport@deckrite.com for distributors near you. They do not install the product themselves.',
   },
 ];
 
 export const PHYSICAL_PROPERTIES = [
-  { property: 'Color', method: '—', value: 'Sahara Tan, Slate Gray, Gray Storm, Tropical Cream, Lakewood Marble, Tuscany Sand, Harvest, Riverstone' },
+  { property: 'Color', method: 'n/a', value: 'Sahara Tan, Slate Gray, Gray Storm, Tropical Cream, Lakewood Marble, Tuscany Sand, Harvest, Riverstone' },
   { property: 'Width', method: 'ASTM D751', value: '68"' },
   { property: 'Thickness', method: 'ASTM D751', value: '0.050" / 0.060"' },
   { property: 'Weight', method: 'ASTM D751', value: '42.5 oz/yd²' },

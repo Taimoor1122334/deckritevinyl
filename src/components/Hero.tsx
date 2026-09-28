@@ -38,7 +38,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreProducts, onFindDealer }) =
 
         <div className="relative z-10 flex items-center px-4 pt-14 pb-12 sm:px-6 sm:pt-20 sm:pb-16 lg:min-h-[36rem] lg:px-10 lg:pt-24 lg:pb-16 xl:min-h-[40rem] xl:pt-28 xl:pl-[max(2.5rem,calc(50vw-38rem))]">
           <div className="max-w-xl ">
-            <h1 className="font-display text-[2rem] font-semibold leading-[1.12] tracking-normal text-navy sm:text-4xl lg:text-[2.75rem] xl:text-[3.25rem]">
+            <h1 className="poppins-medium text-[2.35rem] font-normal leading-[1.1] tracking-normal text-navy sm:text-5xl lg:text-[3.05rem] xl:text-[3.15rem]">
               Waterproof Your Deck.
               <br />
               Protect What&apos;s Below.
