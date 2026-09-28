@@ -3,7 +3,6 @@ import { Breadcrumb } from '../components/Breadcrumb';
 import { ColorSwatchGrid } from '../components/ColorSwatchGrid';
 import { ColorVisualizer } from '../components/ColorVisualizer';
 import { DECKRITE_PRODUCTS } from '../data/deckData';
-import { ExternalLink } from 'lucide-react';
 
 interface ProductsPageProps {
   onNavigate: (page: string) => void;
@@ -24,7 +23,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-teal">Product information</p>
             <h1 className="text-3xl sm:text-4xl font-bold mt-2">Premium Flooring</h1>
             <p className="text-white/80 mt-3 leading-relaxed">
-              DeckRite is a three-ply laminated membrane consisting of a heavy-duty polyester fabric encapsulated between two vinyl films. Finish thickness is 50 mils and 60 mils. The top film is color printed and embossed; the polyester core provides dimensional stability, puncture strength, and tear resistance; the bottom film is the bonding layer and allows two pieces to be molecularly fused during seaming.
+              DeckRite is a three-ply reinforced vinyl membrane: an embossed wear layer, a high-strength polyester reinforcement grid, and a solid vinyl bonding layer. Finish thickness is 50 mils and 60 mils. The wear layer is a durable embossed vinyl surface; the polyester grid adds dimensional stability and tear resistance; the bonding layer is solid vinyl engineered to adhere to the substrate.
             </p>
           </div>
         </div>
@@ -67,7 +66,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
               <img
                 src={selected.image}
                 alt={selected.title}
-                className="w-full h-72 object-cover rounded-xl border border-slate-200"
+                className={`w-full h-72 object-cover rounded-xl border border-slate-200 ${selected.id === 'deckrite-500' ? 'object-bottom' : ''}`}
               />
             )}
             <div>
@@ -114,12 +113,11 @@ Because screens vary, DeckRite will mail free material samples. Send your mailin
               Contact for a distributor
             </button>
             <a
-              href="https://www.deckrite.com/assets/files/pdf/DR_Innovative_2023.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/pdf/DeckRite 8.5x14 Legal Trifold Brochure"
+              download
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-md border border-slate-300 font-bold text-base hover:border-navy transition-colors"
             >
-              Download brochure <ExternalLink className="w-4 h-4" />
+              Download brochure
             </a>
             <button onClick={() => onNavigate('resources')} className="inline-flex items-center gap-2 px-6 py-3.5 rounded-md border border-slate-300 font-bold text-base hover:border-navy transition-colors">
               Architectural &amp; Detail Drawings

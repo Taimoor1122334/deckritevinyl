@@ -16,7 +16,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
           <p className="text-xs font-bold uppercase tracking-[0.16em] text-rose">Products</p>
           <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mt-2">500 Series, 600 Series &amp; Accessories</h2>
           <p className="text-slate-600 mt-2">
-            DeckRite is a three-ply laminated membrane: a printed, embossed vinyl wear layer, a polyester fabric core, and a vinyl bonding layer. Rolls are 68 inches wide by 90 feet long.
+            DeckRite is a three-ply reinforced vinyl membrane: an embossed wear layer, a high-strength polyester reinforcement grid, and a solid vinyl bonding layer. Rolls are 68 inches wide by 90 feet long.
           </p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

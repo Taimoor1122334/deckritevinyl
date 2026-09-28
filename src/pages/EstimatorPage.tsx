@@ -15,7 +15,7 @@ export const EstimatorPage: React.FC<EstimatorPageProps> = ({ onNavigate }) => {
     const rollWidthFt = 68 / 12;
     const rollArea = rollWidthFt * 90;
     const rolls = Math.max(1, Math.ceil(withWaste / rollArea));
-    const adhesiveGallons = withWaste / 135;
+    const adhesiveGallons = withWaste / 125;
     return { area, withWaste, rolls, adhesiveGallons };
   }, [length, width, waste]);
 
@@ -26,7 +26,7 @@ export const EstimatorPage: React.FC<EstimatorPageProps> = ({ onNavigate }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl font-bold">Material estimator</h1>
           <p className="text-white/80 mt-3 max-w-2xl">
-            Planning tool based on DeckRite&apos;s 68" × 90' rolls and water-based adhesive coverage of 120–150 sq. ft. per gallon. Always confirm quantities with your distributor.
+            Planning tool based on DeckRite&apos;s 68" × 90' rolls and water-based adhesive coverage of about 125 sq. ft. per gallon. Always confirm quantities with your distributor.
           </p>
         </div>
       </section>
