@@ -167,7 +167,7 @@ export const DECKRITE_PRODUCTS: ProductItem[] = [
       'No slivers, exposed nails, or rotting wood walking surface',
       'Suitable for all types of climates across North America',
     ],
-    image: '/gallery/projects/loudon/after-3.jpg',
+    image: '/gallery/projects/loudon/residential.jpg',
   },
   {
     id: 'adhesives-accessories',

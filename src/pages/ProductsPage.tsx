@@ -66,7 +66,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
               <img
                 src={selected.image}
                 alt={selected.title}
-                className={`w-full h-72 object-cover rounded-xl border border-slate-200 ${selected.id === 'deckrite-500' ? 'object-bottom' : ''}`}
+                className="w-full h-80 md:h-[22rem] object-cover object-[center_58%] rounded-xl border border-slate-200"
               />
             )}
             <div>
@@ -88,11 +88,11 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
 
       <section id="product-colors" className="scroll-mt-24 py-12 border-t border-slate-200 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
+          <div className="max-w-4xl">
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-rose">Colors</p>
             <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mt-2">Available colors</h2>
             <p className="text-slate-600 mt-2 leading-relaxed leading-loose">
-            Standard colors are Sahara Tan, Slate Gray, Tropical Cream, Lakewood Marble, and Tuscany Sand; <br />
+            Standard colors are Sahara Tan, Slate Gray, Gray Storm, Tropical Cream, Lakewood Marble, and Tuscany Sand; <br />
 Harvest and Riverstone are also offered. <br />
 Click any color for a large close-up of the membrane texture. <br />
 Because screens vary, DeckRite will mail free material samples. Send your mailing address from the <a  onClick={() => onNavigate('contact')} className="underline hover:cursor-pointer hover:text-navy transition-colors">Contact page</a>. <br />
