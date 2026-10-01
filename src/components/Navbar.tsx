@@ -33,7 +33,7 @@ const RESOURCE_GROUPS = [
     title: 'Drawings & field guides',
     items: [
       { page: 'resources', section: 'section-drawings', label: 'CAD Drawings', description: 'Installation and flashing details', icon: Compass },
-      { page: 'resources', section: 'section-corners', label: 'Corner Photos', description: 'Step-by-step field guides', icon: Camera },
+      { page: 'resources', section: 'section-corners', label: 'Corner Photos', description: 'Measured inside and outside corners', icon: Camera },
       { page: 'resources', section: 'section-videos', label: 'Installation Videos', description: 'Contractor video series', icon: PlayCircle },
     ],
   },

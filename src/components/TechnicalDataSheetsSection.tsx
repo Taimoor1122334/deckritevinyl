@@ -53,24 +53,22 @@ export const TechnicalDataSheetsSection: React.FC<TechnicalDataSheetsSectionProp
             >
               <div>
                 {/* Visual Thumbnail / Direct PDF Link */}
-                <div className="relative bg-slate-900 aspect-[16/11] overflow-hidden border-b border-slate-100">
+                <div className="relative bg-white aspect-[16/11] overflow-hidden border-b border-slate-100">
                   <img
                     src={sheet.image}
                     alt={`${sheet.title} preview`}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-contain object-top group-hover:scale-[1.02] transition-transform duration-300"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90" />
                   <div className="absolute top-3 left-3 flex items-center gap-1.5">
                     <span className="px-2.5 py-0.5 rounded-full bg-rose text-white text-[11px] font-bold uppercase tracking-wider shadow-sm">
                       {sheet.code}
                     </span>
-                    <span className="px-2.5 py-0.5 rounded-full bg-white/90 text-navy text-[11px] font-bold uppercase tracking-wider">
+                    <span className="px-2.5 py-0.5 rounded-full bg-white/90 text-navy text-[11px] font-bold uppercase tracking-wider shadow-sm">
                       {sheet.category}
                     </span>
                   </div>
-                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
-                    <span className="text-xs font-semibold text-white/90">Official Spec Sheet</span>
+                  <div className="absolute bottom-3 right-3">
                     <a
                       href={sheet.pdfUrl}
                       target="_blank"
@@ -273,7 +271,7 @@ export const TechnicalDataSheetsSection: React.FC<TechnicalDataSheetsSectionProp
                         <img
                           src={modalSheet.image}
                           alt={modalSheet.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          className="w-full h-full object-contain object-top bg-white group-hover:scale-105 transition-transform duration-300"
                         />
                       </div>
                       <div className="p-4 bg-white text-center flex flex-col gap-2">

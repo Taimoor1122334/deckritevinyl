@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Breadcrumb } from '../components/Breadcrumb';
 import { ColorSwatchGrid } from '../components/ColorSwatchGrid';
 import { ColorVisualizer } from '../components/ColorVisualizer';
-import { DECKRITE_PRODUCTS } from '../data/deckData';
+import { DECKRITE_ADHESIVES, DECKRITE_PRODUCTS } from '../data/deckData';
 
 interface ProductsPageProps {
   onNavigate: (page: string) => void;
@@ -13,6 +13,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
 }) => {
   const [selectedId, setSelectedId] = useState(DECKRITE_PRODUCTS[0].id);
   const selected = DECKRITE_PRODUCTS.find((p) => p.id === selectedId) ?? DECKRITE_PRODUCTS[0];
+  const isAdhesivesTab = selected.id === 'adhesives-accessories';
 
   return (
     <div id="products-page" className="min-h-screen bg-white">
@@ -46,7 +47,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
           </div>
 
           <div className="grid items-start lg:grid-cols-2 gap-10">
-            {selected.id === 'adhesives-accessories' ? (
+            {isAdhesivesTab ? (
               <button
                 type="button"
                 onClick={() => onNavigate('resources')}
@@ -58,7 +59,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
                   className="w-full h-72 object-cover rounded-xl border border-slate-200 object-[center_40%] group-hover:scale-[1.02] transition-transform duration-300"
                 />
                 <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t rounded-b-xl from-navy/85 via-navy/40 to-transparent" />
-                <p className="absolute left-5 bottom-5 right-5 text-white text-2xl sm:text-3xl font-extrabold leading-tight drop-shadow-md  bg-slate-200/50 hover:bg-slate-200/70 transition-colors p-2 rounded-lg">
+                <p className="absolute left-5 bottom-5 right-5 text-white text-2xl sm:text-3xl font-extrabold leading-tight drop-shadow-md bg-slate-200/50 hover:bg-slate-200/70 transition-colors p-2 rounded-lg">
                   Watch Our Installation Process!
                 </p>
               </button>
@@ -73,6 +74,11 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
               <h2 className="text-2xl font-bold text-slate-900">{selected.title}</h2>
               <p className="text-slate-600 mt-3 leading-relaxed">{selected.description}</p>
               <p className="text-sm font-medium text-navy mt-3">{selected.warranty}</p>
+              {isAdhesivesTab && (
+                <p className="mt-4 text-sm text-slate-700 leading-relaxed bg-amber-50 border border-amber-200 rounded-lg p-3">
+                  <strong>IMPORTANT:</strong> If the recommended DeckRite adhesive is not used, ensure the alternative adhesive is PVC-compatible to prevent adverse effects on the appearance, adhesion, and performance of the vinyl.
+                </p>
+              )}
               <dl className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {Object.entries(selected.specifications).map(([key, value]) => (
                   <div key={key} className="rounded-lg bg-sand p-3">
@@ -105,6 +111,52 @@ Because screens vary, DeckRite will mail free material samples. Send your mailin
       </section>
 
       <ColorVisualizer />
+
+      <section id="product-adhesives" className="scroll-mt-24 py-12 border-t border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-xs font-bold uppercase tracking-[0.16em] text-rose">Adhesives</p>
+          <h2 className="text-2xl font-bold text-slate-900 mt-2">DeckRite adhesives</h2>
+          <p className="text-slate-600 mt-2 max-w-3xl leading-relaxed">
+            Browse the lineup below to find the best match for your surface — unsealed wood, sealed wood, or concrete.
+          </p>
+          <div className="mt-8 grid sm:grid-cols-2 gap-6">
+            {DECKRITE_ADHESIVES.map((adhesive) => (
+              <article key={adhesive.id} className="rounded-xl border border-slate-200 bg-slate-50 overflow-hidden">
+                <div className="bg-white px-6 py-5">
+                  <img
+                    src={adhesive.image}
+                    alt={adhesive.title}
+                    className="w-full h-56 object-contain"
+                  />
+                </div>
+                <div className="p-5">
+                  <span className="inline-block text-[11px] font-bold uppercase tracking-wide bg-navy text-white px-2.5 py-1 rounded">
+                    Best for: {adhesive.bestFor}
+                  </span>
+                  <h4 className="text-lg font-bold text-slate-900 mt-3">{adhesive.title}</h4>
+                  <p className="text-sm text-slate-600 mt-2 leading-relaxed">{adhesive.description}</p>
+                  <dl className="mt-4 grid grid-cols-1 gap-2">
+                    <div className="rounded-lg bg-white border border-slate-200 p-3">
+                      <dt className="text-[11px] font-bold uppercase text-slate-500">Coverage</dt>
+                      <dd className="text-sm text-slate-800 mt-0.5">{adhesive.coverage}</dd>
+                    </div>
+                    <div className="rounded-lg bg-white border border-slate-200 p-3">
+                      <dt className="text-[11px] font-bold uppercase text-slate-500">Application</dt>
+                      <dd className="text-sm text-slate-800 mt-0.5">{adhesive.application}</dd>
+                    </div>
+                    {adhesive.voc && (
+                      <div className="rounded-lg bg-white border border-slate-200 p-3">
+                        <dt className="text-[11px] font-bold uppercase text-slate-500">VOC</dt>
+                        <dd className="text-sm text-slate-800 mt-0.5">{adhesive.voc}</dd>
+                      </div>
+                    )}
+                  </dl>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="py-12 border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

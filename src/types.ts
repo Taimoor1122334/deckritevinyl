@@ -27,6 +27,19 @@ export interface ProductItem {
   image: string;
 }
 
+export interface AdhesiveProduct {
+  id: string;
+  sku: string;
+  title: string;
+  bestFor: string;
+  description: string;
+  type: 'water-based' | 'solvent-based';
+  application: string;
+  coverage: string;
+  voc?: string;
+  image: string;
+}
+
 export type GalleryCategory = 'deck' | 'balcony' | 'lakefront' | 'pool' | 'walkway';
 
 export interface GalleryImage {
@@ -89,6 +102,7 @@ export interface ResourceDoc {
   fileSize: string;
   description: string;
   url: string;
+  image?: string;
 }
 
 export interface DetailDrawing {
@@ -109,12 +123,11 @@ export interface DetailDrawing {
 export interface CornerPhotoGuide {
   id: string;
   type: 'inside' | 'outside';
-  stepNumber: number;
+  viewLabel: string;
   title: string;
   subtitle: string;
   description: string;
-  technique: string;
-  drawingRef: string;
+  dimensions: string[];
   image: string;
 }
 

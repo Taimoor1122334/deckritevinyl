@@ -1,6 +1,7 @@
 import {
   ColorPattern,
   ProductItem,
+  AdhesiveProduct,
   ProjectShowcase,
   GalleryImage,
   CustomerProject,
@@ -175,7 +176,7 @@ export const DECKRITE_PRODUCTS: ProductItem[] = [
     category: 'accessories',
     tagline: 'Manufacturer-approved adhesive over a solid surface, with matching accessories for a complete waterproof system.',
     description:
-      'DeckRite is installed with manufacturer-approved bonding adhesive over a solid surface. Water-based adhesive is used on wood and covers about 125 sq. ft. per gallon. Solvent-based adhesive is used on concrete or sealed wood. Seams are hot-air welded on a 1 to 1-1/2 inch overlap with no adhesive in the weld zone. Termination, drip edge, and substrate details follow the manufacturer installation instructions.',
+      'Every DeckRite installation starts with the right adhesive. Water-based adhesive is used on unsealed wood; solvent-based adhesive is used on concrete or sealed wood. Seams are hot-air welded on a 1 to 1-1/2 inch overlap with no adhesive in the weld zone. Termination, drip edge, and substrate details follow the manufacturer installation instructions.',
     warranty: 'System components are specified with the membrane manufacturer’s installation instructions.',
     applications: [
       'Field bonding over a solid wood or approved concrete surface',
@@ -184,19 +185,72 @@ export const DECKRITE_PRODUCTS: ProductItem[] = [
       'Drain, scupper, and post flashing details',
     ],
     specifications: {
-      'Water-based adhesive': 'About 125 sq. ft. per gallon, for wood',
-      'Solvent-based adhesive': 'For concrete or sealed wood',
+      'Water-based adhesive': 'MD-101 (1 gal) and 42022WB (3 gal) for unsealed wood',
+      'Solvent-based adhesive': 'MD-102 (1 gal) and 42011LV (5 gal) for concrete or sealed wood',
       Seaming: '1 to 1-1/2 inch overlap, hot-air welded',
       Accessories: 'Color-coordinated. See installation instructions',
       Substrate: 'Solid surface. See installation instructions',
     },
     features: [
-      'Water-based adhesive for wood; solvent-based adhesive for concrete or sealed wood',
+      'Water-based adhesive for unsealed wood; solvent-based adhesive for concrete or sealed wood',
       'Color-coordinated accessories',
       'Hot-air welding guns available for rental or purchase',
       'Installation videos, written instructions, and technical data available online',
     ],
     image: '/gallery/projects/sand-pointe/landing.jpg',
+  },
+];
+
+export const DECKRITE_ADHESIVES: AdhesiveProduct[] = [
+  {
+    id: 'md-102',
+    sku: 'MD-102',
+    title: '1-Gal Solvent-Based Adhesive (MD-102)',
+    bestFor: 'Small Concrete & Sealed-Wood Projects',
+    description:
+      'Convenient 1-gallon size of MD-102 for repairs and smaller installations on concrete or sealed wood surfaces.',
+    type: 'solvent-based',
+    application: '2-surface application (back of vinyl and surface being adhered to)',
+    coverage: 'Approx. 50–60 sq. ft.',
+    voc: 'Low VOC compliant',
+    image: '/products/adhesives/md-102-1gal-solvent.png',
+  },
+  {
+    id: '42011lv',
+    sku: '42011LV',
+    title: '5-Gal Solvent-Based Adhesive (42011LV)',
+    bestFor: 'Concrete & Sealed Wood',
+    description:
+      'Professional-grade solvent-based adhesive for large flooring installations on concrete or sealed wood surfaces.',
+    type: 'solvent-based',
+    application: '2-surface application (back of vinyl and surface being adhered to)',
+    coverage: 'Approx. 250–300 sq. ft.',
+    voc: 'Low VOC compliant',
+    image: '/products/adhesives/42011lv-5gal-solvent.png',
+  },
+  {
+    id: 'md-101',
+    sku: 'MD-101',
+    title: '1-Gal Water-Based Bonding Adhesive (MD-101)',
+    bestFor: 'Small Wood Projects',
+    description:
+      'The same MD-101 adhesive in a convenient 1-gallon size for repairs, touch-ups, or smaller installations on unsealed wood surfaces.',
+    type: 'water-based',
+    application: '1-surface application',
+    coverage: 'Approx. 125 sq. ft.',
+    image: '/products/adhesives/md-101-1gal-water.png',
+  },
+  {
+    id: '42022wb',
+    sku: '42022WB',
+    title: '3-Gal Water-Based Adhesive (42022WB)',
+    bestFor: 'Unsealed Wood',
+    description:
+      'High-performance water-based adhesive designed for unsealed plywood and pressure-treated wood flooring installations.',
+    type: 'water-based',
+    application: '1-surface application',
+    coverage: 'Approx. 375 sq. ft.',
+    image: '/products/adhesives/42022wb-3gal-water.png',
   },
 ];
 
@@ -809,7 +863,7 @@ export const TECHNICAL_DATA_SHEETS: TechnicalDataSheet[] = [
       'DeckRite ProGuard PVC Walk Tread is an embossed, non-directional traffic accessory hot-air welded directly onto DeckRite PVC membranes. Engineered for heavy residential foot traffic, apartment walkways, resort stairs, and commercial landings.',
     construction:
       'Heavy-duty 8.79 oz/sq. ft. embossed PVC walk tread. Roll size: 36 inches wide x 60 feet length. Tensile strength: 147 lbf/in (ASTM D751). Tear strength: 58 lbf. Mold & Mildew: Pass G21 (no growth after 28 days).',
-    colors: ['Gray', 'Tan'],
+    colors: ['Safety Yellow', 'Gray'],
     specs: [
       { property: 'Roll Width', value: '36 in. (0.91 m)' },
       { property: 'Roll Length', value: '60 ft. (18.28 m)' },
@@ -900,93 +954,60 @@ export const CORNER_PHOTO_GUIDES: CornerPhotoGuide[] = [
   {
     id: 'in-corner-1',
     type: 'inside',
-    stepNumber: 1,
-    title: 'Inside Corner - Step 1: Pig-Ear Fold & Alignment',
-    subtitle: 'Preparing the excess membrane fold in the 90° interior junction',
+    viewLabel: 'View 1',
+    title: 'Inside Corner',
+    subtitle: 'Measured sample for a 90° interior junction',
     description:
-      'Turn the continuous membrane 90° upward into the wall junction. Fold the excess corner fabric neatly into a vertical pig-ear without cutting the waterproof barrier at the deck level.',
-    technique: 'Fold the corner membrane cleanly against the wall without stretching or puncturing the field sheet.',
-    drawingRef: 'DR-104',
+      'Photographed inside corner piece with the wrap dimensions shown on the sample. Use this view to confirm the 10" deck-side length, 6.5" vertical, and 5" inner return.',
+    dimensions: ['10" deck-side length', '6.5" vertical', '5" inner return'],
     image: '/brand/InCorner1.png',
   },
   {
     id: 'in-corner-2',
     type: 'inside',
-    stepNumber: 2,
-    title: 'Inside Corner - Step 2: Welded Corner Wrap & Seal',
-    subtitle: 'Hot-air welding the folded corner lap flat to the vertical upstand',
+    viewLabel: 'View 2',
+    title: 'Inside Corner',
+    subtitle: 'Side profile of the same inside corner',
     description:
-      'Tack and hot-air weld the folded pig-ear tight against the vertical wall substrate with a hand roller to achieve a seamless, continuous moisture barrier extending at least 4" up the vertical surface.',
-    technique: 'Maintain uniform hot-air heat gun temperature (approx. 700°F–800°F) and press firmly with silicone roller from inside crease outward.',
-    drawingRef: 'DR-104',
+      'Side view of the inside corner showing the 7" vertical upstand and 10" deck-side leg.',
+    dimensions: ['7" vertical upstand', '10" deck-side leg'],
     image: '/brand/InCorner2.png',
   },
   {
     id: 'out-corner-1',
     type: 'outside',
-    stepNumber: 1,
-    title: 'Outside Corner - Step 1: Field Sheet Relief & Slit',
-    subtitle: 'Precision relieving cut around exterior post or curb corners',
+    viewLabel: 'View 1',
+    title: 'Outside Corner',
+    subtitle: 'Measured sample for a 90° exterior junction',
     description:
-      'Make a clean 45° relief cut at the exterior junction point, wrapping the main membrane around the corner face and turning it down or up as required.',
-    technique: 'Do not overcut into the deck plane. Stop relieving cut precisely 1/8" before the exterior substrate corner point.',
-    drawingRef: 'DR-105',
+      'Photographed outside corner piece with a 10" x 10" deck wrap and 7" vertical turn-up.',
+    dimensions: ['10" x 10" deck wrap', '7" vertical turn-up'],
     image: '/brand/OutCorner1.png',
   },
   {
     id: 'out-corner-2',
     type: 'outside',
-    stepNumber: 2,
-    title: 'Outside Corner - Step 2: Welded Target Patch Reinforcement',
-    subtitle: 'Hot-air welding a pre-cut unreinforced PVC corner patch overlay',
+    viewLabel: 'View 2',
+    title: 'Outside Corner',
+    subtitle: 'Reverse view showing the 4.5" return',
     description:
-      'Install a circular or shaped DeckRite PVC outside corner patch over the relief point. Hot-air weld completely around the 360° perimeter with minimum 1-1/2" lap for 100% waterproof seal.',
-    technique: 'Preheat the corner patch to soften vinyl, contour tightly over the radius, and roll firmly with steel or silicone seam probe roller.',
-    drawingRef: 'DR-105',
+      'Reverse view of the outside corner showing the 4.5" return dimension on the formed piece.',
+    dimensions: ['4.5" return'],
     image: '/brand/OutCorner2.png',
   },
 ];
 
 export const RESOURCE_DOCUMENTS: ResourceDoc[] = [
   {
-    id: 'doc-innovative',
-    title: 'DeckRite Innovative Waterproofing Systems Catalog',
-    category: 'Architectural & Specs',
-    docType: 'PDF',
-    fileSize: '1.6 MB PDF',
-    description:
-      'Complete product specification catalog detailing the 500 & 600 series flexible PVC membranes, system assemblies, and technical benefits.',
-    url: '/pdf/DR_Innovative_2023.pdf',
-  },
-  {
-    id: 'doc-install-417',
-    title: 'Comprehensive Membrane Installation Manual (Install417)',
+    id: 'doc-install-2026',
+    title: 'DeckRite Installation Instructions 2026',
     category: 'Installation Guides',
     docType: 'PDF',
-    fileSize: '183 KB PDF',
+    fileSize: '203 KB PDF',
     description:
-      'Official step-by-step jobsite manual covering substrate plywood/concrete prep, water-based & solvent-based adhesive application, perimeter termination, and heat welding.',
-    url: '/pdf/Install417.pdf',
-  },
-  {
-    id: 'doc-techbulletin-summary',
-    title: 'DeckRite Technical Bulletins Compilation (TB-001 - TB-006)',
-    category: 'Technical Data',
-    docType: 'PDF',
-    fileSize: '93 KB PDF',
-    description:
-      'Consolidated reference guide featuring care & maintenance, cleaning formulas, ice melt safety, and material compatibility.',
-    url: '/pdf/techbulletin.pdf',
-  },
-  {
-    id: 'doc-arch-specs',
-    title: 'DeckRite CSI Architectural Specifications (3-Part)',
-    category: 'Architectural & Specs',
-    docType: 'PDF',
-    fileSize: '268 KB PDF',
-    description:
-      'Full 3-part CSI format architectural master specification for traffic-bearing PVC waterproof membranes over wood and concrete decks.',
-    url: '/pdf/archspecs.pdf',
+      'Official installation procedure covering surface preparation, membrane layout, adhesive application, perimeter detailing, and hot-air welding.',
+    url: '/pdf/DeckRite Installation Instructions 2026.pdf',
+    image: '/brand/doc-install-2026.png',
   },
   {
     id: 'doc-water-msds',
@@ -997,6 +1018,7 @@ export const RESOURCE_DOCUMENTS: ResourceDoc[] = [
     description:
       'Official OSHA / GHS Safety Data Sheet for DeckRite water-based substrate bonding adhesive formulation.',
     url: '/pdf/Water_Based_MSDS.pdf',
+    image: '/brand/doc-sds-water.png',
   },
   {
     id: 'doc-solvent-msds',
@@ -1007,66 +1029,7 @@ export const RESOURCE_DOCUMENTS: ResourceDoc[] = [
     description:
       'Official OSHA / GHS Safety Data Sheet for DeckRite contact/solvent-based adhesive used for concrete, edge flashing, and vertical flashings.',
     url: '/pdf/Solvent_Based_MSDS.pdf',
-  },
-  {
-    id: 'doc-tb001',
-    title: 'TB-001 Care & Maintenance Guidelines',
-    category: 'Technical Data',
-    docType: 'PDF',
-    fileSize: '163 KB PDF',
-    description:
-      'Routine cleaning procedure, cleaner selection by condition matrix, recommended practices, and avoid guidelines for DeckRite PVC surfaces.',
-    url: '/pdf/TB-001.pdf',
-  },
-  {
-    id: 'doc-tb005',
-    title: 'TB-005 Rugs, Mats & Furniture Feet',
-    category: 'Technical Data',
-    docType: 'PDF',
-    fileSize: '297 KB PDF',
-    description:
-      'Material compatibility guidelines covering rubber-backed mats, furniture feet, plasticizer migration, and 3-step field checks.',
-    url: '/pdf/TB-005.pdf',
-  },
-  {
-    id: 'doc-tb006',
-    title: 'TB-006 Cold & Wet Weather Installation',
-    category: 'Installation Guides',
-    docType: 'PDF',
-    fileSize: '720 KB PDF',
-    description:
-      'Field temperature requirements (40°F+), surface moisture limits (<20%), dew point calculation rules, and temporary enclosure heating.',
-    url: '/pdf/TB-006.pdf',
-  },
-  {
-    id: 'doc-tds-proguard',
-    title: 'ProGuard PVC Walk Tread Technical Data Sheet',
-    category: 'Technical Data',
-    docType: 'PDF',
-    fileSize: '209 KB PDF',
-    description:
-      'ASTM D751 tensile/tear specs, ASTM G21 mold ratings, roll dimensions, and hot-air welding installation procedure.',
-    url: '/pdf/TDS-ProGuard-Walk-Tread.pdf',
-  },
-  {
-    id: 'doc-tds-metal',
-    title: 'PVC Coated Sheet Metal Technical Data Sheet',
-    category: 'Architectural & Specs',
-    docType: 'PDF',
-    fileSize: '161 KB PDF',
-    description:
-      '24-ga galvanized steel with 20-mil PVC laminate, 4x10 ft sheets, bending parameters, and welding specs in Gray, Tan, White.',
-    url: '/pdf/TDS-PVC-Coated-Sheet-Metal.pdf',
-  },
-  {
-    id: 'doc-tds-drip',
-    title: 'PVC Coated Drip Edge Technical Data Sheet',
-    category: 'Architectural & Specs',
-    docType: 'PDF',
-    fileSize: '163 KB PDF',
-    description:
-      'Preformed 1-3/4" x 2" x 10\' perimeter drip edge flashing profile, packaging data, and fastening specifications.',
-    url: '/pdf/TDS-PVC-Drip-Edge.pdf',
+    image: '/brand/doc-sds-solvent.png',
   },
   {
     id: 'doc-brochure-legal',
@@ -1077,6 +1040,7 @@ export const RESOURCE_DOCUMENTS: ResourceDoc[] = [
     description:
       'Complete full-color legal trifold architectural brochure detailing residential & commercial applications, color patterns, and warranty.',
     url: '/pdf/DeckRite-Trifold-Brochure.pdf',
+    image: '/brand/doc-brochure.png',
   },
 ];
 
@@ -1111,7 +1075,7 @@ export const DETAIL_DRAWINGS: DetailDrawing[] = [
   {
     id: 'dr-104',
     code: 'DR-104',
-    title: 'Base Finishings',
+    title: 'Base Flashing',
     system: 'Fully Adhered',
     description: 'Wall-to-deck horizontal-to-vertical base transition ensuring a minimum 4" continuous upward waterproofing lap.',
     image: '/brand/dr-104.png',
