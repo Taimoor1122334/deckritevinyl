@@ -5,7 +5,7 @@ import {
   ProjectShowcase,
   GalleryImage,
   CustomerProject,
-  Dealer,
+  StockingDistributor,
   ResourceDoc,
   DetailDrawing,
   CornerPhotoGuide,
@@ -752,38 +752,82 @@ export const TECHNICAL_BULLETINS: TechnicalBulletin[] = [
   {
     id: 'tb-002',
     code: 'TB-002',
-    title: 'Technical Bulletin 2',
-    subtitle: 'Official engineering bulletin currently in production by DeckRite Technical Services',
+    title: 'Verify Lot Numbers',
+    subtitle: 'Color-matching guidance for DeckRite PVC membrane installations',
     purpose:
-      'Technical Bulletin 2 is currently being finalized by the DeckRite engineering team and will be published here upon official release.',
-    status: 'pending',
+      'Every effort is made during manufacturing to match color batches from one production run to the next. However, even with computerized color-matching techniques, colors may vary slightly between production runs.',
+    pdfUrl: '/pdf/DeckRite TB-002 - Verify Lot Numbers.pdf',
+    status: 'published',
+    regularProcedure: [
+      {
+        step: 1,
+        title: 'Check Lot Numbers',
+        description:
+          'Verify the lot numbers shown on the roll labels before installing material that will be used in adjacent areas.',
+      },
+      {
+        step: 2,
+        title: 'Compare Adjacent Material',
+        description:
+          'After verifying the lot number and before gluing the DeckRite membrane in place, compare the membrane color to adjacent material.',
+      },
+      {
+        step: 3,
+        title: 'Lot Number and Color Check',
+        description:
+          'Match the roll lot numbers and visually compare membrane color before gluing the material in place.',
+      },
+    ],
     recommendedPractices: [
-      'Check back soon for the official release.',
-      'Contact DeckRite Technical Support at (888) 450-3325 for immediate engineering assistance.',
+      'DeckRite will strive to ship rolls with the same lot number.',
+      'The installer must also check lot numbers before installation.',
+      'Compare adjacent membrane color before the membrane is glued down.',
     ],
     avoidPractices: [
-      'Proceeding with non-standard details without prior engineering consultation.',
+      'Gluing the membrane before matching lot numbers and comparing color.',
+      'Assuming a distributor shipment contains matching lot numbers.',
     ],
     importantNotice:
-      'IN PREPARATION: Tech Bulletin 2 is undergoing editorial review. For urgent jobsite questions, contact DeckRite directly.',
+      'IMPORTANT: Match lot numbers and compare adjacent membrane color before gluing the DeckRite membrane in place. Color may vary slightly between production runs. Verify roll labels and adjacent material before installation; contact DeckRite Technical Services with questions.',
   },
   {
     id: 'tb-003',
     code: 'TB-003',
-    title: 'Technical Bulletin 3',
-    subtitle: 'Official engineering bulletin currently in production by DeckRite Technical Services',
+    title: 'Mildew / Algae Resistance',
+    subtitle: 'Outdoor resistance and routine cleaning guidance for DeckRite PVC membrane surfaces',
     purpose:
-      'Technical Bulletin 3 is currently being finalized by the DeckRite engineering team and will be published here upon official release.',
-    status: 'pending',
+      'DeckRite membranes are designed for outdoor use and are formulated to withstand exposure to the elements. The membrane contains a fungicide used in vinyl membranes to help prevent surface penetration of algae and/or mildew spores.',
+    pdfUrl: '/pdf/DeckRite TB-003 - Mildew Algae Resistance.pdf',
+    status: 'published',
+    regularProcedure: [
+      {
+        step: 1,
+        title: 'Clean Periodically',
+        description:
+          'Dirt and debris on the membrane surface can support mildew or algae growth, so clean the surface periodically.',
+      },
+      {
+        step: 2,
+        title: 'Use Mild Soap and Water',
+        description: 'Apply mild liquid dish soap with water and clean the surface using a soft-bristled scrub brush.',
+      },
+      {
+        step: 3,
+        title: 'Rinse Thoroughly',
+        description: 'Rinse the membrane thoroughly with clean water after cleaning.',
+      },
+    ],
     recommendedPractices: [
-      'Check back soon for the official release.',
-      'Contact DeckRite Technical Support at (888) 450-3325 for immediate engineering assistance.',
+      'Clean the membrane periodically so dirt and debris do not remain on the surface.',
+      'Use mild liquid dish soap, water, and a soft-bristled scrub brush.',
+      'Rinse thoroughly with clean water after every cleaning.',
     ],
     avoidPractices: [
-      'Proceeding with non-standard details without prior engineering consultation.',
+      'Leaving dirt and debris on the membrane, where mildew or algae can grow.',
+      'Expecting the fungicide to stop growth in surface dirt. It helps prevent spores from penetrating the membrane; it cannot stop growth in debris on top of it.',
     ],
     importantNotice:
-      'IN PREPARATION: Tech Bulletin 3 is undergoing editorial review. For urgent jobsite questions, contact DeckRite directly.',
+      'IMPORTANT: Routine cleaning is necessary because mildew or algae can grow in dirt and debris on the membrane surface. Periodic cleaning with mild liquid dish soap, water and a soft-bristled scrub brush, followed by thorough rinsing, will help keep the DeckRite membrane looking new.',
   },
   {
     id: 'tb-005',
@@ -1337,7 +1381,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     question: 'How do I get free samples or find a distributor?',
     answer:
-      'DeckRite is a manufacturer. On the original Contact page they ask you to provide a mailing address so they can send free samples of the decking material. Call (888) 450-DECK (3325) or email DeckRitesupport@deckrite.com for distributors near you. They do not install the product themselves.',
+      'DeckRite is a manufacturer and does not install the product. Stocking distributors are listed on the Contact page. For free material samples, send a mailing address from that page, or call (888) 450-DECK (3325) / email DeckRitesupport@deckrite.com.',
   },
 ];
 
@@ -1356,35 +1400,16 @@ export const PHYSICAL_PROPERTIES = [
   { property: 'Shrinkage 24 h @ 175°F (w / f)', method: 'SAE J883', value: '−0.8% / 0.3%' },
 ];
 
-export const AUTHORIZED_DEALERS: Dealer[] = [
-  {
-    id: 'd-1',
-    name: 'DeckRite L.L.C. Headquarters',
-    type: 'Headquarters',
-    address: '3912 East Progress',
-    city: 'North Little Rock',
-    stateOrProvince: 'AR',
-    country: 'USA',
-    postalCode: '72114',
-    phone: '(888) 450-DECK (3325)',
-    email: 'DeckRitesupport@deckrite.com',
-    website: 'https://www.deckrite.com/',
-    servesRegions: ['United States', 'Direct shipping throughout North America'],
-  },
-  {
-    id: 'd-2',
-    name: 'DeckRite Canada Sundecks Ltd.',
-    type: 'Canadian Affiliate',
-    address: 'See deckritecanada.com for current location',
-    city: 'Langley',
-    stateOrProvince: 'BC',
-    country: 'Canada',
-    postalCode: '',
-    phone: '1-888-303-2792',
-    email: 'info@deckritecanada.com',
-    website: 'https://deckritecanada.com/',
-    servesRegions: ['Canada'],
-  },
+export const STOCKING_DISTRIBUTORS: StockingDistributor[] = [
+  { id: 'qxo', name: 'QXO', logo: '/distributors/qxo.png', url: 'https://qxo.com' },
+  { id: 'abc-supply', name: 'ABC Supply', logo: '/distributors/abc-supply.png', url: 'https://abcsupply.com' },
+  { id: 'srs', name: 'SRS Distribution', logo: '/distributors/srs.png', url: 'https://srsdistribution.com' },
+  { id: 'universal-supply', name: 'Universal Supply', logo: '/distributors/universal-supply.png', url: 'https://universalsupply.com' },
+  { id: 'new-castle', name: 'New Castle Building Products', logo: '/distributors/newcastle.svg', url: 'https://ncbp.com' },
+  { id: 'lansing', name: 'Lansing Building Products', logo: '/distributors/lansing.png', url: 'https://lansingbp.com' },
+  { id: 'washington-cedar', name: 'Washington Cedar & Supply', logo: '/distributors/washington-cedar.png', url: 'https://washingtoncedar.com' },
+  { id: 'macarthur', name: 'MacArthur Co.', logo: '/distributors/macarthur.png', url: 'https://macarthurco.com' },
+  { id: 'eikenhout', name: 'Eikenhout', logo: '/distributors/eikenhout.png', url: 'https://eikenhout.com' },
 ];
 
 export const INSTALL_VIDEOS = [

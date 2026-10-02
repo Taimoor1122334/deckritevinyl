@@ -275,7 +275,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onNavigate }) => {
           <div className="flex flex-wrap gap-3 shrink-0">
             <button
               type="button"
-              onClick={() => onNavigate('contact')}
+              onClick={() => onNavigate('dealers')}
               className="inline-flex items-center gap-2 rounded-full bg-navy px-6 py-3 text-sm font-bold text-white hover:bg-navy-dark"
             >
               <MapPin className="h-4 w-4" />
@@ -347,7 +347,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onNavigate }) => {
               </div>
               <button
                 type="button"
-                onClick={() => onNavigate('contact')}
+                onClick={() => onNavigate('dealers')}
                 className="inline-flex shrink-0 items-center gap-2 rounded-full bg-navy px-5 py-2.5 text-sm font-bold text-white hover:bg-navy-dark"
               >
                 Find a distributor

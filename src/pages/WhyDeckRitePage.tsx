@@ -178,7 +178,7 @@ export const WhyDeckRitePage: React.FC<WhyDeckRitePageProps> = ({ onNavigate }) 
           </button>
           <button
             type="button"
-            onClick={() => onNavigate('contact')}
+            onClick={() => onNavigate('dealers')}
             className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-slate-300 font-semibold text-sm hover:border-navy"
           >
             Find a distributor

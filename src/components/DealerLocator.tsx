@@ -1,66 +1,205 @@
-import React, { useState } from 'react';
-import { AUTHORIZED_DEALERS } from '../data/deckData';
-import { MapPin, Phone, Mail, ExternalLink } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { STOCKING_DISTRIBUTORS } from '../data/deckData';
+import { StockingDistributor } from '../types';
 
-export const DealerLocator: React.FC = () => {
-  const [submitted, setSubmitted] = useState(false);
+function DistributorLink({
+  distributor,
+  className,
+}: {
+  distributor: StockingDistributor;
+  className?: string;
+}) {
+  return (
+    <a
+      href={distributor.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={className}
+      title={distributor.name}
+    >
+      <img
+        src={distributor.logo}
+        alt={distributor.name}
+        draggable={false}
+        className="pointer-events-none max-h-full max-w-full object-contain transition duration-200 group-hover:scale-105 group-hover:drop-shadow-md"
+      />
+    </a>
+  );
+}
+
+function LogoSequence({ copy }: { copy: number }) {
+  return (
+    <ul
+      className="flex shrink-0 flex-nowrap items-center"
+      aria-hidden={copy === 1 || undefined}
+      inert={copy === 1 || undefined}
+    >
+      {STOCKING_DISTRIBUTORS.map((distributor) => (
+        <li key={`${copy}-${distributor.id}`} className="shrink-0 px-2.5 sm:px-8">
+          <DistributorLink
+            distributor={distributor}
+            className={`flex h-12 items-center justify-center sm:h-20 ${
+              distributor.id === 'washington-cedar' ? 'w-52 sm:w-[20rem]' : 'w-28 sm:w-44'
+            }`}
+          />
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+const PIXELS_PER_SECOND = 28;
+
+function wrapOffset(value: number, half: number) {
+  if (half <= 0) return value;
+  let next = value % half;
+  if (next > 0) next -= half;
+  return next;
+}
+
+export const DistributorLogoStrip: React.FC = () => {
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const offsetRef = useRef(0);
+  const halfRef = useRef(0);
+  const draggingRef = useRef(false);
+  const hoveredRef = useRef(false);
+  const pointerRef = useRef({ x: 0, offset: 0, moved: false });
+  const [grabbing, setGrabbing] = useState(false);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let reduced = motion.matches;
+    const onMotion = () => {
+      reduced = motion.matches;
+    };
+    motion.addEventListener('change', onMotion);
+
+    const measure = () => {
+      halfRef.current = track.scrollWidth / 2;
+    };
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(track);
+
+    let frame = 0;
+    let last = performance.now();
+
+    const apply = () => {
+      offsetRef.current = wrapOffset(offsetRef.current, halfRef.current);
+      track.style.transform = `translate3d(${offsetRef.current}px,0,0)`;
+    };
+
+    const tick = (now: number) => {
+      const dt = Math.min((now - last) / 1000, 0.05);
+      last = now;
+      if (!draggingRef.current && !hoveredRef.current && !reduced) {
+        offsetRef.current -= PIXELS_PER_SECOND * dt;
+      }
+      apply();
+      frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+      motion.removeEventListener('change', onMotion);
+    };
+  }, []);
+
+  const onPointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (event.button !== 0) return;
+    draggingRef.current = true;
+    pointerRef.current = { x: event.clientX, offset: offsetRef.current, moved: false };
+    setGrabbing(true);
+    try {
+      event.currentTarget.setPointerCapture(event.pointerId);
+    } catch {
+      /* Pointer capture is unavailable for this event. Drag still tracks while the pointer stays over the strip. */
+    }
+  };
+
+  const onPointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (!draggingRef.current) return;
+    const dx = event.clientX - pointerRef.current.x;
+    if (Math.abs(dx) > 6) pointerRef.current.moved = true;
+    offsetRef.current = pointerRef.current.offset + dx;
+    const track = trackRef.current;
+    if (!track) return;
+    offsetRef.current = wrapOffset(offsetRef.current, halfRef.current);
+    track.style.transform = `translate3d(${offsetRef.current}px,0,0)`;
+  };
+
+  const endDrag = () => {
+    draggingRef.current = false;
+    setGrabbing(false);
+  };
+
+  const onClickCapture = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (!pointerRef.current.moved) return;
+    event.preventDefault();
+    event.stopPropagation();
+    pointerRef.current.moved = false;
+  };
 
   return (
-    <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mb-8">
-          <p className="text-xs font-bold uppercase tracking-[0.16em] text-rose">Distributors</p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mt-2">Find DeckRite near you</h2>
-          <p className="text-slate-600 mt-2">
-            Contact DeckRite for distributors and independent installation representatives in your area. Products ship throughout North America from North Little Rock, Arkansas.
-          </p>
-        </div>
-        <div className="grid md:grid-cols-2 gap-6 mb-10">
-          {AUTHORIZED_DEALERS.map((dealer) => (
-            <article key={dealer.id} className="rounded-xl border border-slate-200 p-6">
-              <p className="text-[11px] font-bold uppercase tracking-wide text-navy">{dealer.type}</p>
-              <h3 className="text-lg font-bold text-slate-900 mt-1">{dealer.name}</h3>
-              <a href={`tel:${dealer.phone.replace(/[^\d]/g, '')}`} className="mt-2 flex items-center gap-2 text-sm font-semibold text-navy">
-                <Phone className="w-4 h-4" /> {dealer.phone}
-              </a>
-              <a href={`mailto:${dealer.email}`} className="mt-1 flex items-center gap-2 text-sm text-slate-700">
-                <Mail className="w-4 h-4" /> {dealer.email}
-              </a>
-              <p className="text-sm text-slate-600 mt-2 flex items-start gap-2">
-                <MapPin className="w-4 h-4 mt-0.5 text-navy shrink-0" />
-                {dealer.address}<br />
-                {dealer.city}, {dealer.stateOrProvince} {dealer.postalCode}
-              </p>
-              {dealer.website && (
-                <a href={dealer.website} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex items-center gap-1 text-sm text-navy">
-                  Visit website <ExternalLink className="w-3.5 h-3.5" />
-                </a>
-              )}
-            </article>
-          ))}
-        </div>
+    <div
+      ref={viewportRef}
+      className={`overflow-hidden select-none ${grabbing ? 'cursor-grabbing' : 'cursor-grab'}`}
+      style={{ touchAction: 'pan-y' }}
+      role="region"
+      aria-label="Stocking distributor logos. Drag to see more."
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={endDrag}
+      onPointerCancel={endDrag}
+      onMouseEnter={() => {
+        if (window.matchMedia('(pointer: fine)').matches) hoveredRef.current = true;
+      }}
+      onMouseLeave={() => {
+        hoveredRef.current = false;
+      }}
+      onClickCapture={onClickCapture}
+    >
+      <div ref={trackRef} className="logo-marquee flex w-max flex-nowrap items-center">
+        <LogoSequence copy={0} />
+        <LogoSequence copy={1} />
+      </div>
+    </div>
+  );
+};
 
-        <div className="rounded-xl bg-sand border border-slate-200 p-6">
-          <h3 className="font-bold text-slate-900">Request a local distributor</h3>
-          <p className="text-sm text-slate-600 mt-1">Tell us your city and we will connect you with a stocking distributor or installer.</p>
-          {submitted ? (
-            <p className="mt-4 text-sm font-semibold text-navy">Thank you. A DeckRite representative will follow up.</p>
-          ) : (
-            <form
-              className="mt-4 grid sm:grid-cols-3 gap-3"
-              onSubmit={(e) => {
-                e.preventDefault();
-                setSubmitted(true);
-              }}
+export const DealerLocator: React.FC = () => {
+  return (
+    <section id="dealers" className="scroll-mt-24 py-16 bg-white border-t border-slate-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p className="text-xs font-bold uppercase tracking-[0.16em] text-rose">Distributors</p>
+        <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mt-2">Stocking distributors</h2>
+        <p className="text-slate-600 mt-2 max-w-3xl leading-relaxed">
+          Ask for DeckRite at these building-product distributors. Inventory varies by branch.
+        </p>
+
+        <ul className="mt-10 grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-6 sm:gap-x-8 sm:gap-y-10">
+          {STOCKING_DISTRIBUTORS.map((distributor) => (
+            <li
+              key={distributor.id}
+              className={`flex items-center justify-center ${
+                distributor.id === 'washington-cedar' ? 'col-span-2 sm:col-span-1' : ''
+              }`}
             >
-              <input required placeholder="Your name" className="px-3 py-2.5 rounded-md border border-slate-300 text-sm" />
-              <input required placeholder="City, State" className="px-3 py-2.5 rounded-md border border-slate-300 text-sm" />
-              <button type="submit" className="px-4 py-2.5 rounded-md bg-navy text-white font-semibold text-sm">
-                Request contact
-              </button>
-            </form>
-          )}
-        </div>
+              <DistributorLink
+                distributor={distributor}
+                className={`group flex w-full items-center justify-center ${
+                  distributor.id === 'washington-cedar' ? 'h-16 sm:h-24' : 'h-14 sm:h-24'
+                }`}
+              />
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

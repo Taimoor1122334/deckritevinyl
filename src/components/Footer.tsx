@@ -18,10 +18,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </div>
           <div className="flex flex-wrap gap-3">
             <button
-              onClick={() => onNavigate('contact')}
+              onClick={() => onNavigate('dealers')}
               className="px-5 py-3 rounded-md bg-white text-navy font-semibold text-sm hover:bg-slate-100"
             >
-              Contact DeckRite
+              See distributors
             </button>
             <a
               href="tel:18884503325"

@@ -68,7 +68,7 @@ export const EstimatorPage: React.FC<EstimatorPageProps> = ({ onNavigate }) => {
             </div>
           </div>
           <div className="flex gap-3">
-            <button onClick={() => onNavigate('contact')} className="px-5 py-3 rounded-md bg-navy text-white font-semibold text-sm">
+            <button onClick={() => onNavigate('dealers')} className="px-5 py-3 rounded-md bg-navy text-white font-semibold text-sm">
               Find a distributor
             </button>
           </div>

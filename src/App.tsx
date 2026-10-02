@@ -55,7 +55,11 @@ export default function App() {
           setPendingSection(COLOR_SECTION_ROUTES[hash]);
         }
         else if (hash === 'faq') setCurrentPage('contact');
-        else if (hash === 'about' || hash === 'dealers' || hash === 'sister-brands') setCurrentPage('contact');
+        else if (hash === 'dealers') {
+          setCurrentPage('contact');
+          setPendingSection('dealers');
+        }
+        else if (hash === 'about' || hash === 'sister-brands') setCurrentPage('contact');
         else setCurrentPage(hash);
       } else if (rawHash === 'techdata' || rawHash === 'tech-data' || rawHash === 'technical-data' || rawHash === 'corners') {
         setCurrentPage('resources');
@@ -106,7 +110,13 @@ export default function App() {
     if (target === 'deckrail') target = 'products';
     if (target === 'calculator') target = 'estimator';
     if (target === 'specs' || target === 'codes' || target === 'faq') target = 'resources';
-    if (target === 'about' || target === 'dealers' || target === 'sister-brands') target = 'contact';
+    if (target === 'dealers') {
+      setCurrentPage('contact');
+      window.location.hash = 'dealers';
+      setPendingSection('dealers');
+      return;
+    }
+    if (target === 'about' || target === 'sister-brands') target = 'contact';
 
     const colorSection = COLOR_SECTION_ROUTES[target];
     if (colorSection) {

@@ -29,7 +29,7 @@ export const FloatingActionDock: React.FC<FloatingActionDockProps> = ({ onNaviga
         <Phone className="w-4 h-4" />
       </a>
       <button
-        onClick={() => onNavigate('contact')}
+        onClick={() => onNavigate('dealers')}
         className="p-2.5 rounded-full bg-white border border-slate-200 shadow-lg text-navy"
         aria-label="Find a distributor"
       >

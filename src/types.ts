@@ -80,19 +80,11 @@ export interface ProjectShowcase {
   thumb: string;
 }
 
-export interface Dealer {
+export interface StockingDistributor {
   id: string;
   name: string;
-  type: 'Headquarters' | 'Canadian Affiliate';
-  address: string;
-  city: string;
-  stateOrProvince: string;
-  country: 'USA' | 'Canada';
-  postalCode: string;
-  phone: string;
-  email: string;
-  website?: string;
-  servesRegions: string[];
+  logo: string;
+  url: string;
 }
 
 export interface ResourceDoc {

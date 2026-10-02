@@ -2,6 +2,7 @@ import React from 'react';
 import { Hero } from '../components/Hero';
 import { ValueProposition } from '../components/ValueProposition';
 import { ColorStrip } from '../components/ColorStrip';
+import { DistributorLogoStrip } from '../components/DealerLocator';
 import { ArrowRight, FileSpreadsheet, Home, Building2 } from 'lucide-react';
 
 interface HomePageProps {
@@ -12,7 +13,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   return (
     <div id="home-page">
       {/* 1. Hero (~70%): photography, headline, key benefits & primary actions */}
-      <Hero onFindDealer={() => onNavigate('contact')} onExploreProducts={() => onNavigate('products')} />
+      <Hero onFindDealer={() => onNavigate('dealers')} onExploreProducts={() => onNavigate('products')} />
 
       {/* 2. Supporting value proposition (~30%) */}
       <ValueProposition onWhyDeckRite={() => onNavigate('why-deckrite')} />
@@ -127,6 +128,25 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         </div>
       </section>
 
+      <section className="py-14 bg-white border-t border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-rose">Where to buy</p>
+              <h2 className="text-2xl font-bold text-slate-900 mt-2">Stocking distributors</h2>
+              <p className="text-slate-600 mt-1 text-sm">Ask for DeckRite at these building-product distributors.</p>
+            </div>
+            <button
+              onClick={() => onNavigate('dealers')}
+              className="text-sm font-semibold text-navy hover:underline self-start sm:self-auto"
+            >
+              See the full list
+            </button>
+          </div>
+          <DistributorLogoStrip />
+        </div>
+      </section>
+
       {/* 5. Simple Bottom Banner: Where to Buy / Distributor Referral */}
       <section className="py-10 bg-slate-50 border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
@@ -138,10 +158,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           </div>
           <div className="flex flex-wrap items-center gap-3 shrink-0">
             <button
-              onClick={() => onNavigate('contact')}
+              onClick={() => onNavigate('dealers')}
               className="px-6 py-3.5 rounded-lg bg-navy hover:bg-navy-dark text-white font-bold text-sm shadow-sm transition-colors"
             >
-              Find Local Distributor / Contact
+              Find a distributor
             </button>
             <a
               href="tel:18884503325"
