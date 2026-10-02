@@ -47,7 +47,7 @@ export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate }) => {
     },
     {
       label: 'Corner Photos',
-      description: 'Measured inside and outside corners',
+      description: 'Inside and outside corner photos',
       target: 'section-corners',
       icon: Camera,
     },
@@ -246,13 +246,13 @@ export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate }) => {
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-navy/10 text-navy text-xs font-bold tracking-wide mb-2">
               <Camera className="w-3.5 h-3.5 text-rose" />
-              <span>Measured Corner Samples</span>
+              <span>Corner Photos</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
               Inside &amp; Outside Corner Details
             </h2>
             <p className="text-slate-600 text-sm mt-1">
-              Current inside and outside corner samples, photographed with field dimensions. These are the formed corner pieces — not the base flashing CAD detail.
+              Inside and outside corner pieces. The first row shows two of each. Load more to see the rest.
             </p>
           </div>
 

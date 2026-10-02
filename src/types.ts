@@ -116,12 +116,12 @@ export interface DetailDrawing {
 export interface CornerPhotoGuide {
   id: string;
   type: 'inside' | 'outside';
-  viewLabel: string;
   title: string;
-  subtitle: string;
-  description: string;
-  dimensions: string[];
   image: string;
+  viewLabel?: string;
+  subtitle?: string;
+  description?: string;
+  dimensions?: string[];
 }
 
 export interface TechnicalBulletin {

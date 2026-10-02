@@ -994,52 +994,44 @@ export const TECHNICAL_DATA_SHEETS: TechnicalDataSheet[] = [
   },
 ];
 
-export const CORNER_PHOTO_GUIDES: CornerPhotoGuide[] = [
-  {
-    id: 'in-corner-1',
-    type: 'inside',
-    viewLabel: 'View 1',
-    title: 'Inside Corner',
-    subtitle: 'Measured sample for a 90° interior junction',
-    description:
-      'Photographed inside corner piece with the wrap dimensions shown on the sample. Use this view to confirm the 10" deck-side length, 6.5" vertical, and 5" inner return.',
-    dimensions: ['10" deck-side length', '6.5" vertical', '5" inner return'],
-    image: '/brand/InCorner1.png',
-  },
-  {
-    id: 'in-corner-2',
-    type: 'inside',
-    viewLabel: 'View 2',
-    title: 'Inside Corner',
-    subtitle: 'Side profile of the same inside corner',
-    description:
-      'Side view of the inside corner showing the 7" vertical upstand and 10" deck-side leg.',
-    dimensions: ['7" vertical upstand', '10" deck-side leg'],
-    image: '/brand/InCorner2.png',
-  },
-  {
-    id: 'out-corner-1',
-    type: 'outside',
-    viewLabel: 'View 1',
-    title: 'Outside Corner',
-    subtitle: 'Measured sample for a 90° exterior junction',
-    description:
-      'Photographed outside corner piece with a 10" x 10" deck wrap and 7" vertical turn-up.',
-    dimensions: ['10" x 10" deck wrap', '7" vertical turn-up'],
-    image: '/brand/OutCorner1.png',
-  },
-  {
-    id: 'out-corner-2',
-    type: 'outside',
-    viewLabel: 'View 2',
-    title: 'Outside Corner',
-    subtitle: 'Reverse view showing the 4.5" return',
-    description:
-      'Reverse view of the outside corner showing the 4.5" return dimension on the formed piece.',
-    dimensions: ['4.5" return'],
-    image: '/brand/OutCorner2.png',
-  },
+const CORNER_PHOTO_FILES: { type: 'inside' | 'outside'; file: string }[] = [
+  { type: 'inside', file: 'inside-01.jpg' },
+  { type: 'inside', file: 'inside-02.jpg' },
+  { type: 'outside', file: 'outside-01.jpg' },
+  { type: 'outside', file: 'outside-02.jpg' },
+  { type: 'inside', file: 'inside-03.jpg' },
+  { type: 'inside', file: 'inside-04.jpg' },
+  { type: 'outside', file: 'outside-03.jpg' },
+  { type: 'outside', file: 'outside-04.jpg' },
+  { type: 'inside', file: 'inside-05.jpg' },
+  { type: 'inside', file: 'inside-06.jpg' },
+  { type: 'outside', file: 'outside-05.jpg' },
+  { type: 'outside', file: 'outside-06.jpg' },
+  { type: 'inside', file: 'inside-07.jpg' },
+  { type: 'inside', file: 'inside-08.jpg' },
+  { type: 'outside', file: 'outside-07.jpg' },
+  { type: 'outside', file: 'outside-08.jpg' },
+  { type: 'inside', file: 'inside-09.jpg' },
+  { type: 'inside', file: 'inside-10.jpg' },
+  { type: 'outside', file: 'outside-09.jpg' },
+  { type: 'outside', file: 'outside-10.jpg' },
+  { type: 'inside', file: 'inside-11.jpg' },
+  { type: 'inside', file: 'inside-12.jpg' },
+  { type: 'outside', file: 'outside-11.jpg' },
+  { type: 'outside', file: 'outside-12.jpg' },
+  { type: 'inside', file: 'inside-13.jpg' },
+  { type: 'inside', file: 'inside-14.jpg' },
+  { type: 'outside', file: 'outside-13.jpg' },
+  { type: 'outside', file: 'outside-14.jpg' },
+  { type: 'outside', file: 'outside-15.jpg' },
 ];
+
+export const CORNER_PHOTO_GUIDES: CornerPhotoGuide[] = CORNER_PHOTO_FILES.map((photo) => ({
+  id: photo.file.replace('.jpg', ''),
+  type: photo.type,
+  title: photo.type === 'inside' ? 'Inside Corner' : 'Outside Corner',
+  image: `/gallery/corners/${photo.file}`,
+}));
 
 export const RESOURCE_DOCUMENTS: ResourceDoc[] = [
   {
