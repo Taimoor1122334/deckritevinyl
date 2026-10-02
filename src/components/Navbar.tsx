@@ -55,6 +55,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
   const resourcesPinned = useRef(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const resourcesWrapRef = useRef<HTMLDivElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 8);
@@ -65,10 +66,10 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
 
   useEffect(() => {
     const onPointerDown = (event: MouseEvent) => {
-      if (!resourcesWrapRef.current?.contains(event.target as Node)) {
-        resourcesPinned.current = false;
-        setResourcesOpen(false);
-      }
+      const target = event.target as Node;
+      if (resourcesWrapRef.current?.contains(target) || mobileMenuRef.current?.contains(target)) return;
+      resourcesPinned.current = false;
+      setResourcesOpen(false);
     };
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -259,7 +260,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
       </div>
 
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-slate-200 bg-white px-4 py-3 space-y-1 shadow-xl">
+        <div ref={mobileMenuRef} className="lg:hidden border-t border-slate-200 bg-white px-4 py-3 space-y-1 shadow-xl">
           {NAV.map((item) =>
             item.id === 'resources' ? (
               <div key={item.id}>

@@ -70,7 +70,7 @@ function CloseUpViewer({
           </button>
         </div>
 
-        <div className="relative flex items-center justify-center bg-white px-12 py-6 sm:px-16">
+        <div className="relative flex items-center justify-center bg-white px-11 py-4 sm:px-16 sm:py-6">
           {hasMany && (
             <button
               type="button"
@@ -85,7 +85,7 @@ function CloseUpViewer({
           <img
             src={photo.image}
             alt={photo.title}
-            className="max-h-[70vh] w-auto max-w-full object-contain"
+            className="max-h-[52vh] w-auto max-w-full object-contain sm:max-h-[70vh]"
           />
 
           {hasMany && (
@@ -117,7 +117,7 @@ export const CornerPhotoGallery: React.FC<CornerPhotoGalleryProps> = ({ guides }
 
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-4 gap-2 sm:gap-5">
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-5">
         {visibleGuides.map((item) => (
           <div
             key={item.id}
@@ -142,14 +142,11 @@ export const CornerPhotoGallery: React.FC<CornerPhotoGalleryProps> = ({ guides }
                 />
                 <div className="absolute left-1.5 top-1.5 z-10 sm:left-3 sm:top-3">
                   <span
-                    className={`inline-block rounded-full px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-wider text-white shadow-sm sm:px-2.5 sm:text-[10px] ${
+                    className={`inline-block rounded-full px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-white shadow-sm sm:px-2.5 sm:text-[10px] ${
                       item.type === 'inside' ? 'bg-navy' : 'bg-rose'
                     }`}
                   >
-                    <span className="sm:hidden">{item.type === 'inside' ? 'Inside' : 'Outside'}</span>
-                    <span className="hidden sm:inline">
-                      {item.type === 'inside' ? 'Inside Corner' : 'Outside Corner'}
-                    </span>
+                    {item.type === 'inside' ? 'Inside Corner' : 'Outside Corner'}
                   </span>
                 </div>
                 <div className="absolute bottom-2.5 right-2.5 z-10 opacity-0 transition-opacity group-hover:opacity-100">
@@ -166,7 +163,7 @@ export const CornerPhotoGallery: React.FC<CornerPhotoGalleryProps> = ({ guides }
               </div>
             </div>
 
-            <div className="mt-2 hidden items-center justify-end border-t border-slate-100 p-4 pt-0 sm:flex">
+            <div className="mt-2 flex items-center justify-end border-t border-slate-100 px-3 pb-3 pt-0 sm:p-4 sm:pt-0">
               <span className="inline-flex items-center gap-1 text-xs font-bold text-slate-600 group-hover:text-navy">
                 View photo <ChevronRight className="h-3.5 w-3.5" />
               </span>

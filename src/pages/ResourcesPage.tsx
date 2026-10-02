@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Breadcrumb } from '../components/Breadcrumb';
 import { TechnicalBulletinViewer } from '../components/TechnicalBulletinViewer';
 import { TechnicalDataSheetsSection } from '../components/TechnicalDataSheetsSection';
@@ -31,6 +31,30 @@ interface ResourcesPageProps {
 }
 
 export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate }) => {
+  const [drawingsPerRow, setDrawingsPerRow] = useState(1);
+  const [showAllDrawings, setShowAllDrawings] = useState(false);
+
+  useEffect(() => {
+    const large = window.matchMedia('(min-width: 1024px)');
+    const medium = window.matchMedia('(min-width: 640px)');
+    const update = () => {
+      if (large.matches) setDrawingsPerRow(3);
+      else if (medium.matches) setDrawingsPerRow(2);
+      else setDrawingsPerRow(1);
+    };
+    update();
+    large.addEventListener('change', update);
+    medium.addEventListener('change', update);
+    return () => {
+      large.removeEventListener('change', update);
+      medium.removeEventListener('change', update);
+    };
+  }, []);
+
+  const visibleDrawings = showAllDrawings
+    ? DETAIL_DRAWINGS
+    : DETAIL_DRAWINGS.slice(0, drawingsPerRow * 2);
+  const hasMoreDrawings = visibleDrawings.length < DETAIL_DRAWINGS.length;
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
@@ -159,7 +183,7 @@ export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate }) => {
 
           {/* Detailed Drawings Grid — Opens Official PDFs Directly */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {DETAIL_DRAWINGS.map((drawing) => (
+            {visibleDrawings.map((drawing) => (
               <div
                 key={drawing.id}
                 className="group rounded-2xl border border-slate-200 hover:border-navy hover:shadow-md transition-all duration-200 bg-white overflow-hidden flex flex-col justify-between"
@@ -237,6 +261,18 @@ export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate }) => {
               </div>
             ))}
           </div>
+
+          {hasMoreDrawings && (
+            <div className="mt-8 flex justify-center">
+              <button
+                type="button"
+                onClick={() => setShowAllDrawings(true)}
+                className="cursor-pointer rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-bold text-navy transition-colors hover:border-navy"
+              >
+                Load more
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
@@ -252,7 +288,7 @@ export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate }) => {
               Inside &amp; Outside Corner Details
             </h2>
             <p className="text-slate-600 text-sm mt-1">
-              Inside and outside corner pieces. The first row shows two of each. Load more to see the rest.
+              Two inside corners and two outside corners are shown first. Load more to see the rest.
             </p>
           </div>
 
