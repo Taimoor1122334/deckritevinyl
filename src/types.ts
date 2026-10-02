@@ -31,6 +31,7 @@ export interface AdhesiveProduct {
   id: string;
   sku: string;
   title: string;
+  size: string;
   bestFor: string;
   description: string;
   type: 'water-based' | 'solvent-based';

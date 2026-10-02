@@ -2,10 +2,52 @@ import React, { useState } from 'react';
 import { Breadcrumb } from '../components/Breadcrumb';
 import { ColorSwatchGrid } from '../components/ColorSwatchGrid';
 import { ColorVisualizer } from '../components/ColorVisualizer';
+import { AdhesiveProduct } from '../types';
 import { DECKRITE_ADHESIVES, DECKRITE_PRODUCTS } from '../data/deckData';
 
 interface ProductsPageProps {
   onNavigate: (page: string) => void;
+}
+
+const ADHESIVE_FAMILIES = [
+  {
+    type: 'water-based' as const,
+    heading: 'Water-based',
+    substrate: 'Unsealed wood',
+    method: 'One coat on the substrate.',
+    sds: '/pdf/Water_Based_MSDS.pdf',
+  },
+  {
+    type: 'solvent-based' as const,
+    heading: 'Solvent-based',
+    substrate: 'Concrete or sealed wood',
+    method: 'Coat the vinyl backing and the substrate.',
+    sds: '/pdf/Solvent_Based_MSDS.pdf',
+  },
+];
+
+function AdhesiveProductRow({ adhesive }: { adhesive: AdhesiveProduct }) {
+  return (
+    <article className="flex items-center gap-5">
+      <img
+        src={adhesive.image}
+        alt={adhesive.title}
+        className="w-32 sm:w-40 h-40 sm:h-44 object-contain shrink-0"
+      />
+      <div className="min-w-0">
+        <p className="text-xs text-slate-500">{adhesive.size}</p>
+        <h4 className="text-xl font-bold text-slate-900 tracking-tight">{adhesive.sku}</h4>
+        <p className="text-sm text-slate-600 mt-1.5 leading-relaxed">{adhesive.description}</p>
+        <p className="text-sm text-slate-800 mt-3">
+          <span className="text-slate-500">Coverage </span>
+          {adhesive.coverage}
+        </p>
+        {adhesive.voc && (
+          <p className="text-xs text-slate-500 mt-1">{adhesive.voc}</p>
+        )}
+      </div>
+    </article>
+  );
 }
 
 export const ProductsPage: React.FC<ProductsPageProps> = ({
@@ -117,43 +159,40 @@ Because screens vary, DeckRite will mail free material samples. Send your mailin
           <p className="text-xs font-bold uppercase tracking-[0.16em] text-rose">Adhesives</p>
           <h2 className="text-2xl font-bold text-slate-900 mt-2">DeckRite adhesives</h2>
           <p className="text-slate-600 mt-2 max-w-3xl leading-relaxed">
-            Browse the lineup below to find the best match for your surface — unsealed wood, sealed wood, or concrete.
+            Use water-based adhesive on unsealed wood. Use solvent-based adhesive on concrete or sealed wood.
           </p>
-          <div className="mt-8 grid sm:grid-cols-2 gap-6">
-            {DECKRITE_ADHESIVES.map((adhesive) => (
-              <article key={adhesive.id} className="rounded-xl border border-slate-200 bg-slate-50 overflow-hidden">
-                <div className="bg-white px-6 py-5">
-                  <img
-                    src={adhesive.image}
-                    alt={adhesive.title}
-                    className="w-full h-56 object-contain"
-                  />
-                </div>
-                <div className="p-5">
-                  <span className="inline-block text-[11px] font-bold uppercase tracking-wide bg-navy text-white px-2.5 py-1 rounded">
-                    Best for: {adhesive.bestFor}
-                  </span>
-                  <h4 className="text-lg font-bold text-slate-900 mt-3">{adhesive.title}</h4>
-                  <p className="text-sm text-slate-600 mt-2 leading-relaxed">{adhesive.description}</p>
-                  <dl className="mt-4 grid grid-cols-1 gap-2">
-                    <div className="rounded-lg bg-white border border-slate-200 p-3">
-                      <dt className="text-[11px] font-bold uppercase text-slate-500">Coverage</dt>
-                      <dd className="text-sm text-slate-800 mt-0.5">{adhesive.coverage}</dd>
+
+          <div className="mt-10 grid xl:grid-cols-2 gap-12 xl:gap-16">
+            {ADHESIVE_FAMILIES.map((family) => {
+              const items = DECKRITE_ADHESIVES.filter((item) => item.type === family.type);
+              return (
+                <div key={family.type}>
+                  <div className="pb-3 border-b border-slate-300">
+                    <div className="flex items-baseline justify-between gap-4">
+                      <h3 className="text-lg font-bold text-slate-900">{family.heading}</h3>
+                      <a
+                        href={family.sds}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="shrink-0 text-sm font-semibold text-navy hover:underline"
+                      >
+                        SDS
+                      </a>
                     </div>
-                    <div className="rounded-lg bg-white border border-slate-200 p-3">
-                      <dt className="text-[11px] font-bold uppercase text-slate-500">Application</dt>
-                      <dd className="text-sm text-slate-800 mt-0.5">{adhesive.application}</dd>
-                    </div>
-                    {adhesive.voc && (
-                      <div className="rounded-lg bg-white border border-slate-200 p-3">
-                        <dt className="text-[11px] font-bold uppercase text-slate-500">VOC</dt>
-                        <dd className="text-sm text-slate-800 mt-0.5">{adhesive.voc}</dd>
+                    <p className="text-sm text-slate-600 mt-0.5">
+                      {family.substrate}. {family.method}
+                    </p>
+                  </div>
+                  <div className="divide-y divide-slate-200">
+                    {items.map((adhesive) => (
+                      <div key={adhesive.id} className="py-6">
+                        <AdhesiveProductRow adhesive={adhesive} />
                       </div>
-                    )}
-                  </dl>
+                    ))}
+                  </div>
                 </div>
-              </article>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
