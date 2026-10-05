@@ -288,7 +288,7 @@ export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate }) => {
               Inside &amp; Outside Corner Details
             </h2>
             <p className="text-slate-600 text-sm mt-1">
-              Two inside corners and two outside corners are shown first. Load more to see the rest.
+              Browse all inside and outside corner photos. Open any photo for a closer look.
             </p>
           </div>
 

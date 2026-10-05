@@ -994,43 +994,32 @@ export const TECHNICAL_DATA_SHEETS: TechnicalDataSheet[] = [
   },
 ];
 
-const CORNER_PHOTO_FILES: { type: 'inside' | 'outside'; file: string }[] = [
-  { type: 'inside', file: 'inside-01.jpg' },
-  { type: 'inside', file: 'inside-02.jpg' },
-  { type: 'outside', file: 'outside-01.jpg' },
-  { type: 'outside', file: 'outside-02.jpg' },
-  { type: 'inside', file: 'inside-03.jpg' },
-  { type: 'inside', file: 'inside-04.jpg' },
-  { type: 'outside', file: 'outside-03.jpg' },
-  { type: 'outside', file: 'outside-04.jpg' },
-  { type: 'inside', file: 'inside-05.jpg' },
-  { type: 'inside', file: 'inside-06.jpg' },
-  { type: 'outside', file: 'outside-05.jpg' },
-  { type: 'outside', file: 'outside-06.jpg' },
-  { type: 'inside', file: 'inside-07.jpg' },
-  { type: 'inside', file: 'inside-08.jpg' },
-  { type: 'outside', file: 'outside-07.jpg' },
-  { type: 'outside', file: 'outside-08.jpg' },
-  { type: 'inside', file: 'inside-09.jpg' },
-  { type: 'inside', file: 'inside-10.jpg' },
-  { type: 'outside', file: 'outside-09.jpg' },
-  { type: 'outside', file: 'outside-10.jpg' },
-  { type: 'inside', file: 'inside-11.jpg' },
-  { type: 'inside', file: 'inside-12.jpg' },
-  { type: 'outside', file: 'outside-11.jpg' },
-  { type: 'outside', file: 'outside-12.jpg' },
-  { type: 'inside', file: 'inside-13.jpg' },
-  { type: 'inside', file: 'inside-14.jpg' },
-  { type: 'outside', file: 'outside-13.jpg' },
-  { type: 'outside', file: 'outside-14.jpg' },
-  { type: 'outside', file: 'outside-15.jpg' },
+const CORNER_PHOTO_FILES: {
+  type: 'inside' | 'outside';
+  id: string;
+  title: string;
+  color: string;
+  image: string;
+}[] = [
+  { type: 'inside', id: 'river-stone-inside', title: 'River Stone Inside Corner', color: 'River Stone', image: new URL('../assets/corners/River stone (Inside Corner).jpg', import.meta.url).href },
+  { type: 'outside', id: 'river-stone-outside', title: 'River Stone Outside Corner', color: 'River Stone', image: new URL('../assets/corners/River Stone ( Outside Corner).jpg', import.meta.url).href },
+  { type: 'inside', id: 'sahara-tan-inside', title: 'Sahara Tan Inside Corner', color: 'Sahara Tan', image: new URL('../assets/corners/Sahara Tan (Inside Corner).jpg', import.meta.url).href },
+  { type: 'outside', id: 'sahara-tan-outside', title: 'Sahara Tan Outside Corner', color: 'Sahara Tan', image: new URL('../assets/corners/Sahara Tan (Outside corner).jpg', import.meta.url).href },
+  { type: 'inside', id: 'slat-gray-inside', title: 'Slat Gray Inside Corner', color: 'Slat Gray', image: new URL('../assets/corners/Slat Gray (Inside corner).jpg', import.meta.url).href },
+  { type: 'outside', id: 'slat-gray-outside', title: 'Slat Gray Outside Corner', color: 'Slat Gray', image: new URL('../assets/corners/Slat Gray ( Outside Image).jpg', import.meta.url).href },
+  { type: 'inside', id: 'tropical-cream-inside', title: 'Tropical Cream Inside Corner', color: 'Tropical Cream', image: new URL('../assets/corners/Tropical Cream (Inside Corner).jpg', import.meta.url).href },
+  { type: 'outside', id: 'tropical-cream-outside', title: 'Tropical Cream Outside Corner', color: 'Tropical Cream', image: new URL('../assets/corners/Tropical Cream ( Outside Corner).jpg', import.meta.url).href },
+  { type: 'inside', id: 'tuscany-sand-inside', title: 'Tuscany Sand Inside Corner', color: 'Tuscany Sand', image: new URL('../assets/corners/Tuscany Sand (Inside Corner).jpg', import.meta.url).href },
+  { type: 'outside', id: 'tuscany-sand-outside', title: 'Tuscany Sand Outside Corner', color: 'Tuscany Sand', image: new URL('../assets/corners/Tuscany Sand (Outside Corner).jpg', import.meta.url).href },
 ];
 
 export const CORNER_PHOTO_GUIDES: CornerPhotoGuide[] = CORNER_PHOTO_FILES.map((photo) => ({
-  id: photo.file.replace('.jpg', ''),
+  id: photo.id,
   type: photo.type,
-  title: photo.type === 'inside' ? 'Inside Corner' : 'Outside Corner',
-  image: `/gallery/corners/${photo.file}`,
+  title: photo.title,
+  subtitle: `${photo.color} DeckRite vinyl membrane`,
+  description: `Example of a ${photo.color.toLowerCase()} DeckRite vinyl membrane corner piece formed for an ${photo.type} corner.`,
+  image: photo.image,
 }));
 
 export const RESOURCE_DOCUMENTS: ResourceDoc[] = [

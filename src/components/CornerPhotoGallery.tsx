@@ -13,8 +13,6 @@ interface CornerPhotoGalleryProps {
   guides: CornerPhotoGuide[];
 }
 
-const INITIAL_COUNT = 4;
-
 function CloseUpViewer({
   guides,
   index,
@@ -99,6 +97,15 @@ function CloseUpViewer({
             </button>
           )}
         </div>
+
+        <div className="border-t border-slate-200 px-5 py-4">
+          {photo.subtitle && (
+            <p className="text-xs font-bold uppercase tracking-wide text-navy">{photo.subtitle}</p>
+          )}
+          {photo.description && (
+            <p className="mt-1 text-sm leading-relaxed text-slate-600">{photo.description}</p>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -106,9 +113,6 @@ function CloseUpViewer({
 
 export const CornerPhotoGallery: React.FC<CornerPhotoGalleryProps> = ({ guides }) => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-  const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
-  const visibleGuides = guides.slice(0, visibleCount);
-  const hasMore = visibleCount < guides.length;
 
   const openPhoto = (id: string) => {
     const index = guides.findIndex((guide) => guide.id === id);
@@ -118,7 +122,7 @@ export const CornerPhotoGallery: React.FC<CornerPhotoGalleryProps> = ({ guides }
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-5">
-        {visibleGuides.map((item) => (
+        {guides.map((item) => (
           <div
             key={item.id}
             role="button"
@@ -171,18 +175,6 @@ export const CornerPhotoGallery: React.FC<CornerPhotoGalleryProps> = ({ guides }
           </div>
         ))}
       </div>
-
-      {hasMore && (
-        <div className="flex justify-center">
-          <button
-            type="button"
-            onClick={() => setVisibleCount(guides.length)}
-            className="cursor-pointer rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-bold text-navy transition-colors hover:border-navy"
-          >
-            Load more
-          </button>
-        </div>
-      )}
 
       <div className="flex flex-col items-start justify-between gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 text-xs text-slate-700 sm:flex-row sm:items-center">
         <div className="flex items-center gap-2">
