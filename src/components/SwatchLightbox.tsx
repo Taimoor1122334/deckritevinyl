@@ -5,15 +5,27 @@ import { DECKRITE_PATTERNS } from '../data/deckData';
 
 interface SwatchLightboxProps {
   pattern: ColorPattern | null;
+  patterns?: ColorPattern[];
   onClose: () => void;
   onChange: (pattern: ColorPattern) => void;
 }
 
+const SERIES_LABEL: Record<ColorPattern['thickness'], string> = {
+  '50 mil': '500 Series (50 mil)',
+  '60 mil': '600 Series (60 mil)',
+  Both: '500 and 600 Series',
+};
+
 const CLICK_ZOOM = 2.2;
 const SQUARE = 'min(32rem, calc(100vw - 5.5rem), calc(100vh - 6rem))';
 
-export const SwatchLightbox: React.FC<SwatchLightboxProps> = ({ pattern, onClose, onChange }) => {
-  const index = pattern ? DECKRITE_PATTERNS.findIndex((p) => p.id === pattern.id) : -1;
+export const SwatchLightbox: React.FC<SwatchLightboxProps> = ({
+  pattern,
+  patterns = DECKRITE_PATTERNS,
+  onClose,
+  onChange,
+}) => {
+  const index = pattern ? patterns.findIndex((p) => p.id === pattern.id) : -1;
   const stageRef = useRef<HTMLButtonElement>(null);
   const [zoomed, setZoomed] = useState(false);
   const [origin, setOrigin] = useState({ x: 50, y: 50 });
@@ -31,10 +43,10 @@ export const SwatchLightbox: React.FC<SwatchLightboxProps> = ({ pattern, onClose
       if (e.key === 'Escape') onClose();
       if (index < 0) return;
       if (e.key === 'ArrowRight') {
-        onChange(DECKRITE_PATTERNS[(index + 1) % DECKRITE_PATTERNS.length]);
+        onChange(patterns[(index + 1) % patterns.length]);
       }
       if (e.key === 'ArrowLeft') {
-        onChange(DECKRITE_PATTERNS[(index - 1 + DECKRITE_PATTERNS.length) % DECKRITE_PATTERNS.length]);
+        onChange(patterns[(index - 1 + patterns.length) % patterns.length]);
       }
     };
     window.addEventListener('keydown', onKey);
@@ -42,12 +54,12 @@ export const SwatchLightbox: React.FC<SwatchLightboxProps> = ({ pattern, onClose
       document.body.style.overflow = previousOverflow;
       window.removeEventListener('keydown', onKey);
     };
-  }, [pattern, index, onClose, onChange]);
+  }, [pattern, patterns, index, onClose, onChange]);
 
   if (!pattern) return null;
 
-  const prev = DECKRITE_PATTERNS[(index - 1 + DECKRITE_PATTERNS.length) % DECKRITE_PATTERNS.length];
-  const next = DECKRITE_PATTERNS[(index + 1) % DECKRITE_PATTERNS.length];
+  const prev = patterns[(index - 1 + patterns.length) % patterns.length];
+  const next = patterns[(index + 1) % patterns.length];
 
   const originFromEvent = (event: React.MouseEvent<HTMLButtonElement>) => {
     const box = stageRef.current?.getBoundingClientRect();
@@ -126,7 +138,7 @@ export const SwatchLightbox: React.FC<SwatchLightboxProps> = ({ pattern, onClose
           />
           <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/35 to-transparent px-5 pb-4 pt-16 text-left">
             <p className="text-[11px] font-bold uppercase tracking-wide text-white/80">
-              {pattern.isStandard ? 'Standard color' : 'Available color'}
+              {SERIES_LABEL[pattern.thickness]}
             </p>
             <h3 className="text-xl font-bold text-white">{pattern.name}</h3>
             <p className="mt-1 text-sm text-white/85">{pattern.description}</p>

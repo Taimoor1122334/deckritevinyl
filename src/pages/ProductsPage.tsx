@@ -2,12 +2,51 @@ import React, { useState } from 'react';
 import { Breadcrumb } from '../components/Breadcrumb';
 import { ColorSwatchGrid } from '../components/ColorSwatchGrid';
 import { ColorVisualizer } from '../components/ColorVisualizer';
-import { AdhesiveProduct } from '../types';
-import { DECKRITE_ADHESIVES, DECKRITE_PRODUCTS } from '../data/deckData';
+import { AdhesiveProduct, ColorPattern } from '../types';
+import { DECKRITE_ADHESIVES, DECKRITE_PATTERNS, DECKRITE_PRODUCTS } from '../data/deckData';
 
 interface ProductsPageProps {
   onNavigate: (page: string) => void;
 }
+
+const SERIES_COLORS = [
+  {
+    productId: 'deckrite-500',
+    label: '500 Series (50 mil)',
+    colorIds: ['sahara-tan', 'slate-gray', 'gray-storm', 'tropical-cream', 'lakewood-marble', 'tuscany-sand'],
+  },
+  {
+    productId: 'deckrite-600',
+    label: '600 Series (60 mil)',
+    colorIds: ['slate-gray', 'sahara-tan', 'gray-storm', 'riverstone', 'harvest'],
+  },
+];
+
+const colorsFor = (colorIds: string[]) =>
+  colorIds
+    .map((id) => DECKRITE_PATTERNS.find((pattern) => pattern.id === id))
+    .filter((pattern): pattern is ColorPattern => Boolean(pattern));
+
+const ACCESSORY_PHOTOS = [
+  {
+    title: 'Drip Edge',
+    image: '/accessories/drip-edge.jpg',
+    drawing: 'DR-109 Coated Metal Drip Edge',
+    url: '/pdf/DR-109.pdf',
+  },
+  {
+    title: 'Termination Bar',
+    image: '/accessories/termination-bar.jpg',
+    drawing: 'DR-101 Edge Termination Detail',
+    url: '/pdf/DR-101.pdf',
+  },
+  {
+    title: 'Fascia Bar and Cover',
+    image: '/accessories/fascia-bar-cover.jpg',
+    drawing: 'DR-103 Compression Bar with Cover',
+    url: '/pdf/DR-103.pdf',
+  },
+];
 
 const ADHESIVE_FAMILIES = [
   {
@@ -56,6 +95,13 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
   const [selectedId, setSelectedId] = useState(DECKRITE_PRODUCTS[0].id);
   const selected = DECKRITE_PRODUCTS.find((p) => p.id === selectedId) ?? DECKRITE_PRODUCTS[0];
   const isAdhesivesTab = selected.id === 'adhesives-accessories';
+  const [colorSeriesId, setColorSeriesId] = useState(SERIES_COLORS[0].productId);
+  const colorSeries = SERIES_COLORS.find((series) => series.productId === colorSeriesId) ?? SERIES_COLORS[0];
+
+  const selectProduct = (id: string) => {
+    setSelectedId(id);
+    if (SERIES_COLORS.some((series) => series.productId === id)) setColorSeriesId(id);
+  };
 
   return (
     <div id="products-page" className="min-h-screen bg-white">
@@ -78,7 +124,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
             {DECKRITE_PRODUCTS.map((product) => (
               <button
                 key={product.id}
-                onClick={() => setSelectedId(product.id)}
+                onClick={() => selectProduct(product.id)}
                 className={`px-4 py-2 rounded-md text-sm font-semibold ${
                   selectedId === product.id ? 'bg-navy text-white' : 'bg-slate-100 text-slate-700'
                 }`}
@@ -131,6 +177,35 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
               </dl>
             </div>
           </div>
+
+          {isAdhesivesTab && (
+            <div className="mt-12">
+              <h3 className="text-lg font-bold text-slate-900">Accessories</h3>
+              <ul className="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {ACCESSORY_PHOTOS.map((item) => (
+                  <li key={item.title} className="overflow-hidden rounded-xl border border-slate-200 bg-white">
+                    <img
+                      src={item.image}
+                      alt={`DeckRite ${item.title.toLowerCase()}`}
+                      className="w-full aspect-[4/3] object-cover"
+                      loading="lazy"
+                    />
+                    <div className="p-4">
+                      <p className="font-bold text-slate-900">{item.title}</p>
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-1 inline-block text-sm font-semibold text-navy hover:underline"
+                      >
+                        {item.drawing}
+                      </a>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </section>
 
@@ -140,14 +215,29 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-rose">Colors</p>
             <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mt-2">Available colors</h2>
             <p className="text-slate-600 mt-2 leading-relaxed leading-loose">
-            Standard colors are Sahara Tan, Slate Gray, Gray Storm, Tropical Cream, Lakewood Marble, and Tuscany Sand; <br />
-Harvest and Riverstone are also offered. <br />
+            The 500 Series (50 mil) comes in Sahara Tan, Slate Gray, Gray Storm, Tropical Cream, Lakewood Marble, and Tuscany Sand. <br />
+The 600 Series (60 mil) comes in Slate Gray, Sahara Tan, Gray Storm, Riverstone, and Harvest. <br />
 Click any color for a large close-up of the membrane texture. <br />
 Because screens vary, DeckRite will mail free material samples. Send your mailing address from the <a  onClick={() => onNavigate('contact')} className="underline hover:cursor-pointer hover:text-navy transition-colors">Contact page</a>. <br />
             </p>
           </div>
-          <div className="mt-8">
-            <ColorSwatchGrid />
+          <div className="mt-6 flex flex-wrap gap-2" role="group" aria-label="Choose a series">
+            {SERIES_COLORS.map((series) => (
+              <button
+                key={series.productId}
+                type="button"
+                onClick={() => setColorSeriesId(series.productId)}
+                aria-pressed={colorSeriesId === series.productId}
+                className={`px-4 py-2 rounded-md text-sm font-semibold cursor-pointer ${
+                  colorSeriesId === series.productId ? 'bg-navy text-white' : 'bg-white border border-slate-200 text-slate-700 hover:border-navy'
+                }`}
+              >
+                {series.label}
+              </button>
+            ))}
+          </div>
+          <div className="mt-6">
+            <ColorSwatchGrid patterns={colorsFor(colorSeries.colorIds)} />
           </div>
         </div>
       </section>
@@ -209,6 +299,14 @@ Because screens vary, DeckRite will mail free material samples. Send your mailin
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-md border border-slate-300 font-bold text-base hover:border-navy transition-colors"
             >
               Download brochure
+            </a>
+            <a
+              href="/pdf/DeckRite Architectural Specifications.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-md border border-slate-300 font-bold text-base hover:border-navy transition-colors"
+            >
+              Architectural specifications
             </a>
             <button onClick={() => onNavigate('resources')} className="inline-flex items-center gap-2 px-6 py-3.5 rounded-md border border-slate-300 font-bold text-base hover:border-navy transition-colors">
               Architectural &amp; Detail Drawings

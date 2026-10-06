@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { CornerPhotoGuide } from '../types';
+import { CornerPhotoGuide, DetailDrawing } from '../types';
 import {
   Maximize2,
   X,
@@ -7,10 +7,12 @@ import {
   ChevronLeft,
   ChevronRight,
   CheckCircle2,
+  FileText,
 } from 'lucide-react';
 
 interface CornerPhotoGalleryProps {
   guides: CornerPhotoGuide[];
+  relatedDrawings?: DetailDrawing[];
 }
 
 function CloseUpViewer({
@@ -111,7 +113,7 @@ function CloseUpViewer({
   );
 }
 
-export const CornerPhotoGallery: React.FC<CornerPhotoGalleryProps> = ({ guides }) => {
+export const CornerPhotoGallery: React.FC<CornerPhotoGalleryProps> = ({ guides, relatedDrawings = [] }) => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   const openPhoto = (id: string) => {
@@ -121,7 +123,8 @@ export const CornerPhotoGallery: React.FC<CornerPhotoGalleryProps> = ({ guides }
 
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-5">
+      <div className={relatedDrawings.length > 0 ? 'grid gap-6 lg:grid-cols-5 lg:gap-8' : ''}>
+      <div className="grid grid-cols-2 gap-3 lg:col-span-3 lg:gap-5">
         {guides.map((item) => (
           <div
             key={item.id}
@@ -174,6 +177,43 @@ export const CornerPhotoGallery: React.FC<CornerPhotoGalleryProps> = ({ guides }
             </div>
           </div>
         ))}
+      </div>
+
+      {relatedDrawings.length > 0 && (
+        <aside className="lg:col-span-2" aria-labelledby="corner-related-drawings">
+          <h3 id="corner-related-drawings" className="text-sm font-bold uppercase tracking-wide text-slate-500">
+            Related detail drawings
+          </h3>
+          <ul className="mt-3 space-y-3">
+            {relatedDrawings.map((drawing) => (
+              <li key={drawing.id}>
+                <a
+                  href={drawing.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-4 rounded-xl border border-slate-200 bg-white p-3 shadow-sm transition-all hover:border-navy hover:shadow-md"
+                >
+                  <img
+                    src={drawing.image}
+                    alt=""
+                    className="h-16 w-14 shrink-0 rounded border border-slate-100 bg-white object-contain"
+                    loading="lazy"
+                  />
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-xs font-bold text-rose">{drawing.code}</span>
+                    <span className="block text-sm font-bold leading-snug text-slate-900 group-hover:text-navy">
+                      {drawing.title}
+                    </span>
+                  </span>
+                  <span className="inline-flex shrink-0 items-center gap-1 text-xs font-bold text-slate-600 group-hover:text-navy">
+                    <FileText className="h-3.5 w-3.5" /> PDF
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </aside>
+      )}
       </div>
 
       <div className="flex flex-col items-start justify-between gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 text-xs text-slate-700 sm:flex-row sm:items-center">

@@ -30,6 +30,8 @@ interface ResourcesPageProps {
   onNavigate: (page: string) => void;
 }
 
+const CORNER_DRAWING_IDS = ['dr-114', 'dr-115', 'dr-116'];
+
 export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate }) => {
   const [drawingsPerRow, setDrawingsPerRow] = useState(1);
   const [showAllDrawings, setShowAllDrawings] = useState(false);
@@ -288,11 +290,14 @@ export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate }) => {
               Inside &amp; Outside Corner Details
             </h2>
             <p className="text-slate-600 text-sm mt-1">
-              Browse all inside and outside corner photos. Open any photo for a closer look.
+              Slate Gray inside and outside corner pieces. Open a photo for a closer look, or open the related detail drawings.
             </p>
           </div>
 
-          <CornerPhotoGallery guides={CORNER_PHOTO_GUIDES} />
+          <CornerPhotoGallery
+            guides={CORNER_PHOTO_GUIDES}
+            relatedDrawings={DETAIL_DRAWINGS.filter((drawing) => CORNER_DRAWING_IDS.includes(drawing.id))}
+          />
         </div>
       </section>
 
@@ -308,15 +313,15 @@ export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate }) => {
               Technical Data
             </h2>
             <p className="text-slate-600 text-sm mt-1">
-              Current technical data sheets, installation instructions, and safety data sheets. Click any card to preview or open the official PDF.
+              Current technical data sheets, architectural specifications, installation instructions, and safety data sheets. Click any card to preview or open the official PDF.
             </p>
           </div>
 
           <TechnicalDataSheetsSection sheets={TECHNICAL_DATA_SHEETS} />
 
           <div id="section-docs" className="scroll-mt-28">
-            <h3 className="text-lg font-bold text-slate-900 mb-5">Installation, SDS &amp; brochure</h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <h3 className="text-lg font-bold text-slate-900 mb-5">Architectural specs, installation, SDS &amp; brochure</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {RESOURCE_DOCUMENTS.map((doc) => (
                 <div
                   key={doc.id}

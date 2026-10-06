@@ -3,13 +3,17 @@ import { ColorPattern } from '../types';
 import { DECKRITE_PATTERNS } from '../data/deckData';
 import { SwatchLightbox } from './SwatchLightbox';
 
-export const ColorSwatchGrid: React.FC = () => {
+interface ColorSwatchGridProps {
+  patterns?: ColorPattern[];
+}
+
+export const ColorSwatchGrid: React.FC<ColorSwatchGridProps> = ({ patterns = DECKRITE_PATTERNS }) => {
   const [active, setActive] = useState<ColorPattern | null>(null);
 
   return (
     <>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-        {DECKRITE_PATTERNS.map((pattern) => (
+        {patterns.map((pattern) => (
           <button
             key={pattern.id}
             type="button"
@@ -28,7 +32,7 @@ export const ColorSwatchGrid: React.FC = () => {
           </button>
         ))}
       </div>
-      <SwatchLightbox pattern={active} onClose={() => setActive(null)} onChange={setActive} />
+      <SwatchLightbox pattern={active} patterns={patterns} onClose={() => setActive(null)} onChange={setActive} />
     </>
   );
 };

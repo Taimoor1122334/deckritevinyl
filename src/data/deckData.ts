@@ -51,7 +51,7 @@ export const DECKRITE_PATTERNS: ColorPattern[] = [
   {
     id: 'tropical-cream',
     name: 'Tropical Cream',
-    thickness: 'Both',
+    thickness: '50 mil',
     tone: 'neutral',
     description: 'A light, high-reflectance cream that keeps outdoor living spaces bright and cooler underfoot.',
     colorHex: '#e8dcc4',
@@ -62,7 +62,7 @@ export const DECKRITE_PATTERNS: ColorPattern[] = [
   {
     id: 'lakewood-marble',
     name: 'Lakewood Marble',
-    thickness: 'Both',
+    thickness: '50 mil',
     tone: 'neutral',
     description: 'A veined marble-look finish that adds a clean, upscale walking surface without the maintenance of stone.',
     colorHex: '#d5d0c8',
@@ -73,7 +73,7 @@ export const DECKRITE_PATTERNS: ColorPattern[] = [
   {
     id: 'tuscany-sand',
     name: 'Tuscany Sand',
-    thickness: 'Both',
+    thickness: '50 mil',
     tone: 'warm',
     description: 'A sandy, Mediterranean-inspired tone that blends easily with landscaping, stucco, and timber homes.',
     colorHex: '#d2b896',
@@ -84,7 +84,7 @@ export const DECKRITE_PATTERNS: ColorPattern[] = [
   {
     id: 'harvest',
     name: 'Harvest',
-    thickness: 'Both',
+    thickness: '60 mil',
     tone: 'warm',
     description: 'A speckled harvest-tone pattern that camouflages dust and pollen between seasonal cleanings.',
     colorHex: '#b8956a',
@@ -95,7 +95,7 @@ export const DECKRITE_PATTERNS: ColorPattern[] = [
   {
     id: 'riverstone',
     name: 'Riverstone',
-    thickness: 'Both',
+    thickness: '60 mil',
     tone: 'cool',
     description: 'A multi-tone river-pebble gray designed for high-traffic decks, balconies, and commercial walkways.',
     colorHex: '#9aa3ad',
@@ -106,38 +106,6 @@ export const DECKRITE_PATTERNS: ColorPattern[] = [
 ];
 
 export const DECKRITE_PRODUCTS: ProductItem[] = [
-  {
-    id: 'deckrite-600',
-    title: 'DeckRite 600 Series, 60 mil',
-    category: 'membranes',
-    mil: '60 mil (0.060")',
-    tagline: '60 mil vinyl membrane for high-traffic commercial properties, hotels, retirement communities, condominiums, and apartments.',
-    description:
-      'DeckRite is a three-ply reinforced vinyl membrane: an embossed wear layer, a high-strength polyester reinforcement grid, and a solid vinyl bonding layer. The 600 Series is 60 mils thick and is used for high-traffic commercial properties such as hotels, retirement communities, condominiums, apartments, and similar applications.',
-    warranty: '10-year limited manufacturer warranty against defects in material (60 mil). Installing contractor typically provides a 2-year workmanship warranty.',
-    applications: [
-      'Hotels and other high-traffic commercial properties',
-      'Retirement communities, condominiums, and apartments',
-      'Multiple-deck walkways on multi-family buildings',
-      'Rooftop patios and exterior walkways with heavy foot traffic',
-    ],
-    specifications: {
-      Thickness: '0.060 inches (60 mils)',
-      'Weld thickness': 'Approximately 0.110 inches at the hot-air weld',
-      Width: '68 inches (1.72 m)',
-      Length: '90 feet (27.45 m) per roll',
-      Construction: 'Embossed wear layer, polyester reinforcement grid, solid vinyl bonding layer',
-      'Slip resistance': 'Meets ADA slip-coefficient requirements on a flat surface',
-      Seaming: '1 to 1-1/2 inch overlap, hot-air welded',
-    },
-    features: [
-      'Waterproof walking surface: one product for waterproofing and finish flooring',
-      'Slip resistant, mildew resistant, and formulated for sun, water, and foot traffic',
-      'High-strength polyester grid for dimensional stability and tear resistance',
-      'No annual sanding, staining, or sealing',
-    ],
-    image: '/gallery/projects/sand-pointe/lounge.jpg',
-  },
   {
     id: 'deckrite-500',
     title: 'DeckRite 500 Series, 50 mil',
@@ -155,6 +123,7 @@ export const DECKRITE_PRODUCTS: ProductItem[] = [
     ],
     specifications: {
       Thickness: '0.050 inches (50 mils)',
+      Colors: 'Sahara Tan, Slate Gray, Gray Storm, Tropical Cream, Lakewood Marble, Tuscany Sand',
       'Weld thickness': 'Approximately 0.090 inches at the hot-air weld',
       Width: '68 inches (1.72 m)',
       Length: '90 feet (27.45 m) per roll',
@@ -171,8 +140,41 @@ export const DECKRITE_PRODUCTS: ProductItem[] = [
     image: '/gallery/projects/loudon/residential.jpg',
   },
   {
+    id: 'deckrite-600',
+    title: 'DeckRite 600 Series, 60 mil',
+    category: 'membranes',
+    mil: '60 mil (0.060")',
+    tagline: '60 mil vinyl membrane for high-traffic commercial properties, hotels, retirement communities, condominiums, and apartments.',
+    description:
+      'DeckRite is a three-ply reinforced vinyl membrane: an embossed wear layer, a high-strength polyester reinforcement grid, and a solid vinyl bonding layer. The 600 Series is 60 mils thick and is used for high-traffic commercial properties such as hotels, retirement communities, condominiums, apartments, and similar applications.',
+    warranty: '10-year limited manufacturer warranty against defects in material (60 mil). Installing contractor typically provides a 2-year workmanship warranty.',
+    applications: [
+      'Hotels and other high-traffic commercial properties',
+      'Retirement communities, condominiums, and apartments',
+      'Multiple-deck walkways on multi-family buildings',
+      'Rooftop patios and exterior walkways with heavy foot traffic',
+    ],
+    specifications: {
+      Thickness: '0.060 inches (60 mils)',
+      Colors: 'Slate Gray, Sahara Tan, Gray Storm, Riverstone, Harvest',
+      'Weld thickness': 'Approximately 0.110 inches at the hot-air weld',
+      Width: '68 inches (1.72 m)',
+      Length: '90 feet (27.45 m) per roll',
+      Construction: 'Embossed wear layer, polyester reinforcement grid, solid vinyl bonding layer',
+      'Slip resistance': 'Meets ADA slip-coefficient requirements on a flat surface',
+      Seaming: '1 to 1-1/2 inch overlap, hot-air welded',
+    },
+    features: [
+      'Waterproof walking surface: one product for waterproofing and finish flooring',
+      'Slip resistant, mildew resistant, and formulated for sun, water, and foot traffic',
+      'High-strength polyester grid for dimensional stability and tear resistance',
+      'No annual sanding, staining, or sealing',
+    ],
+    image: '/gallery/projects/sand-pointe/lounge.jpg',
+  },
+  {
     id: 'adhesives-accessories',
-    title: 'Adhesives, Drip Edge & Termination',
+    title: 'Adhesives and Accessories',
     category: 'accessories',
     tagline: 'Manufacturer-approved adhesive over a solid surface, with matching accessories for a complete waterproof system.',
     description:
@@ -1001,16 +1003,8 @@ const CORNER_PHOTO_FILES: {
   color: string;
   image: string;
 }[] = [
-  { type: 'inside', id: 'river-stone-inside', title: 'River Stone Inside Corner', color: 'River Stone', image: new URL('../assets/corners/River stone (Inside Corner).jpg', import.meta.url).href },
-  { type: 'outside', id: 'river-stone-outside', title: 'River Stone Outside Corner', color: 'River Stone', image: new URL('../assets/corners/River Stone ( Outside Corner).jpg', import.meta.url).href },
-  { type: 'inside', id: 'sahara-tan-inside', title: 'Sahara Tan Inside Corner', color: 'Sahara Tan', image: new URL('../assets/corners/Sahara Tan (Inside Corner).jpg', import.meta.url).href },
-  { type: 'outside', id: 'sahara-tan-outside', title: 'Sahara Tan Outside Corner', color: 'Sahara Tan', image: new URL('../assets/corners/Sahara Tan (Outside corner).jpg', import.meta.url).href },
-  { type: 'inside', id: 'slat-gray-inside', title: 'Slat Gray Inside Corner', color: 'Slat Gray', image: new URL('../assets/corners/Slat Gray (Inside corner).jpg', import.meta.url).href },
-  { type: 'outside', id: 'slat-gray-outside', title: 'Slat Gray Outside Corner', color: 'Slat Gray', image: new URL('../assets/corners/Slat Gray ( Outside Image).jpg', import.meta.url).href },
-  { type: 'inside', id: 'tropical-cream-inside', title: 'Tropical Cream Inside Corner', color: 'Tropical Cream', image: new URL('../assets/corners/Tropical Cream (Inside Corner).jpg', import.meta.url).href },
-  { type: 'outside', id: 'tropical-cream-outside', title: 'Tropical Cream Outside Corner', color: 'Tropical Cream', image: new URL('../assets/corners/Tropical Cream ( Outside Corner).jpg', import.meta.url).href },
-  { type: 'inside', id: 'tuscany-sand-inside', title: 'Tuscany Sand Inside Corner', color: 'Tuscany Sand', image: new URL('../assets/corners/Tuscany Sand (Inside Corner).jpg', import.meta.url).href },
-  { type: 'outside', id: 'tuscany-sand-outside', title: 'Tuscany Sand Outside Corner', color: 'Tuscany Sand', image: new URL('../assets/corners/Tuscany Sand (Outside Corner).jpg', import.meta.url).href },
+  { type: 'inside', id: 'slate-gray-inside', title: 'Slate Gray Inside Corner', color: 'Slate Gray', image: '/gallery/corners/slate-gray-inside.jpg' },
+  { type: 'outside', id: 'slate-gray-outside', title: 'Slate Gray Outside Corner', color: 'Slate Gray', image: '/gallery/corners/slate-gray-outside.jpg' },
 ];
 
 export const CORNER_PHOTO_GUIDES: CornerPhotoGuide[] = CORNER_PHOTO_FILES.map((photo) => ({
@@ -1023,6 +1017,17 @@ export const CORNER_PHOTO_GUIDES: CornerPhotoGuide[] = CORNER_PHOTO_FILES.map((p
 }));
 
 export const RESOURCE_DOCUMENTS: ResourceDoc[] = [
+  {
+    id: 'doc-arch-specs',
+    title: 'DeckRite Architectural Specifications',
+    category: 'Architectural & Specs',
+    docType: 'PDF',
+    fileSize: '200 KB PDF',
+    description:
+      'CSI Section 07185 Traffic Membrane specification for welded-seam PVC waterproofing on decks, balconies, walkways, stairs, patios, and courtyards.',
+    url: '/pdf/DeckRite Architectural Specifications.pdf',
+    image: '/brand/doc-arch-specs.png',
+  },
   {
     id: 'doc-install-2026',
     title: 'DeckRite Installation Instructions 2026',
