@@ -40,7 +40,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
               <a href="tel:18884503325" className="flex items-center gap-2 font-semibold text-navy">
                 <Phone className="w-4 h-4" /> (888) 450-DECK (3325)
               </a>
-              <p className="text-sm">Local: (501) 945-1919 · Fax: (501) 604-0235</p>
+              <p className="text-sm">Local: (501) 945-1919</p>
               <a href="mailto:DeckRitesupport@deckrite.com" className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-navy" /> DeckRitesupport@deckrite.com
               </a>

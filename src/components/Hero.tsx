@@ -30,11 +30,11 @@ export const Hero: React.FC<HeroProps> = ({ onExploreProducts, onFindDealer }) =
         />
         <div aria-hidden="true" className="hero-text-gradient absolute inset-0" />
 
-        <p className="script-accent absolute bottom-6 right-5 z-10 text-2xl text-white drop-shadow-[0_2px_12px_rgba(2,6,23,0.45)] sm:bottom-48 sm:right-18 transform rotate-[-25deg] sm:text-3xl">
+        {/* <p className="script-accent absolute bottom-6 right-5 z-10 text-2xl text-white drop-shadow-[0_2px_12px_rgba(2,6,23,0.45)] sm:bottom-48 sm:right-18 transform rotate-[-25deg] sm:text-3xl">
           Beautiful Above.
           <br />
           Protected Below.
-        </p>
+        </p> */}
 
         <div className="relative z-10 flex items-center px-4 pt-14 pb-12 sm:px-6 sm:pt-20 sm:pb-16 lg:min-h-[36rem] lg:px-10 lg:pt-24 lg:pb-16 xl:min-h-[40rem] xl:pt-28 xl:pl-[max(2.5rem,calc(50vw-38rem))]">
           <div className="max-w-xl ">

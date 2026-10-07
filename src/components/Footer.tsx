@@ -62,7 +62,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               (888) 450-DECK (3325)
             </a>
           </p>
-          <p className="mt-1 text-sm text-slate-600">Local / Fax: (501) 945-1919</p>
+          <p className="mt-1 text-sm text-slate-600">Local: (501) 945-1919</p>
           <p className="mt-1">
             <a href="mailto:DeckRitesupport@deckrite.com" className="inline-flex items-center gap-1.5 text-slate-700 hover:text-navy">
               <Mail className="w-4 h-4" />
