@@ -1055,10 +1055,10 @@ export const RESOURCE_DOCUMENTS: ResourceDoc[] = [
     title: 'Solvent-Based Deck Adhesive Safety Data Sheet (SDS)',
     category: 'Technical Data',
     docType: 'PDF',
-    fileSize: '453 KB PDF',
+    fileSize: '250 KB PDF',
     description:
       'Official OSHA / GHS Safety Data Sheet for DeckRite contact/solvent-based adhesive used for concrete, edge flashing, and vertical flashings.',
-    url: '/pdf/Solvent_Based_MSDS.pdf',
+    url: '/pdf/SDS 42011LV_MD-102 Solvent Based Adhesive.pdf',
     image: '/brand/doc-sds-solvent.png',
   },
   {

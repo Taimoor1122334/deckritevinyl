@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Breadcrumb } from '../components/Breadcrumb';
 import { ColorSwatchGrid } from '../components/ColorSwatchGrid';
 import { ColorVisualizer } from '../components/ColorVisualizer';
+import { FileText } from 'lucide-react';
 import { AdhesiveProduct, ColorPattern } from '../types';
 import { DECKRITE_ADHESIVES, DECKRITE_PATTERNS, DECKRITE_PRODUCTS } from '../data/deckData';
 
@@ -61,7 +62,7 @@ const ADHESIVE_FAMILIES = [
     heading: 'Solvent-based',
     substrate: 'Concrete or sealed wood',
     method: 'Coat the vinyl backing and the substrate.',
-    sds: '/pdf/Solvent_Based_MSDS.pdf',
+    sds: '/pdf/SDS 42011LV_MD-102 Solvent Based Adhesive.pdf',
   },
 ];
 
@@ -73,15 +74,16 @@ function AdhesiveCatalog() {
         return (
           <div key={family.type}>
             <div className="pb-3 border-b border-slate-300">
-              <div className="flex items-baseline justify-between gap-4">
+              <div className="flex items-center justify-between gap-4">
                 <h3 className="text-lg font-bold text-slate-900">{family.heading}</h3>
                 <a
                   href={family.sds}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="shrink-0 text-sm font-semibold text-navy hover:underline"
+                  className="inline-flex shrink-0 items-center gap-1.5 rounded-md bg-navy px-3 py-2 text-sm font-bold text-white hover:bg-navy-dark"
                 >
-                  SDS
+                  <FileText className="h-4 w-4" />
+                  View SDS
                 </a>
               </div>
               <p className="text-sm text-slate-600 mt-0.5">
@@ -179,18 +181,10 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
               <p className="mt-4 max-w-4xl text-sm text-slate-700 leading-relaxed bg-amber-50 border border-amber-200 rounded-lg p-3">
                 <strong>IMPORTANT:</strong> If the recommended DeckRite adhesive is not used, ensure the alternative adhesive is PVC-compatible to prevent adverse effects on the appearance, adhesion, and performance of the vinyl.
               </p>
-              <dl className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                {Object.entries(selected.specifications).map(([key, value]) => (
-                  <div key={key} className="rounded-lg bg-sand p-3">
-                    <dt className="text-[11px] font-bold uppercase text-slate-500">{key}</dt>
-                    <dd className="text-sm text-slate-800 mt-0.5">{value}</dd>
-                  </div>
-                ))}
-              </dl>
 
-              <div className="mt-12">
+              <div className="mt-10">
                 <p className="text-xs font-bold uppercase tracking-[0.16em] text-rose">Adhesives</p>
-                <h3 className="text-2xl font-bold text-slate-900 mt-2">DeckRite adhesives</h3>
+                <h3 className="text-2xl font-bold text-slate-900 mt-2">DeckRite Adhesives</h3>
                 <p className="text-slate-600 mt-2 max-w-3xl leading-relaxed">
                   Use water-based adhesive on unsealed wood. Use solvent-based adhesive on concrete or sealed wood.
                 </p>
@@ -198,21 +192,21 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
               </div>
             </div>
           ) : (
-            <div className="grid items-start lg:grid-cols-2 gap-10">
+            <div className="grid items-stretch lg:grid-cols-2 gap-6">
               <img
                 src={selected.image}
                 alt={selected.title}
-                className="w-full h-80 md:h-[22rem] object-cover object-[center_58%] rounded-xl border border-slate-200"
+                className="w-full h-full min-h-[16rem] max-h-[22rem] lg:max-h-none object-cover object-[center_58%] rounded-xl border border-slate-200"
               />
               <div>
                 <h2 className="text-2xl font-bold text-slate-900">{selected.title}</h2>
-                <p className="text-slate-600 mt-3 leading-relaxed">{selected.description}</p>
-                <p className="text-sm font-medium text-navy mt-3">{selected.warranty}</p>
-                <dl className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <p className="text-slate-600 mt-2 leading-relaxed">{selected.description}</p>
+                <p className="text-sm font-medium text-navy mt-2">{selected.warranty}</p>
+                <dl className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {Object.entries(selected.specifications).map(([key, value]) => (
-                    <div key={key} className="rounded-lg bg-sand p-3">
+                    <div key={key} className="rounded-lg bg-sand px-3 py-2">
                       <dt className="text-[11px] font-bold uppercase text-slate-500">{key}</dt>
-                      <dd className="text-sm text-slate-800 mt-0.5">{value}</dd>
+                      <dd className="text-sm text-slate-800 mt-0.5 leading-snug">{value}</dd>
                     </div>
                   ))}
                 </dl>
