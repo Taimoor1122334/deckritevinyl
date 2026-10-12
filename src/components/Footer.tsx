@@ -88,7 +88,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
         <div>
           <h4 className="text-xs font-bold uppercase tracking-wider text-navy mb-3">Sister Brands</h4>
-          <a href="https://marideck.net/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-lg bg-slate-50 border border-slate-200 mb-2 hover:border-navy">
+          <a href="https://boatvinyl.com/marideck-vinyl-boat-flooring/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-lg bg-slate-50 border border-slate-200 mb-2 hover:border-navy">
             <img src="/brand/marideck-logo.png" alt="MariDeck" className="h-6 w-auto bg-[#0c1b33] px-2 py-1 rounded" />
             <span className="text-sm font-medium">MariDeck</span>
           </a>

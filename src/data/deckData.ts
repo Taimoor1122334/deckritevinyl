@@ -650,7 +650,7 @@ export const SISTER_BRANDS = [
   {
     name: 'MariDeck',
     tagline: 'Marine vinyl boat flooring',
-    url: 'https://marideck.net/',
+    url: 'https://boatvinyl.com/marideck-vinyl-boat-flooring/',
     logo: '/brand/marideck-logo.png',
     description:
       'MariDeck is DeckRite LLC’s marine vinyl flooring for pontoons, fishing boats, and sport boats. It has proven performance since the 1970\'s and is sold to elite boat builders and specialty retailers.',
@@ -1057,7 +1057,7 @@ export const RESOURCE_DOCUMENTS: ResourceDoc[] = [
     docType: 'PDF',
     fileSize: '250 KB PDF',
     description:
-      'Official OSHA / GHS Safety Data Sheet for DeckRite contact/solvent-based adhesive used for concrete, edge flashing, and vertical flashings.',
+      'Official OSHA / GHS Safety Data Sheet for DeckRite solvent-based adhesive used for concrete, sealed wood, and vertical surfaces for material application.',
     url: '/pdf/SDS 42011LV_MD-102 Solvent Based Adhesive.pdf',
     image: '/brand/doc-sds-solvent.png',
   },
@@ -1444,6 +1444,7 @@ export const INSTALL_VIDEOS = [
     title: 'Why Choose DeckRite?',
     seriesPart: 'System Overview',
     youtubeId: '_kQ0GmUtutY',
+    thumbnail: '/brand/why-deckrite.png',
     description: 'Overview of the DeckRite waterproof vinyl decking system, performance benefits, and long-term warranties.',
   },
 ];

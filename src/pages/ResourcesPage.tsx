@@ -442,7 +442,7 @@ export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate }) => {
                 <div>
                   <div className="relative aspect-video bg-slate-900 overflow-hidden">
                     <img
-                      src={`https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`}
+                      src={video.thumbnail ?? `https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`}
                       alt={video.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
                     />

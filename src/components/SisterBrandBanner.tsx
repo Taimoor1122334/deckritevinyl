@@ -12,7 +12,7 @@ export const SisterBrandBanner: React.FC<SisterBrandBannerProps> = ({ onNavigate
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex items-center justify-center gap-4 sm:gap-6">
           <a
             id="link-marideck"
-            href="https://marideck.net/"
+            href="https://boatvinyl.com/marideck-vinyl-boat-flooring/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center opacity-90 hover:opacity-100 transition-opacity"

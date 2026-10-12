@@ -60,7 +60,7 @@ export const WhyDeckRitePage: React.FC<WhyDeckRitePageProps> = ({ onNavigate }) 
                   <img
                     src="/brand/why-deckrite.png"
                     alt="DeckRite waterproof vinyl decking system overview"
-                    className="h-full w-full  object-cover object-[center_85%]"
+                    className="h-full w-full object-cover object-center"
                   />
                 </button>
               )}
