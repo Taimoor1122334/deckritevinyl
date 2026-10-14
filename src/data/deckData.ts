@@ -1012,8 +1012,12 @@ export const CORNER_PHOTO_GUIDES: CornerPhotoGuide[] = CORNER_PHOTO_FILES.map((p
   type: photo.type,
   title: photo.title,
   subtitle: `${photo.color} DeckRite vinyl membrane`,
-  description: `Example of a ${photo.color.toLowerCase()} DeckRite vinyl membrane corner piece formed for an ${photo.type} corner.`,
+  description:
+    photo.type === 'inside'
+      ? 'Slate Gray inside corner with measured dimensions: 6.5" wall, 5" from the inner corner, and 10" overall width.'
+      : 'Slate Gray outside corner with measured dimensions: 7" wall, 10" × 10" flange, and 4.5" at the fold.',
   image: photo.image,
+  dimensions: photo.type === 'inside' ? ['6.5"', '5"', '10"'] : ['7"', '10"', '10"', '4.5"'],
 }));
 
 export const RESOURCE_DOCUMENTS: ResourceDoc[] = [

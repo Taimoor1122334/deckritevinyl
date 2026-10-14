@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Breadcrumb } from '../components/Breadcrumb';
 import { ColorSwatchGrid } from '../components/ColorSwatchGrid';
 import { ColorVisualizer } from '../components/ColorVisualizer';
+import { CornerMeasuredPhoto } from '../components/CornerMeasuredPhoto';
 import { FileText } from 'lucide-react';
 import { AdhesiveProduct, ColorPattern } from '../types';
 import { DECKRITE_ADHESIVES, DECKRITE_PATTERNS, DECKRITE_PRODUCTS } from '../data/deckData';
@@ -30,6 +31,26 @@ const colorsFor = (colorIds: string[]) =>
 
 const ACCESSORY_PHOTOS = [
   {
+    title: 'Inside Corner',
+    image: '/gallery/corners/slate-gray-inside.jpg',
+    drawing: 'DR-114 Inside / Outside Corner Detail',
+    url: '/pdf/DR-114.pdf',
+    corner: 'inside' as const,
+  },
+  {
+    title: 'Outside Corner',
+    image: '/gallery/corners/slate-gray-outside.jpg',
+    drawing: 'DR-114 Inside / Outside Corner Detail',
+    url: '/pdf/DR-114.pdf',
+    corner: 'outside' as const,
+  },
+  {
+    title: 'ProGuard Walk Tread',
+    image: '/accessories/commercial/proguard-yellow-roll.jpg',
+    drawing: 'ProGuard PVC Walk Tread data sheet',
+    url: '/pdf/TDS-ProGuard-Walk-Tread.pdf',
+  },
+  {
     title: 'Drip Edge',
     image: '/accessories/drip-edge.jpg',
     drawing: 'DR-109 Coated Metal Drip Edge',
@@ -46,6 +67,43 @@ const ACCESSORY_PHOTOS = [
     image: '/accessories/fascia-bar-cover.jpg',
     drawing: 'DR-103 Compression Bar with Cover',
     url: '/pdf/DR-103.pdf',
+  },
+];
+
+const COMMERCIAL_ACCESSORIES = [
+  {
+    title: 'PVC ProGuard Walk Tread',
+    colors: 'Gray and Safety Yellow',
+    note: 'Embossed walk tread for DeckRite PVC membranes.',
+    images: [
+      { src: '/accessories/commercial/pvc-proguard-gray.jpg', label: 'Gray' },
+      { src: '/accessories/commercial/pvc-proguard-yellow.jpg', label: 'Yellow' },
+    ],
+    drawing: 'ProGuard PVC Walk Tread data sheet',
+    url: '/pdf/TDS-ProGuard-Walk-Tread.pdf',
+  },
+  {
+    title: 'TPO ProGuard Walk Tread',
+    colors: 'Gray and Safety Yellow',
+    note: 'Embossed walk tread for TPO roofing. Data sheet coming soon.',
+    images: [
+      { src: '/accessories/commercial/tpo-proguard-gray.jpg', label: 'Gray' },
+      { src: '/accessories/commercial/tpo-proguard-yellow.jpg', label: 'Yellow' },
+    ],
+  },
+  {
+    title: 'PVC Coated Sheet Metal',
+    colors: 'White, Gray, and Tan',
+    note: '4 ft × 10 ft heat-weldable coated metal sheets.',
+    images: [{ src: '/accessories/commercial/pvc-coated-sheet-metal.png', label: 'White, Gray, Tan' }],
+    drawing: 'PVC Coated Sheet Metal data sheet',
+    url: '/pdf/TDS-PVC-Coated-Sheet-Metal.pdf',
+  },
+  {
+    title: 'TPO Coated Sheet Metal',
+    colors: 'White',
+    note: '4 ft × 10 ft coated metal sheet. Data sheet coming soon.',
+    images: [{ src: '/accessories/commercial/tpo-coated-sheet-metal.png', label: 'White' }],
   },
 ];
 
@@ -215,17 +273,28 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
           )}
 
           {isAdhesivesTab && (
+            <>
             <div className="mt-12">
               <h3 className="text-lg font-bold text-slate-900">Accessories</h3>
               <ul className="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {ACCESSORY_PHOTOS.map((item) => (
                   <li key={item.title} className="overflow-hidden rounded-xl border border-slate-200 bg-white">
-                    <img
-                      src={item.image}
-                      alt={`DeckRite ${item.title.toLowerCase()}`}
-                      className="w-full aspect-[4/3] object-cover"
-                      loading="lazy"
-                    />
+                    <div className={`flex items-center justify-center bg-white ${item.corner ? 'aspect-square p-3' : 'aspect-[4/3]'}`}>
+                      {item.corner ? (
+                        <CornerMeasuredPhoto
+                          src={item.image}
+                          alt={`DeckRite ${item.title.toLowerCase()}`}
+                          type={item.corner}
+                        />
+                      ) : (
+                        <img
+                          src={item.image}
+                          alt={`DeckRite ${item.title.toLowerCase()}`}
+                          className="h-full w-full object-cover"
+                          loading="lazy"
+                        />
+                      )}
+                    </div>
                     <div className="p-4">
                       <p className="font-bold text-slate-900">{item.title}</p>
                       <a
@@ -241,6 +310,66 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
                 ))}
               </ul>
             </div>
+
+            <div className="mt-16">
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-rose">Commercial roofing</p>
+              <h3 className="text-2xl font-bold text-slate-900 mt-2">Commercial Roofing Accessories</h3>
+              <p className="text-slate-600 mt-2 max-w-3xl leading-relaxed">
+                ProGuard walk tread and coated sheet metal for commercial roofing. TPO data sheets will be added when they are provided.
+              </p>
+              <ul className="mt-6 grid sm:grid-cols-2 gap-6">
+                {COMMERCIAL_ACCESSORIES.map((item) => (
+                  <li key={item.title} className="overflow-hidden rounded-xl border border-slate-200 bg-white">
+                    <div className={`grid ${item.images.length > 1 ? 'grid-cols-2' : 'grid-cols-1'} bg-white`}>
+                      {item.images.map((image) => (
+                        <figure key={image.src} className="relative">
+                          <img
+                            src={image.src}
+                            alt={`${item.title} ${image.label}`}
+                            className={`w-full ${item.images.length > 1 ? 'aspect-square object-cover' : 'aspect-[4/3] object-contain p-4'}`}
+                            loading="lazy"
+                          />
+                          <figcaption className="absolute bottom-2 left-2 rounded-full bg-white/90 px-2.5 py-0.5 text-[11px] font-bold text-slate-800 shadow-sm">
+                            {image.label}
+                          </figcaption>
+                        </figure>
+                      ))}
+                    </div>
+                    <div className="p-4">
+                      <p className="font-bold text-slate-900">{item.title}</p>
+                      <p className="mt-1 text-sm text-slate-600">{item.colors}. {item.note}</p>
+                      {item.url && item.drawing ? (
+                        <a
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-2 inline-block text-sm font-semibold text-navy hover:underline"
+                        >
+                          {item.drawing}
+                        </a>
+                      ) : (
+                        <p className="mt-2 text-sm text-slate-500">Data sheet coming soon</p>
+                      )}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-6 grid sm:grid-cols-2 gap-4">
+                <img
+                  src="/accessories/commercial/proguard-roof-1.jpg"
+                  alt="ProGuard walk tread installed on a commercial roof"
+                  className="w-full aspect-[4/3] rounded-xl object-cover border border-slate-200"
+                  loading="lazy"
+                />
+                <img
+                  src="/accessories/commercial/proguard-roof-2.jpg"
+                  alt="ProGuard yellow walk tread path on a commercial roof"
+                  className="w-full aspect-[4/3] rounded-xl object-cover border border-slate-200"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+            </>
           )}
         </div>
       </section>

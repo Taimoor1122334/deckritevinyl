@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { CornerPhotoGuide, DetailDrawing } from '../types';
+import { CornerMeasuredPhoto } from './CornerMeasuredPhoto';
 import {
   Maximize2,
   X,
@@ -82,10 +83,11 @@ function CloseUpViewer({
             </button>
           )}
 
-          <img
+          <CornerMeasuredPhoto
             src={photo.image}
             alt={photo.title}
-            className="max-h-[52vh] w-auto max-w-full object-contain sm:max-h-[70vh]"
+            type={photo.type}
+            imgClassName="max-h-[52vh] w-auto max-w-full sm:max-h-[70vh]"
           />
 
           {hasMany && (
@@ -141,11 +143,11 @@ export const CornerPhotoGallery: React.FC<CornerPhotoGalleryProps> = ({ guides, 
           >
             <div>
               <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden border-b border-slate-100 bg-white p-1 transition-colors group-hover:bg-slate-50 sm:p-4">
-                <img
+                <CornerMeasuredPhoto
                   src={item.image}
                   alt={item.title}
-                  className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
-                  loading="lazy"
+                  type={item.type}
+                  className="transition-transform duration-300 group-hover:scale-105"
                 />
                 <div className="absolute left-1.5 top-1.5 z-10 sm:left-3 sm:top-3">
                   <span
