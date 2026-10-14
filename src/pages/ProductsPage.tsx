@@ -49,6 +49,7 @@ const ACCESSORY_PHOTOS = [
     image: '/accessories/commercial/proguard-yellow-roll.jpg',
     drawing: 'ProGuard PVC Walk Tread data sheet',
     url: '/pdf/TDS-ProGuard-Walk-Tread.pdf',
+    imageClass: 'object-[30%_40%]',
   },
   {
     title: 'Drip Edge',
@@ -278,8 +279,8 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
               <h3 className="text-lg font-bold text-slate-900">Accessories</h3>
               <ul className="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {ACCESSORY_PHOTOS.map((item) => (
-                  <li key={item.title} className="overflow-hidden rounded-xl border border-slate-200 bg-white">
-                    <div className={`flex items-center justify-center bg-white ${item.corner ? 'aspect-square p-3' : 'aspect-[4/3]'}`}>
+                  <li key={item.title} className="flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white">
+                    <div className="flex aspect-[4/3] items-center justify-center overflow-hidden bg-white">
                       {item.corner ? (
                         <CornerMeasuredPhoto
                           src={item.image}
@@ -290,7 +291,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
                         <img
                           src={item.image}
                           alt={`DeckRite ${item.title.toLowerCase()}`}
-                          className="h-full w-full object-cover"
+                          className={`h-full w-full object-cover ${item.imageClass ?? ''}`}
                           loading="lazy"
                         />
                       )}
