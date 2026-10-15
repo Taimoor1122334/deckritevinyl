@@ -313,6 +313,41 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
             </div>
 
             <div className="mt-16">
+              <h3 className="text-lg font-bold text-slate-900">PVC Coated Drain</h3>
+              <p className="mt-2 max-w-3xl text-slate-600 leading-relaxed">
+                2" aluminum vinyl deck drain. 8 1/2" overall flange diameter, 2" drain opening.
+              </p>
+              <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1">
+                <a
+                  href="/pdf/DR-112.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-semibold text-navy hover:underline"
+                >
+                  DR-112 Drain Detail
+                </a>
+                <span className="text-sm text-slate-500">Data sheet coming soon</span>
+              </div>
+              <ul className="mt-6 grid grid-cols-2 lg:grid-cols-4 gap-4">
+                {[
+                  { src: '/accessories/pvc-coated-drain.png', alt: 'PVC coated drain top view' },
+                  { src: '/accessories/pvc-coated-drain-top.png', alt: 'PVC coated drain 8 1/2 inch overall flange diameter' },
+                  { src: '/accessories/pvc-coated-drain-opening.png', alt: 'PVC coated drain 2 inch drain opening' },
+                  { src: '/accessories/pvc-coated-drain-label.png', alt: '2 inch aluminum vinyl deck drain' },
+                ].map((photo) => (
+                  <li key={photo.src} className="overflow-hidden rounded-xl border border-slate-200 bg-white">
+                    <img
+                      src={photo.src}
+                      alt={photo.alt}
+                      className="w-full aspect-square object-contain p-3"
+                      loading="lazy"
+                    />
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="mt-16">
               <p className="text-xs font-bold uppercase tracking-[0.16em] text-rose">Commercial roofing</p>
               <h3 className="text-2xl font-bold text-slate-900 mt-2">Commercial Roofing Accessories</h3>
               <p className="text-slate-600 mt-2 max-w-3xl leading-relaxed">
