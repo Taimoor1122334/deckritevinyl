@@ -137,7 +137,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
               src="/brand/deckrite-logo.png"
               alt="DeckRite"
               className={`w-auto transition-[height] duration-300 ease-out ${
-                isScrolled ? 'h-10 sm:h-11' : 'h-14 sm:h-16'
+                isScrolled ? 'h-10 sm:h-15' : 'h-14 sm:h-22'
               }`}
             />
           </button>

@@ -48,7 +48,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
         <div className="space-y-4">
-          <img src="/brand/deckrite-logo.png" alt="DeckRite" className="h-10 w-auto" />
+          <img src="/brand/deckrite-logo.png" alt="DeckRite" className="h-15 w-auto" />
           <p className="text-sm text-slate-600 leading-relaxed">
             DeckRite L.L.C. is a manufacturer of vinyl films and membranes, not an installation contractor. Headquartered in North Little Rock, Arkansas, serving the construction, marine, and RV industries since the 1970's.
           </p>
