@@ -290,7 +290,7 @@ export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate }) => {
               Inside &amp; Outside Corner Details
             </h2>
             <p className="text-slate-600 text-sm mt-1">
-              Slate Gray inside and outside corner pieces with measured dimensions. Open a photo for a closer look, or open the related detail drawings.
+              Inside and outside corners match the membrane color. The Slate Gray pieces shown here are examples only. Open a photo for a closer look, or open the related detail drawings.
             </p>
           </div>
 

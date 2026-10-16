@@ -33,41 +33,39 @@ const ACCESSORY_PHOTOS = [
   {
     title: 'Inside Corner',
     image: '/gallery/corners/slate-gray-inside.jpg',
-    drawing: 'DR-114 Inside / Outside Corner Detail',
-    url: '/pdf/DR-114.pdf',
     corner: 'inside' as const,
+    links: [{ label: 'DR-114 Inside / Outside Corner Detail', url: '/pdf/DR-114.pdf' }],
   },
   {
-    title: 'Outside Corner',
+    title: 'Outside Corner & Post Wrap',
     image: '/gallery/corners/slate-gray-outside.jpg',
-    drawing: 'DR-114 Inside / Outside Corner Detail',
-    url: '/pdf/DR-114.pdf',
     corner: 'outside' as const,
-  },
-  {
-    title: 'ProGuard Walk Tread',
-    image: '/accessories/commercial/proguard-yellow-roll.jpg',
-    drawing: 'ProGuard PVC Walk Tread data sheet',
-    url: '/pdf/TDS-ProGuard-Walk-Tread.pdf',
-    imageClass: 'object-[30%_40%]',
+    links: [
+      { label: 'DR-114 Inside / Outside Corner Detail', url: '/pdf/DR-114.pdf' },
+      { label: 'DR-115 Inset Post Wrap Detail', url: '/pdf/DR-115.pdf' },
+      { label: 'DR-116 Edge Post Wrap Detail', url: '/pdf/DR-116.pdf' },
+    ],
   },
   {
     title: 'Drip Edge',
     image: '/accessories/drip-edge.jpg',
-    drawing: 'DR-109 Coated Metal Drip Edge',
-    url: '/pdf/DR-109.pdf',
+    links: [{ label: 'DR-109 Coated Metal Drip Edge', url: '/pdf/DR-109.pdf' }],
   },
   {
     title: 'Termination Bar',
     image: '/accessories/termination-bar.jpg',
-    drawing: 'DR-101 Edge Termination Detail',
-    url: '/pdf/DR-101.pdf',
+    links: [{ label: 'DR-101 Edge Termination Detail', url: '/pdf/DR-101.pdf' }],
   },
   {
     title: 'Fascia Bar and Cover',
     image: '/accessories/fascia-bar-cover.jpg',
-    drawing: 'DR-103 Compression Bar with Cover',
-    url: '/pdf/DR-103.pdf',
+    links: [{ label: 'DR-103 Compression Bar with Cover', url: '/pdf/DR-103.pdf' }],
+  },
+  {
+    title: 'PVC Coated Sheet Metal',
+    image: '/accessories/commercial/pvc-coated-sheet-metal.png',
+    imageClass: 'object-contain p-4',
+    links: [{ label: 'PVC Coated Sheet Metal data sheet', url: '/pdf/TDS-PVC-Coated-Sheet-Metal.pdf' }],
   },
 ];
 
@@ -277,6 +275,9 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
             <>
             <div className="mt-12">
               <h3 className="text-lg font-bold text-slate-900">Accessories</h3>
+              <p className="mt-2 max-w-3xl text-sm text-slate-600 leading-relaxed">
+                Inside and outside corners are made to match the membrane color. The Slate Gray pieces shown here are examples only.
+              </p>
               <ul className="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {ACCESSORY_PHOTOS.map((item) => (
                   <li key={item.title} className="flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white">
@@ -298,14 +299,19 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
                     </div>
                     <div className="p-4">
                       <p className="font-bold text-slate-900">{item.title}</p>
-                      <a
-                        href={item.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-1 inline-block text-sm font-semibold text-navy hover:underline"
-                      >
-                        {item.drawing}
-                      </a>
+                      <div className="mt-1 flex flex-col gap-1">
+                        {item.links.map((link) => (
+                          <a
+                            key={link.url + link.label}
+                            href={link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sm font-semibold text-navy hover:underline"
+                          >
+                            {link.label}
+                          </a>
+                        ))}
+                      </div>
                     </div>
                   </li>
                 ))}
@@ -351,7 +357,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
               <p className="text-xs font-bold uppercase tracking-[0.16em] text-rose">Commercial roofing</p>
               <h3 className="text-2xl font-bold text-slate-900 mt-2">Commercial Roofing Accessories</h3>
               <p className="text-slate-600 mt-2 max-w-3xl leading-relaxed">
-                ProGuard walk tread and coated sheet metal for commercial roofing. TPO data sheets will be added when they are provided.
+                Walk tread and coated metals for commercial roofing. These are separate from DeckRite decking accessories. TPO data sheets will be added when they are provided.
               </p>
               <ul className="mt-6 grid sm:grid-cols-2 gap-6">
                 {COMMERCIAL_ACCESSORIES.map((item) => (

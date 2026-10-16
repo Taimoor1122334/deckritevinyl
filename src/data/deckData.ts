@@ -1004,7 +1004,7 @@ const CORNER_PHOTO_FILES: {
   image: string;
 }[] = [
   { type: 'inside', id: 'slate-gray-inside', title: 'Slate Gray Inside Corner', color: 'Slate Gray', image: '/gallery/corners/slate-gray-inside.jpg' },
-  { type: 'outside', id: 'slate-gray-outside', title: 'Slate Gray Outside Corner', color: 'Slate Gray', image: '/gallery/corners/slate-gray-outside.jpg' },
+  { type: 'outside', id: 'slate-gray-outside', title: 'Slate Gray Outside Corner & Post Wrap', color: 'Slate Gray', image: '/gallery/corners/slate-gray-outside.jpg' },
 ];
 
 export const CORNER_PHOTO_GUIDES: CornerPhotoGuide[] = CORNER_PHOTO_FILES.map((photo) => ({
@@ -1015,7 +1015,7 @@ export const CORNER_PHOTO_GUIDES: CornerPhotoGuide[] = CORNER_PHOTO_FILES.map((p
   description:
     photo.type === 'inside'
       ? 'Slate Gray inside corner with measured dimensions: 6.5" wall, 5" from the inner corner, and 10" overall width.'
-      : 'Slate Gray outside corner with measured dimensions: 7" wall, 10" × 10" flange, and 4.5" at the fold.',
+      : 'Slate Gray outside corner, also used as a post wrap, with measured dimensions: 7" wall, 10" × 10" flange, and 4.5" at the fold.',
   image: photo.image,
   dimensions: photo.type === 'inside' ? ['6.5"', '5"', '10"'] : ['7"', '10"', '10"', '4.5"'],
 }));
